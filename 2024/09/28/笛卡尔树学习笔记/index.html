@@ -116,11 +116,13 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>笛卡尔树学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-09-28T14:01:06.000Z" id="date"> 2024-09-28</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-09-28T14:28:55.655Z" id="updated"> 2024-09-28</time></div></span><br><span>Word Count: <div class="control">389</div></span><br><span>Read Time: <div class="control">1 min</div></span></div></div><hr><div id="post-content"><p>笛卡尔树是一种二叉树，它既满足二叉搜索树的性质，又满足堆的性质。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>笛卡尔树学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-09-28T14:01:06.000Z" id="date"> 2024-09-28</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-09-29T12:07:52.422Z" id="updated"> 2024-09-29</time></div></span><br><span>Word Count: <div class="control">1.2k</div></span><br><span>Read Time: <div class="control">4 min</div></span></div></div><hr><div id="post-content"><p>笛卡尔树是一种二叉树，它既满足二叉搜索树的性质，又满足堆的性质。</p>
 <p>例如 treap，就属于笛卡尔树的一种。</p>
+<p>以下规定：第一键值为满足二叉搜索树的键值，第二键值为满足堆的键值。</p>
 <p><strong>如何构建笛卡尔树</strong></p>
 <p>我们可以用单调栈做到 <script type="math/tex">O(n)</script> 建树。</p>
-<p>我们考虑将元素按下标顺序依次插入到当前的笛卡尔树中。那么每次我们插入的元素必然在这棵树的右链（右链：即从根节点一直往右子树走，经过的节点形成的链）的末端。</p>
+<p>我们考虑将下标作为第一键值，权值作为第二键值。</p>
+<p>那么每次我们插入的元素必然在这棵树的右链（右链：即从根节点一直往右子树走，经过的节点形成的链）的末端。</p>
 <p>所以我们可以用栈来维护笛卡尔树的右链。</p>
 <p>假设我们要建一颗大根笛卡尔树。</p>
 <p>设当前位置为 <script type="math/tex">i</script>，前 <script type="math/tex">i-1</script> 个位置已经构建好了。设栈顶元素为 <script type="math/tex">a_{top}</script>。</p>
@@ -128,13 +130,51 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <p>若 <script type="math/tex">a_i \le a_{top}</script>，直接将 <script type="math/tex">i</script> 入栈（也就是把 <script type="math/tex">i</script> 挂在右链上）。</p>
 <p>否则一直弹栈，直到栈空或 <script type="math/tex">a_i \le a_{top}</script>。把最后一个弹出的元素设为 <script type="math/tex">i</script> 的左儿子。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>    <span class="hljs-type">int</span> tmp=top;<br>    <span class="hljs-keyword">while</span>(tmp&amp;&amp;a[stk[tmp]]&lt;a[i]) --tmp;<br>    <span class="hljs-keyword">if</span>(tmp) rs[stk[tmp]]=i;<br>    <span class="hljs-keyword">if</span>(tmp&lt;top) ls[i]=stk[tmp<span class="hljs-number">+1</span>];<br>    stk[++tmp]=i;<br>    top=tmp;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>事实上，如果要按某个值作为第一键值，那么按这个值排序即可。</p>
+<p>可以发现，笛卡尔树的根就是 <script type="math/tex">stk_1</script>。</p>
 <p><strong>应用</strong></p>
 <p>笛卡尔树大多用来 dp。</p>
 <p>对原问题转化后，变为笛卡尔树上的 dp 问题。</p>
 <p>而且一般只会用到思想，并不会真把树建出来。</p>
-<p>以及一些直方图求最大矩阵面积似乎也会用到。</p>
+<p>以及一些直方图似乎也会用到。</p>
+<p>对于直方图类问题，我们常把下标作为第一键值，<script type="math/tex">h_i</script> 作为第二键值建立小根笛卡尔树。</p>
 <p><strong>例题</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1377">[TJOI2011] 树的序</a></p>
+<p>一道考察笛卡尔树定义的题。</p>
+<p>题目给的很明白了，要按权值当第一键值。</p>
+<p>因为要求字典序最小的生成序列，所以我们把每个数在序列中的位置当作第二键值，然后建小根笛卡尔树即可。</p>
+<p>因为插入顺序是父亲-&gt;左儿子-&gt;右儿子，所以输出先序遍历即可。</p>
+<p>注意输出的是键而不是编号。</p>
 <p><a target="_blank" rel="noopener" href="https://acm.hdu.edu.cn/showproblem.php?pid=1506">Largest Rectangle in a Histogram</a></p>
+<p>笛卡尔树求矩形面积板子题。</p>
+<p>我们把下标作为第一键值，<script type="math/tex">h_i</script> 作为第二键值建立小根笛卡尔树。</p>
+<p>枚举点 <script type="math/tex">u</script>，看当 <script type="math/tex">h_u</script> 作为矩形的高度时的最大面积。</p>
+<p>因为我们建的是小根树，所以子树内的点的 <script type="math/tex">h_i</script> 都大于 <script type="math/tex">h_u</script>。</p>
+<p>因为下标是键，所以子树内的点构成一段连续区间。</p>
+<p>那么以 <script type="math/tex">h_u</script> 作为高时的最大面积为 <script type="math/tex">siz_u\times h_u</script>。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6453">[COCI2008-2009#4] PERIODNI</a></p>
+<p>我们考虑把这个多边形转成树。</p>
+<p>受上题启发，我们把下标作为第一键值，<script type="math/tex">h_i</script> 作为第二键值建立小根笛卡尔树。</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/6a5lp8on.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/6a5lp8on.png" alt=""></p>
+<p>我们每次找到最低点，分成左右两边，然后递归处理。</p>
+<p>不难发现，这些矩形对应笛卡尔树上的所有节点。</p>
+<p>对于点 <script type="math/tex">u</script>,它代表的长为 <script type="math/tex">siz_u</script>，宽为 <script type="math/tex">h_u-h_{fa}</script>。</p>
+<p>因为两个儿子是分开的，所以可以直接合并，没有影响。</p>
+<p>设 <script type="math/tex">f_{u,i}</script> 表示以 <script type="math/tex">u</script> 为根的子树放了 <script type="math/tex">i</script> 个的方案数，<script type="math/tex">g_{u,i}</script> 表示以 <script type="math/tex">u</script> 为根的子树放了 <script type="math/tex">i</script> 个，且不包括 <script type="math/tex">u</script> 代表的矩形的方案数。</p>
+<p>那么 <script type="math/tex">g</script> 的转移就是背包。</p>
+<script type="math/tex; mode=display">
+g_{u,i}=\sum_{j=0}^i f_{ls,j}\times f_{rs,i-j}</script><p>至于 <script type="math/tex">f</script> 的转移，就是考虑 <script type="math/tex">u</script> 放几个。</p>
+<p>有结论：大小为 <script type="math/tex">n\times m</script> 的棋盘，放 <script type="math/tex">k</script> 个互不攻击的车，方案数为 <script type="math/tex">\binom{n}{k}\times \binom{m}{k}\times k!</script></p>
+<p>那么枚举子树一共用了几个，剩下的就是自己用的。</p>
+<p>注意子树用了的自己不能用。</p>
+<script type="math/tex; mode=display">
+f_{u,i}=\sum_{j=0}^i \binom{siz_u}{i-j}\times \binom{h_u-h_{fa}}{i-j}\times (i-j)!\times g_{u,j}</script><p>复杂度 <script type="math/tex">O(nk^2+n^2)</script></p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1748E">Yet Another Array Counting Problem</a></p>
+<p>以下标为第一键值，<script type="math/tex">a_i</script> 为第二键值建立大根笛卡尔树，那么 <script type="math/tex">[l,r]</script> 的最左端最大值位置就是 <script type="math/tex">l,r</script> 在笛卡尔树上的 <script type="math/tex">\operatorname{lca}</script>。</p>
+<p>那么所有最左端最大值位置都相等，就意味着笛卡尔树的形态相同。</p>
+<p>此时转化为树计数问题。</p>
+<p>设 <script type="math/tex">f_{u,i}</script> 表示 <script type="math/tex">u</script> 取值 <script type="math/tex">1 \sim i</script> 的方案数。</p>
+<p>左儿子可以填 <script type="math/tex">[1,i-1]</script>，右儿子可以填 <script type="math/tex">[1,i]</script></p>
+<p>转移就是 <script type="math/tex">f_{u,i}=f_{u,i-1}+f_{ls_u,i-1}\times f_{rs_u,i}</script></p>
+<p>复杂度 <script type="math/tex">O(nm)</script></p>
 <div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/09/28/2024-9-28/">2024.9.28 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div></div><div id="aside-block"></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
