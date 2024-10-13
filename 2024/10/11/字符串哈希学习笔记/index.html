@@ -10,7 +10,7 @@
   font-family: 'JetBrains Mono';
   src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
 }
-</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
  menuSettings: {
    zoom: "None"
  },
@@ -40,7 +40,7 @@ if (window.localStorage.getItem('theme-mode') === 'dark')
 }</style><style>:root {
  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
  --light-background: url('/img/bk.jpg');
- --theme-encrypt-confirm: '确认'
+ --theme-encrypt-confirm: 'confirm'
 }</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
 window.mermaid = mermaid;
 code.paintMermaid();
@@ -116,7 +116,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>字符串哈希学习笔记</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-10-11T09:13:16.000Z" id="date"> 2024-10-11</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-10-12T14:07:32.875Z" id="updated"> 2024-10-12</time></div></span><br><span>文章总字数: <div class="control">1.7k</div></span><br><span>预计阅读时间: <div class="control">6 分钟</div></span></div></div><hr><div id="post-content"><p>字符串学到现在只会 SA，绷不住了。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>字符串哈希学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-11T09:13:16.000Z" id="date"> 2024-10-11</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-13T08:37:34.758Z" id="updated"> 2024-10-13</time></div></span><br><span>Word Count: <div class="control">2.3k</div></span><br><span>Read Time: <div class="control">8 min</div></span></div></div><hr><div id="post-content"><p>字符串学到现在只会 SA，绷不住了。</p>
 <p>还是得学学哈希，不然真考字符串就寄了。</p>
 <h3 id="什么是字符串哈希"><a href="#什么是字符串哈希" class="headerlink" title="什么是字符串哈希"></a>什么是字符串哈希</h3><p>通过一个函数把一个字符串映射为一个整数，这个函数就是哈希函数。</p>
 <h3 id="如何计算"><a href="#如何计算" class="headerlink" title="如何计算"></a>如何计算</h3><p>我们通常采用多项式哈希。</p>
@@ -140,6 +140,8 @@ h_i=h_{i-1}\times base+s_i\quad (mod\ p)</script><p>则 <script type="math/tex">
 <p>如果题目涉及到以上问题（即需要相乘）且你使用了大模数，请先想想会不会炸，需不需要 int128。</p>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>大概就字符串匹配吧？还有别的用途吗？</p>
 <p>字符串哈希厉害之处就在于可以在预处理后 <script type="math/tex">O(1)</script> 匹配。</p>
+<p>而且哈希还有一个常用搭配：二分。</p>
+<p>因为字符串的匹配是有单调性的，长的匹配说明短的也匹配，所以可以二分长度然后用哈希判断。</p>
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3370">【模板】字符串哈希</a></p>
 <p>第一道题肯定要放模板啦。</p>
 <p>求出每个字符串的哈希值，那么问题就变成了序列中有几个不同的数。</p>
@@ -217,4 +219,36 @@ m-x_{l'}\le y_{r'}</script><p>然后这是个二维数点，做完了。</p>
 <p>直接爆搜选哪些串，然后把长度为 <script type="math/tex">k</script> 的子串的哈希值存起来。</p>
 <p>这样对于每一个哈希值可以求出它在每个串中各出现了多少次，乘起来即可。</p>
 <p>复杂度 <script type="math/tex">O(n2^nL)</script></p>
-<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/10/10/2024-10-10/">2024.10.10 上一篇 →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-number">1.</span> <span class="toc-text">什么是字符串哈希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">如何计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">例题</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3805">【模板】manacher</a></p>
+<p>马拉车过于困难，考虑用哈希搞搞部分分。</p>
+<p>部分分还是很好做的，我们处理出正着的哈希值和倒着的哈希值，然后枚举对称轴并二分长度，就做完了。</p>
+<p>复杂度 <script type="math/tex">O(n\log n)</script></p>
+<p>事实上哈希也是能做到线性的，且思路和马拉车差不多。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3501">[POI2010] ANT-Antisymmetry</a></p>
+<p>二分+哈希。</p>
+<p>基本和上题一样。</p>
+<p>处理出原串的哈希值和取反后的哈希值，然后枚举对称轴并二分长度。</p>
+<p>对于统计答案，可以发现只有总长为偶数才可能合法。</p>
+<p>然后没了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3667">[USACO17OPEN] Bovine Genomics G</a></p>
+<p>简单题。</p>
+<p>枚举左端点，然后二分长度，然后哈希判断有没有重复。</p>
+<p>二分正确性也比较显然：如果当前长度不合法，那就必须变长，否则可以变短。</p>
+<p>复杂度 <script type="math/tex">O(m\log m n\log n)</script></p>
+<p>感觉做不到 <script type="math/tex">O(nm\log m)</script>，因为不管用 set，map 还是离散化都得带 <script type="math/tex">\log</script>，所以题解复杂度是不是都写错了？</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6739">[BalticOI 2014 Day1] Three Friends</a></p>
+<p>枚举哪个是插入的，然后把它删掉。</p>
+<p>然后看剩下的东西能不能组成两个相同串即可。</p>
+<p>这里还是稍微有点细节的，因为涉及到子串哈希值和把两个串拼接起来。</p>
+<p>观察样例一，你会发现把枚举的那个删掉以后，因为要组成两个相同串，所以要保证两段长度相等。</p>
+<p>所以要给短的那一段拼上一部分。</p>
+<p>大概就是这样吧，其他应该没什么细节。</p>
+<p>复杂度 <script type="math/tex">O(n)</script></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7114">[NOIP2020] 字符串匹配</a></p>
+<p>如果 <script type="math/tex">AB</script> 确定了，那么 <script type="math/tex">C</script> 也是确定的。</p>
+<p>所以考虑枚举 <script type="math/tex">AB</script> 和 <script type="math/tex">i</script>，这样做的好处是 <script type="math/tex">i</script> 是 <script type="math/tex">\log</script> 级别的，所以总复杂度是 <script type="math/tex">O(n\log n)</script>。</p>
+<p>然后要解决的问题就是出现次数了。</p>
+<p>我们可以维护出现次数为奇数次的个数的前缀和以及后缀和，那么查询用树状数组搞一下即可。</p>
+<p>设 <script type="math/tex">V</script> 为字符集大小，复杂度 <script type="math/tex">O(n\log n\log V)</script>。</p>
+<p>似乎需要卡常。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/10/13/%E8%BF%9E%E9%80%9A%E6%80%A7%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">← Next 连通性问题学习笔记</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/10/10/2024-10-10/">2024.10.10 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-number">1.</span> <span class="toc-text">什么是字符串哈希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">如何计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">例题</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
