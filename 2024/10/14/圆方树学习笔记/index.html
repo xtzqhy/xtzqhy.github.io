@@ -64,8 +64,8 @@ code.paintMermaid();
 });
 </script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
  clientID: 'Ov23lidIwUC42TZcbOGp',
- clientSecret: 'd3e1bc6e3c657d63c896defaee92f69829d836c7',
- repo: 'https://xtzqhy.github.io/',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
  owner: 'xtzqhy',
  admin: ['xtzqhy'],
  distractionFreeMode: false,
@@ -89,8 +89,8 @@ lightGallery(document.getElementById('post-bg'), {
 });
 document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
  clientID: 'Ov23lidIwUC42TZcbOGp',
- clientSecret: 'd3e1bc6e3c657d63c896defaee92f69829d836c7',
- repo: 'https://xtzqhy.github.io/',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
  owner: 'xtzqhy',
  admin: ['xtzqhy'],
  distractionFreeMode: false,
@@ -116,7 +116,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>圆方树学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-14T11:40:42.000Z" id="date"> 2024-10-14</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-15T13:11:07.678Z" id="updated"> 2024-10-15</time></div></span><br><span>Word Count: <div class="control">5.8k</div></span><br><span>Read Time: <div class="control">32 min</div></span></div></div><hr><div id="post-content"><p>经常见到圆方树，但一直不会，正好在复习连通性，顺便学一下。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>圆方树学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-14T11:40:42.000Z" id="date"> 2024-10-14</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-15T13:11:07.678Z" id="updated"> 2024-10-15</time></div></span><br><span>Word Count: <div class="control">5.8k</div></span><br><span>Read Time: <div class="control">32 min</div></span></div></div><hr><div id="post-content"><p>经常见到圆方树，但一直不会，正好在复习连通性，顺便学一下。</p>
 <p>但我学的是广义圆方树，所以下文都是有关广义圆方树的介绍。</p>
 <h3 id="定义及构建"><a href="#定义及构建" class="headerlink" title="定义及构建"></a>定义及构建</h3><p>在圆方树中，原图的每个点对应一个圆点，每个点双对应一个方点。</p>
 <p>在一个联通分量内，对于每个点双，我们把它对应的方点和在其内的所有点对应的圆点连边，会得到一棵树。</p>
