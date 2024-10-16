@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>bitset学习笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>bitset学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-04T07:47:04.000Z" id="date"> 2024-10-04</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-05T08:47:04.114Z" id="updated"> 2024-10-05</time></div></span><br><span>Word Count: <div class="control">1.9k</div></span><br><span>Read Time: <div class="control">9 min</div></span></div></div><hr><div id="post-content"><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yifusuyi/p/10072729.html">参考文章</a></p>
+<p>一直不会用 bitset，今天终于下定决心学一下。</p>
+<p>bitset 是一个很好用的 STL，且时间复杂度和空间复杂度都很优秀。</p>
+<p>bitset 是一个 01 串，每一位占一个 bit。</p>
+<p>bitset 的下标是从右往左的。例如 <script type="math/tex">f_1=1</script>，那么得到的 bitset 应该是 00010 之类的东西。</p>
+<p>所以后面的左移右移才是那样。</p>
+<h3 id="如何声明"><a href="#如何声明" class="headerlink" title="如何声明"></a>如何声明</h3><p>首先，我们需要引用 <code>&lt;bitset&gt;</code> 头文件。</p>
+<p>声明方式为</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">bitset&lt;maxn&gt; s;<br></code></pre></td></tr></table></figure>
+<p>maxn 为长度。</p>
+<h3 id="修改与运算"><a href="#修改与运算" class="headerlink" title="修改与运算"></a>修改与运算</h3><p>bitset 中每一个元素可以通过下标的方式访问。</p>
+<p>进行单点修改时，直接访问位置然后赋值即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">s[pos]=<span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+<p>bitset 还支持位运算，返回值为一个 bitset。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">s&lt;&lt;=x;<br>s&gt;&gt;=x;<br>s&amp;=s1;<br>s|=s1;<br>s^=s1;<br></code></pre></td></tr></table></figure>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>设计算机字长为 <script type="math/tex">\omega</script>，则一次操作的复杂度为 <script type="math/tex">O(\frac{n}{\omega})</script>。</p>
+<p>因为 <script type="math/tex">\omega</script> 位才占一个整形长度，所以空间复杂度位 <script type="math/tex">O(\frac{n}{\omega})</script>。</p>
+<h3 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h3><p>1.<strong>reset</strong></p>
+<p>将 bitset 每一位都置为 0。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">s.<span class="hljs-built_in">reset</span>();<br></code></pre></td></tr></table></figure>
+<p>2.<strong>set</strong></p>
+<p>如果不传参数，会将每一位都置为 1。复杂度 <script type="math/tex">O(\frac{n}{\omega})</script>。</p>
+<p>如果传参数，那么第一个参数为 <script type="math/tex">pos</script>，第二个参数为 <script type="math/tex">val</script>，意为把第 <script type="math/tex">pos</script> 位置为 <script type="math/tex">val</script>。</p>
+<p>如果不传 <script type="math/tex">val</script>，那么默认为 1。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">s.<span class="hljs-built_in">set</span>();<br>s.<span class="hljs-built_in">set</span>(<span class="hljs-number">1</span>);<br>s.<span class="hljs-built_in">set</span>(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+<p>3.<strong>test</strong></p>
+<p>有一个参数 <script type="math/tex">pos</script>，返回第 <script type="math/tex">pos</script> 位的值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">s.<span class="hljs-built_in">test</span>(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+<p>4.<strong>any</strong></p>
+<p>若 bitset 内存在 1，则返回 1，否则返回 0。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout&lt;&lt;s.<span class="hljs-built_in">any</span>();<br></code></pre></td></tr></table></figure>
+<p>5.<strong>none</strong></p>
+<p>若 bitset 内所有位都是 0，则返回 1，否则返回 0。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout&lt;&lt;s.<span class="hljs-built_in">none</span>();<br></code></pre></td></tr></table></figure>
+<p>6.<strong>all</strong></p>
+<p>若 bitset 内所有位都是 1，则返回 1，否则返回 0。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout&lt;&lt;s.<span class="hljs-built_in">all</span>();<br></code></pre></td></tr></table></figure>
+<p>7.<strong>count</strong></p>
+<p>返回 bitset 内 1 的个数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout&lt;&lt;s.<span class="hljs-built_in">count</span>();<br></code></pre></td></tr></table></figure>
+<p>8.<strong>flip</strong></p>
+<p>把每一位取反。</p>
+<p>如果传参数 <script type="math/tex">pos</script>，那么就把第 <script type="math/tex">pos</script> 位取反。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">s.<span class="hljs-built_in">flip</span>();<br>s.<span class="hljs-built_in">flip</span>(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+<p>9.<strong>_Find_first</strong></p>
+<p>返回 bitset 第一个 1 的位置，不存在则返回 bitset 大小。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout&lt;&lt;s._Find_first();<br></code></pre></td></tr></table></figure>
+<p>10.<strong>_Find_next</strong></p>
+<p>需要传参数 <script type="math/tex">pos</script>，返回下标严格大于 <script type="math/tex">pos</script> 的位置中第一个 1 的位置。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout&lt;&lt;s._Find_next(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>1.bitset 优化 dp</p>
+<p>对于一些可行性 dp，可以 bitset 优化。</p>
+<p>例题1：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1537">P1537 弹珠</a></p>
+<p>这是一道多重背包，不过可以当 01 背包做。</p>
+<p>但这是可行性背包，所以用 bitset 优化一下就可以了。</p>
+<p>复杂度为 <script type="math/tex">O(\frac{n\sum w_i}{\omega})</script></p>
+<p>这里给出优化 01 背包的代码。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">f.<span class="hljs-built_in">set</span>(<span class="hljs-number">0</span>);<br><span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) f|=(f&lt;&lt;w[i]);<br></code></pre></td></tr></table></figure>
+<p>例题2：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1854B">Earn or Unlock</a> *2200</p>
+<p>首先可以发现，如果最后一共解锁了 <script type="math/tex">x</script> 张牌，那么分数为 <script type="math/tex">(\sum_{i=1}^x a_i)-(x-1)</script>。</p>
+<p>因为我们一开始只有一张牌，想解锁剩下的 <script type="math/tex">x-1</script> 张就必须花 <script type="math/tex">x-1</script> 的代价。</p>
+<p>然后显然解锁的牌可以都拿，那么就是一个前缀和再减去代价。</p>
+<p>所以我们只需要判断是否存在一种方案使得恰好解锁 <script type="math/tex">x</script> 张牌即可。</p>
+<p>复杂度 <script type="math/tex">O(n^2)</script> 的 dp 显然，考虑优化。</p>
+<p>但这是可行性 dp，可以用 bitset 优化。</p>
+<p>事实上也是个 01 背包。</p>
+<p>复杂度 <script type="math/tex">O(\frac {n^2}{\omega})</script></p>
+<p>一些细节：</p>
+<ol>
+<li><p><script type="math/tex">x</script> 可以达到 <script type="math/tex">2n</script>。</p>
+</li>
+<li><p>这里的背包比较特殊，因为如果我们用第 <script type="math/tex">i</script> 张牌解锁后面的牌，那么恰好解锁 <script type="math/tex">i</script> 张牌这个状态也就不能为后续提供转移了。所以我们还需要再开个数组，记录每种值能否被恰好取到。</p>
+</li>
+</ol>
+<p>2.bitset 结合莫队</p>
+<p>例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5355">[Ynoi2017] 由乃的玉米田</a> </p>
+<p>区间询问可离线，考虑莫队。</p>
+<p>我们维护两个 bitset，分别为 <code>v1</code> 和 <code>v2</code>。</p>
+<p>设值域为 <script type="math/tex">V</script>。</p>
+<p>如果 <script type="math/tex">x</script> 在当前区间出现，那么 <code>v1[x]=v2[V-x]=1</code>。</p>
+<p>对于减法操作，答案为 <code>(v1&amp;(v1&lt;&lt;x)).any()</code>。</p>
+<p>这很好理解。</p>
+<p>假设 <script type="math/tex">a-b=x</script>，那么当前区间一定存在 <script type="math/tex">a</script> 和 <script type="math/tex">a-x</script>。</p>
+<p>所以我们把 <code>v1</code> 和 <code>(v1&lt;&lt;x)</code> 与一下，看看能否满足即可。</p>
+<p>对于加法操作，答案为 <code>(v1&amp;(v2&gt;&gt;(V-x))).any()</code>。</p>
+<p>设 <script type="math/tex">b'=V-b</script>，那么 <script type="math/tex">b</script> 在 <code>v1</code> 和 <script type="math/tex">b'</script> 在 <code>v2</code> 中是对应的。</p>
+<p>假设 <script type="math/tex">a+b=x</script>，那么 <script type="math/tex">a+V-b'=x</script>。</p>
+<p>再移项一下，那么 <script type="math/tex">a-b'=x-V</script>。</p>
+<p>这里已经转化成减法了。</p>
+<p>因为 <script type="math/tex">x-V</script> 是负数，所以把左移变成右移。</p>
+<p>所以我们把 <code>v1</code> 和 <code>(v2&gt;&gt;(V-x))</code> 与一下，看看能否满足即可。</p>
+<p>对于乘法操作，我们可以考虑枚举约数，然后看 <script type="math/tex">i</script> 和 <script type="math/tex">\frac {x}{i}</script> 是否都存在。</p>
+<p>这个复杂度是 <script type="math/tex">O(\sqrt n)</script> 的。</p>
+<p>对于除法操作，考虑根号分治。</p>
+<p>对于 <script type="math/tex">x \ge \sqrt V</script>，直接暴力枚举，然后看 <script type="math/tex">i</script> 和 <script type="math/tex">i\times x</script> 是否都存在即可。</p>
+<p>这个复杂度是 <script type="math/tex">O(\sqrt n)</script> 的。</p>
+<p>对于 <script type="math/tex">x < \sqrt V</script>，我们不使用莫队，而是单独处理。</p>
+<p>首先将询问离线，然后枚举 <script type="math/tex">x</script>。</p>
+<p>对于每个 <script type="math/tex">x</script>，我们扫一遍序列。</p>
+<p>记 <script type="math/tex">last_i</script> 表示 <script type="math/tex">i</script> 当前最后一次出现的位置。</p>
+<p>记 <script type="math/tex">ans_i</script> 表示满足在 <script type="math/tex">[l,i]</script> 中，同时存在 <script type="math/tex">a_i</script> 和 <script type="math/tex">a_i \times x</script> 或同时存在 <script type="math/tex">a_i</script> 和 <script type="math/tex">\frac {a_i}{x}</script> 的最靠右的 <script type="math/tex">l</script> 的位置。 </p>
+<p>设当前扫到 <script type="math/tex">i</script>，那么先更新 <script type="math/tex">last_{a_i}</script>，再用 <script type="math/tex">last_{a_i\times x}</script> 和 <script type="math/tex">last_{\frac {a_i}{x}}</script> 更新 <script type="math/tex">res_i</script> 即可。</p>
+<p>扫完以后，我们回答以当前枚举到的 <script type="math/tex">x</script> 作为 <script type="math/tex">x</script> 的询问。</p>
+<p>设询问区间为 <script type="math/tex">[l,r]</script>，那么只要 <script type="math/tex">l \le res_r</script>，该询问就合法。</p>
+<p>因为 <script type="math/tex">x</script> 只有 <script type="math/tex">\sqrt V</script> 个，所以复杂度为 <script type="math/tex">O(n\sqrt n)</script></p>
+<p>综上，总复杂度为 <script type="math/tex">O(n\sqrt n)</script>。</p>
+<p>code：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e5</span><span class="hljs-number">+10</span>,V=<span class="hljs-number">1e5</span>,lim=<span class="hljs-number">300</span>;<br><span class="hljs-type">int</span> n,m,Q,siz;<br><span class="hljs-type">int</span> a[maxn],buc[maxn],lst[maxn],res[maxn];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">query</span>&#123;<br>    <span class="hljs-type">int</span> op,l,r,x,id;<br>&#125;q[maxn];<br>bitset&lt;maxn&gt; v1,v2,ans;<br>vector&lt;query&gt; q1[maxn];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(query a,query b)</span></span>&#123;<span class="hljs-keyword">return</span> ((a.l/siz)^(b.l/siz))?(a.l/siz)&lt;(b.l/siz):((a.l/siz)&amp;<span class="hljs-number">1</span>)?a.r&lt;b.r:a.r&gt;b.r;&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    ++buc[x];<br>    v1[x]=v2[V-x]=(buc[x]);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">del</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    --buc[x];<br>    v1[x]=v2[V-x]=(buc[x]);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> x=<span class="hljs-number">1</span>,l;x&lt;=lim;++x)&#123;<br>        <span class="hljs-built_in">memset</span>(lst,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span> lst);<br>        <span class="hljs-built_in">memset</span>(res,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span> res);<br>        l=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>            lst[a[i]]=i;<br>            <span class="hljs-keyword">if</span>(x*a[i]&lt;=V) l=<span class="hljs-built_in">max</span>(l,lst[x*a[i]]);<br>            <span class="hljs-keyword">if</span>(a[i]%x==<span class="hljs-number">0</span>) l=<span class="hljs-built_in">max</span>(l,lst[a[i]/x]);<br>            res[i]=l;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> v:q1[x]) ans[v.id]=(v.l&lt;=res[v.r]);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;Q;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) cin&gt;&gt;a[i];<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,op,l,r,x;i&lt;=Q;++i)&#123;<br>        cin&gt;&gt;op&gt;&gt;l&gt;&gt;r&gt;&gt;x;<br>        <span class="hljs-keyword">if</span>(op==<span class="hljs-number">4</span>&amp;&amp;x&lt;=lim) q1[x].<span class="hljs-built_in">push_back</span>(&#123;op,l,r,x,i&#125;);<br>        <span class="hljs-keyword">else</span> q[++m]=&#123;op,l,r,x,i&#125;;<br>    &#125;<br>    <span class="hljs-built_in">solve</span>();<br>    siz=<span class="hljs-built_in">sqrt</span>(n)<span class="hljs-number">+1</span>;<br>    <span class="hljs-built_in">sort</span>(q<span class="hljs-number">+1</span>,q+m<span class="hljs-number">+1</span>,cmp);<br>    <span class="hljs-type">int</span> l=<span class="hljs-number">1</span>,r=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;++i)&#123;<br>        <span class="hljs-keyword">while</span>(r&lt;q[i].r) <span class="hljs-built_in">add</span>(a[++r]);<br>        <span class="hljs-keyword">while</span>(l&gt;q[i].l) <span class="hljs-built_in">add</span>(a[--l]);<br>        <span class="hljs-keyword">while</span>(r&gt;q[i].r) <span class="hljs-built_in">del</span>(a[r--]);<br>        <span class="hljs-keyword">while</span>(l&lt;q[i].l) <span class="hljs-built_in">del</span>(a[l++]);<br>        <span class="hljs-keyword">if</span>(q[i].op==<span class="hljs-number">1</span>) ans[q[i].id]=(v1&amp;(v1&lt;&lt;q[i].x)).<span class="hljs-built_in">any</span>();<br>        <span class="hljs-keyword">if</span>(q[i].op==<span class="hljs-number">2</span>) ans[q[i].id]=(v1&amp;(v2&gt;&gt;(V-q[i].x))).<span class="hljs-built_in">any</span>();<br>        <span class="hljs-keyword">if</span>(q[i].op==<span class="hljs-number">3</span>) <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j*j&lt;=q[i].x;++j) <span class="hljs-keyword">if</span>(!(q[i].x%j)) <span class="hljs-keyword">if</span>(v1[j]&amp;&amp;v1[q[i].x/j]) ans[q[i].id]=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span>(q[i].op==<span class="hljs-number">4</span>) <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j*q[i].x&lt;=V;++j) <span class="hljs-keyword">if</span>(v1[j]&amp;&amp;v1[j*q[i].x]) ans[q[i].id]=<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=Q;++i) cout&lt;&lt;(ans[i]?<span class="hljs-string">&quot;yuno&quot;</span>:<span class="hljs-string">&quot;yumi&quot;</span>)&lt;&lt;<span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/%E5%80%BC%E5%9F%9F%E5%88%86%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">← Next 值域分块学习笔记</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024-10-4/">2024.10.4 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A3%B0%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">如何声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%8E%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">修改与运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">成员函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">应用</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
