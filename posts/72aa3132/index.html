@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>字符串哈希学习笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>字符串哈希学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-11T09:13:16.000Z" id="date"> 2024-10-11</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-16T12:42:37.516Z" id="updated"> 2024-10-16</time></div></span><br><span>Word Count: <div class="control">2.7k</div></span><br><span>Read Time: <div class="control">11 min</div></span></div></div><hr><div id="post-content"><p>字符串学到现在只会 SA，绷不住了。</p>
+<p>还是得学学哈希，不然真考字符串就寄了。</p>
+<h3 id="什么是字符串哈希"><a href="#什么是字符串哈希" class="headerlink" title="什么是字符串哈希"></a>什么是字符串哈希</h3><p>通过一个函数把一个字符串映射为一个整数，这个函数就是哈希函数。</p>
+<h3 id="如何计算"><a href="#如何计算" class="headerlink" title="如何计算"></a>如何计算</h3><p>我们通常采用多项式哈希。</p>
+<p>设 <script type="math/tex">base</script> 为底数，<script type="math/tex">p</script> 为模数，则</p>
+<script type="math/tex; mode=display">
+f(s)=\sum_{i=1}^n s_i\times base^{n-i} \quad (mod\ p)</script><p>底数通常选择一个质数，模数通常选择一个大质数。</p>
+<p>推荐：底数 131，模数 1926081719491001071</p>
+<p>如果要用的话<strong>记得开 int128</strong>，不然你一乘就炸了。</p>
+<p>比较好记，就是江泽民主席的诞辰和建国时间拼起来再拼上071。</p>
+<p>如果真没想起来用 1e9+7 也行，不过容易被卡。</p>
+<p>自然溢出还是算了吧，真怕被卡。</p>
+<p><strong>如何计算子串哈希值</strong></p>
+<p>首先处理出来前缀哈希值。</p>
+<p>设第 <script type="math/tex">i</script> 位哈希值为 <script type="math/tex">h_i</script>，则</p>
+<script type="math/tex; mode=display">
+h_i=h_{i-1}\times base+s_i\quad (mod\ p)</script><p>则 <script type="math/tex">s[l,r]</script> 的哈希值，为 <script type="math/tex">h_r-h_{l-1}\times base^{r-l+1}</script></p>
+<p><strong>如何判断是否是回文串</strong></p>
+<p>正着算一遍哈希值，反着算一遍哈希值，如果一样说明是回文串。</p>
+<p><strong>如何得到两个串接起来得到的新串的哈希值</strong></p>
+<p>设两个字符串分别为 <script type="math/tex">s,t</script>，若把 <script type="math/tex">t</script> 接到 <script type="math/tex">s</script> 后面，则新串哈希值为 <script type="math/tex">f(s)\times base^{len_t}+f(t)</script></p>
+<p>如果题目涉及到以上问题（即需要相乘）且你使用了大模数，请先想想会不会炸，需不需要 int128。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>大概就字符串匹配吧？还有别的用途吗？</p>
+<p>字符串哈希厉害之处就在于可以在预处理后 <script type="math/tex">O(1)</script> 匹配。</p>
+<p>而且哈希还有一个常用搭配：二分。</p>
+<p>因为字符串的匹配是有单调性的，长的匹配说明短的也匹配，所以可以二分长度然后用哈希判断。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3370">【模板】字符串哈希</a></p>
+<p>第一道题肯定要放模板啦。</p>
+<p>求出每个字符串的哈希值，那么问题就变成了序列中有几个不同的数。</p>
+<p>非常简单吧。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4503">[CTSC2014] 企鹅 QQ</a></p>
+<p>因为要求恰好一位不同，所以考虑枚举哪一位不同。</p>
+<p>因为要把枚举到的那一位删掉，所以得处理所有串的前缀哈希，然后删这一位就是把前后的拼起来。</p>
+<p>求子串哈希和怎么拼起来都在上文提到过。</p>
+<p>然后就变成模板了。</p>
+<p>复杂度 <script type="math/tex">O(nL\log n)</script></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3498">[POI2010] KOR-Beads</a></p>
+<p>首先枚举 <script type="math/tex">k</script>，然后枚举每一段。</p>
+<p>听上去很暴力对不对？但复杂度其实是有保证的。</p>
+<p>总时间复杂度应该是 <script type="math/tex">\sum_{k=1}^n \lfloor \frac{n}{k} \rfloor</script>。</p>
+<p>把 <script type="math/tex">n</script> 提出来，剩下的是个调和级数。</p>
+<p>所以时间复杂度 <script type="math/tex">O(n\log n)</script>。</p>
+<p>用哈希匹配是 <script type="math/tex">O(1)</script> 的，所以总复杂度 <script type="math/tex">O(n\log n)</script>。</p>
+<p>但有个需要注意的：这道题的串正着和反着视为相同，所以既要处理前缀哈希还要处理后缀哈希，只有都不相同时才能记录到答案。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3538">[POI2012] OKR-A Horrible Poem</a></p>
+<p>首先，设 <script type="math/tex">len</script> 为答案，则 <script type="math/tex">len</script> 为答案的充要条件为 <script type="math/tex">s[l,r-len]=s[l+len,r]</script>。</p>
+<p>其次，答案一定是区间长度的约数。</p>
+<p>所以我们从小到大枚举约数，然后哈希 <script type="math/tex">O(1)</script> 判断。</p>
+<p>复杂度 <script type="math/tex">O(q\omega(n))</script></p>
+<p>虽然约数个数是一个比 <script type="math/tex">\sqrt n</script> 小一点的数，但依旧会 T。</p>
+<p>考虑优化一下这个东西。</p>
+<p>如果一个循环节出现了 2 次，另一个出现了 3 次，那么一定有一个会出现 6 次。</p>
+<p>所以我们对每个质因数分别做，最后把它们合起来。</p>
+<p>质因数个数是 <script type="math/tex">\log</script> 级别的，可以通过。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3167">[CQOI2014] 通配符匹配</a></p>
+<p>因为通配符不超过 10，所以考虑把原串分成若干段，然后分段匹配，每段第一位为通配符。</p>
+<p>设 <script type="math/tex">f_{i,j}</script> 表示分出来的第 <script type="math/tex">i</script> 个串能否匹配上查询串的 第 <script type="math/tex">j</script> 位。</p>
+<p>转移为</p>
+<script type="math/tex; mode=display">
+f_{i,j}=f_{i-1,j-len_i} \quad 该段无通配符
+\\
+f_{i,j}=f_{i-1,j-len_i-1} \quad 通配符为 ？
+\\
+f_{i,j}=\oplus_{k=0}^{j-len_i} f_{i-1,k} \quad 通配符为 *</script><p>这里的 <script type="math/tex">\oplus</script> 代表按位或。</p>
+<p>能否转移用哈希判断一下即可。</p>
+<p>设通配符个数为 <script type="math/tex">m</script>，复杂度为 <script type="math/tex">O(nm|S|)</script></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3449">[POI2006] PAL-Palindromes</a></p>
+<p>这不就是把上面那两个东西拼一块了吗。</p>
+<p>设两个字符串分别为 <script type="math/tex">s,t</script>，那么这对字符串合法的条件为 <script type="math/tex">f(s)\times base^{len_t}+f(t)=f(t)\times base^{len_s}+f(s)</script>。</p>
+<p>移项，得到 <script type="math/tex">\frac {f(s)}{base^{len_s}-1}=\frac {f(t)}{base^{len_t}-1}</script></p>
+<p>对每个字符串求出这个东西，然后随便统计一下即可。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3763">[TJOI2017] DNA</a></p>
+<p>允许 <script type="math/tex">k</script> 次失配的字符串匹配。</p>
+<p>考虑二分+哈希。</p>
+<p>首先枚举所有可能匹配的子串，然后二分找到第一个失配的位置，把这个位置及之前的东西删掉，然后再进行这个过程。</p>
+<p>如果失配次数 <script type="math/tex">\le k</script>，说明合法。</p>
+<p>设原串长度为 <script type="math/tex">n</script>，模式串长度为 <script type="math/tex">m</script>，复杂度 <script type="math/tex">O(m+kn\log m)</script></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P9576">「TAOI-2」Ciallo～(∠・ω&lt; )⌒★</a></p>
+<p>Ciallo～(∠・ω&lt; )⌒★</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/article/mmnrtdzu">洛谷题解传送门</a></p>
+<p>一道很好玩的题。</p>
+<p>直接做可能没什么想法，那我们先对 <script type="math/tex">[l,r]</script> 和 <script type="math/tex">[l',r']</script> 讨论一下。</p>
+<p>这里的 <script type="math/tex">l,r,l',r'</script> 都是以原串为下标的。</p>
+<p>1.<script type="math/tex">[l,r]</script> 和 <script type="math/tex">[l',r']</script> 无交</p>
+<p>那说明删除没任何影响。我们先找出所有匹配位置，然后随便算一下方案数就行了。</p>
+<p>2.<script type="math/tex">[l,r]</script> 和 <script type="math/tex">[l',r']</script> 有交。</p>
+<p>不难发现，合法的 <script type="math/tex">[l,r]</script> 和 <script type="math/tex">[l',r']</script> 一定形如下图</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/w9lqmjrz.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/w9lqmjrz.png" alt=""></p>
+<p>图中的 <script type="math/tex">x_i,y_i</script> 分别代表 <script type="math/tex">\operatorname{LCP}(S(i,n),T),\operatorname{LCS}(S(1,i),T)</script>。</p>
+<p>设 <script type="math/tex">S</script> 长为 <script type="math/tex">n</script>，<script type="math/tex">T</script> 长为 <script type="math/tex">m</script>。</p>
+<p>红色部分为重复部分，长为 <script type="math/tex">x_{l'}+y_{r'}-m</script>。</p>
+<p>不难发现，对于这种情况，合法的方案数为 <script type="math/tex">x_{l'}+y_{r'}-m+1</script>。</p>
+<p>然后观察这种情况需要满足什么条件，不难发现，需要满足</p>
+<script type="math/tex; mode=display">
+r'-l'\ge m
+\\
+x_{l'}+y_{r'} \ge m
+\\
+x_{l'} \neq m
+\\
+y_{r'} \neq m</script><p>不能等于 <script type="math/tex">m</script> 是因为这部分贡献已经在前面算过了，不能重复计算。</p>
+<p>然后这东西就是个二维数点，数就完了。</p>
+<p>数点时记得减去贡献。</p>
+<p>树状数组 add 时可能会用到 0，整体加偏移量即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> lb(x) (x&amp;(-x))</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">4e5</span><span class="hljs-number">+10</span>,base=<span class="hljs-number">131</span>,mod=<span class="hljs-number">1e9</span><span class="hljs-number">+7</span>;<br><span class="hljs-type">int</span> n,m,ans;<br><span class="hljs-type">char</span> s1[maxn],s2[maxn];<br><span class="hljs-type">int</span> pw[maxn];<br><span class="hljs-type">int</span> h1[maxn],h2[maxn];<br><span class="hljs-type">int</span> x[maxn],y[maxn];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">BIT</span>&#123;<br>    <span class="hljs-type">int</span> tr[maxn];<br>    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> val)</span></span>&#123;++x;<span class="hljs-keyword">while</span>(x&lt;maxn) tr[x]+=val,x+=<span class="hljs-built_in">lb</span>(x);&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;++x;<span class="hljs-type">int</span> res=<span class="hljs-number">0</span>;<span class="hljs-keyword">while</span>(x&gt;<span class="hljs-number">0</span>) res+=tr[x],x-=<span class="hljs-built_in">lb</span>(x);<span class="hljs-keyword">return</span> res;&#125;<br>&#125;a,b;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">calc1</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r)</span></span>&#123;<span class="hljs-keyword">return</span> ((h1[r]-h1[l<span class="hljs-number">-1</span>]*pw[r-l<span class="hljs-number">+1</span>]%mod)%mod+mod)%mod;&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">calc2</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r)</span></span>&#123;<span class="hljs-keyword">return</span> ((h2[r]-h2[l<span class="hljs-number">-1</span>]*pw[r-l<span class="hljs-number">+1</span>]%mod)%mod+mod)%mod;&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">check1</span><span class="hljs-params">(<span class="hljs-type">int</span> pos,<span class="hljs-type">int</span> len)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(pos+len<span class="hljs-number">-1</span>&gt;n) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">calc1</span>(pos,pos+len<span class="hljs-number">-1</span>)==<span class="hljs-built_in">calc2</span>(<span class="hljs-number">1</span>,len);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">check2</span><span class="hljs-params">(<span class="hljs-type">int</span> pos,<span class="hljs-type">int</span> len)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(pos-len<span class="hljs-number">+1</span>&lt;<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">calc1</span>(pos-len<span class="hljs-number">+1</span>,pos)==<span class="hljs-built_in">calc2</span>(m-len<span class="hljs-number">+1</span>,m);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;<br>    pw[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;maxn;++i) pw[i]=pw[i<span class="hljs-number">-1</span>]*base%mod;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) h1[i]=(h1[i<span class="hljs-number">-1</span>]*base+s1[i])%mod;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;++i) h2[i]=(h2[i<span class="hljs-number">-1</span>]*base+s2[i])%mod;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,l,r,mid,res;i&lt;=n;++i)&#123;<br>        l=<span class="hljs-number">0</span>,r=m,res=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(l&lt;=r)&#123;<br>            mid=(l+r)&gt;&gt;<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check1</span>(i,mid)) res=mid,l=mid<span class="hljs-number">+1</span>;<br>            <span class="hljs-keyword">else</span> r=mid<span class="hljs-number">-1</span>;<br>        &#125;<br>        x[i]=res;<br>        l=<span class="hljs-number">0</span>,r=m,res=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(l&lt;=r)&#123;<br>            mid=(l+r)&gt;&gt;<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check2</span>(i,mid)) res=mid,l=mid<span class="hljs-number">+1</span>;<br>            <span class="hljs-keyword">else</span> r=mid<span class="hljs-number">-1</span>;<br>        &#125;<br>        y[i]=res;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;(s1<span class="hljs-number">+1</span>)&gt;&gt;(s2<span class="hljs-number">+1</span>);n=<span class="hljs-built_in">strlen</span>(s1<span class="hljs-number">+1</span>),m=<span class="hljs-built_in">strlen</span>(s2<span class="hljs-number">+1</span>);<br>    <span class="hljs-built_in">init</span>();<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) <span class="hljs-keyword">if</span>(y[i]==m) ans+=((i-m)*(i-m<span class="hljs-number">+1</span>)/<span class="hljs-number">2</span>+(n-i)*(n-i<span class="hljs-number">+1</span>)/<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=m<span class="hljs-number">+1</span>;i&lt;=n;++i)&#123;<br>        a.<span class="hljs-built_in">add</span>(m-x[i-m],<span class="hljs-number">1</span>),b.<span class="hljs-built_in">add</span>(m-x[i-m],x[i-m]);<br>        ans+=b.<span class="hljs-built_in">query</span>(y[i])+(y[i]-m<span class="hljs-number">+1</span>)*a.<span class="hljs-built_in">query</span>(y[i]);<br>        <span class="hljs-keyword">if</span>(y[i]==m) ans-=a.<span class="hljs-built_in">query</span>(y[i]); <br>        ans-=a.<span class="hljs-built_in">query</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P8643">[蓝桥杯 2016 国 AC] 碱基</a></p>
+<p>数据范围开这么小随便做吧。</p>
+<p>直接爆搜选哪些串，然后把长度为 <script type="math/tex">k</script> 的子串的哈希值存起来。</p>
+<p>这样对于每一个哈希值可以求出它在每个串中各出现了多少次，乘起来即可。</p>
+<p>复杂度 <script type="math/tex">O(n2^nL)</script></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3805">【模板】manacher</a></p>
+<p>马拉车过于困难，考虑用哈希搞搞部分分。</p>
+<p>部分分还是很好做的，我们处理出正着的哈希值和倒着的哈希值，然后枚举对称轴并二分长度，就做完了。</p>
+<p>复杂度 <script type="math/tex">O(n\log n)</script></p>
+<p>事实上哈希也是能做到线性的，且思路和马拉车差不多。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3501">[POI2010] ANT-Antisymmetry</a></p>
+<p>二分+哈希。</p>
+<p>基本和上题一样。</p>
+<p>处理出原串的哈希值和取反后的哈希值，然后枚举对称轴并二分长度。</p>
+<p>对于统计答案，可以发现只有总长为偶数才可能合法。</p>
+<p>然后没了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3667">[USACO17OPEN] Bovine Genomics G</a></p>
+<p>简单题。</p>
+<p>枚举左端点，然后二分长度，然后哈希判断有没有重复。</p>
+<p>二分正确性也比较显然：如果当前长度不合法，那就必须变长，否则可以变短。</p>
+<p>复杂度 <script type="math/tex">O(m\log m n\log n)</script></p>
+<p>感觉做不到 <script type="math/tex">O(nm\log m)</script>，因为不管用 set，map 还是离散化都得带 <script type="math/tex">\log</script>，所以题解复杂度是不是都写错了？</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6739">[BalticOI 2014 Day1] Three Friends</a></p>
+<p>枚举哪个是插入的，然后把它删掉。</p>
+<p>然后看剩下的东西能不能组成两个相同串即可。</p>
+<p>这里还是稍微有点细节的，因为涉及到子串哈希值和把两个串拼接起来。</p>
+<p>观察样例一，你会发现把枚举的那个删掉以后，因为要组成两个相同串，所以要保证两段长度相等。</p>
+<p>所以要给短的那一段拼上一部分。</p>
+<p>大概就是这样吧，其他应该没什么细节。</p>
+<p>复杂度 <script type="math/tex">O(n)</script></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7114">[NOIP2020] 字符串匹配</a></p>
+<p>如果 <script type="math/tex">AB</script> 确定了，那么 <script type="math/tex">C</script> 也是确定的。</p>
+<p>所以考虑枚举 <script type="math/tex">AB</script> 和 <script type="math/tex">i</script>，这样做的好处是 <script type="math/tex">i</script> 是 <script type="math/tex">\log</script> 级别的，所以总复杂度是 <script type="math/tex">O(n\log n)</script>。</p>
+<p>然后要解决的问题就是出现次数了。</p>
+<p>我们可以维护出现次数为奇数次的个数的前缀和以及后缀和，那么查询用树状数组搞一下即可。</p>
+<p>设 <script type="math/tex">V</script> 为字符集大小，复杂度 <script type="math/tex">O(n\log n\log V)</script>。</p>
+<p>似乎需要卡常。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/posts/2dbb3c01/">← Next 连通性问题学习笔记</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/b9e27ec5/">2024.10.10 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-number">1.</span> <span class="toc-text">什么是字符串哈希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">如何计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">例题</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
