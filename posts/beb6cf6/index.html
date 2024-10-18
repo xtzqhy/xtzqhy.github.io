@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>高维前缀和学习笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>高维前缀和学习笔记</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-10-18T06:14:15.000Z" id="date"> 2024-10-18</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-10-18T09:50:23.887Z" id="updated"> 2024-10-18</time></div></span><br><span>文章总字数: <div class="control">1.4k</div></span><br><span>预计阅读时间: <div class="control">6 分钟</div></span></div></div><hr><div id="post-content"><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>首先来看这样一个问题：</p>
+<blockquote>
+<p>对于所有 <script type="math/tex">s</script>，<script type="math/tex">0 \le s \le 2^n-1</script>，求 <script type="math/tex">\sum_{t \subseteq s} a_t</script>。</p>
+</blockquote>
+<p>显然可以枚举子集做到 <script type="math/tex">O(3^n)</script>，但高维前缀和可以做到 <script type="math/tex">O(n2^n)</script>。</p>
+<p>那么什么是高维前缀和呢？</p>
+<p>我们先来看一些低维的前缀和，例如二维。</p>
+<p>在求二维前缀和时，我们通常用容斥的方法来求，即</p>
+<script type="math/tex; mode=display">
+s_{i,j}=s_{i-1,j}+s_{i,j-1}-s_{i-1,j-1}+a_{i,j}</script><p>但事实上，我们还可以把二维前缀和分解成两次一维前缀和，分别对每一维求前缀和。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++)<br>        a[i][j] += a[i - <span class="hljs-number">1</span>][j];<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++)<br>        a[i][j] += a[i][j - <span class="hljs-number">1</span>];<br></code></pre></td></tr></table></figure>
+<h3 id="高维前缀和"><a href="#高维前缀和" class="headerlink" title="高维前缀和"></a>高维前缀和</h3><p>高维前缀和的思路是类似的。</p>
+<p>我们可以把求集合 <script type="math/tex">s</script> 的子集和的过程看成求一个一共 <script type="math/tex">n</script> 维，每一维大小为 2 的前缀和。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)&#123;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;n);++s)&#123;<br>        <span class="hljs-keyword">if</span>((s&gt;&gt;i)&amp;<span class="hljs-number">1</span>) f[s]+=f[s^(<span class="hljs-number">1</span>&lt;&lt;i)];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>代码中的 <script type="math/tex">f_s</script> 表示集合 <script type="math/tex">s</script> 的子集和。</p>
+<p>阅读代码不难发现，我们事实上就是在干一件事：对每一个子集的每一维分别求前缀和。</p>
+<p>因为是对每一维分别求，所以一定是先枚举维再枚举子集。</p>
+<p>事实上，高维前缀和不止能维护前缀和，它可以维护任何半群信息。</p>
+<p>所以在遇到需要维护一个集合的所有子集的所有子集的半群信息时，都可以用高维前缀和做。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_arc100_c">[ARC100E] Or Plus Max</a></p>
+<p>下文定义 <script type="math/tex">\oplus</script> 为按位或。</p>
+<p>首先把 <script type="math/tex">i \oplus j \le k</script> 的限制转化掉，所以考虑对每个 <script type="math/tex">k</script> 分别计算。</p>
+<p>设 <script type="math/tex">A_k=\max_{i \oplus j =k,i \neq j} a_i+a_j</script>，那么 <script type="math/tex">ans_k=\max_{i=1}^k A_i</script>。</p>
+<p>但这个 <script type="math/tex">A_i</script> 依旧不好算，我们考虑拓宽限制。</p>
+<p>设 <script type="math/tex">B_k=\max_{i,j \subseteq k,i \neq j} a_i+a_j</script>，那么 <script type="math/tex">ans_k=\max_{i=1}^k B_i</script>。</p>
+<p>这为什么是对的？<script type="math/tex">A_i</script> 不一定等于 <script type="math/tex">B_i</script> 啊？</p>
+<p>这是因为 <script type="math/tex">i,j \subseteq k</script> 是 <script type="math/tex">i \oplus j =k</script> 的必要条件，是 <script type="math/tex">i \oplus j \le k</script> 的充分条件。</p>
+<p>所以 <script type="math/tex">i,j \subseteq k,i \neq j</script> 的所有元素 <script type="math/tex">(i,j)</script> 一定完全包含 <script type="math/tex">i \oplus j =k,i \neq j</script> 的所有元素，且不包含 <script type="math/tex">i \oplus j >k</script> 的任何元素，但可能会包含 <script type="math/tex">i \oplus j < k</script> 的元素。</p>
+<p>但这不影响，因为我们的答案是前缀 <script type="math/tex">\max</script>，所以统计到的答案依旧是对的。</p>
+<p>那么现在问题变成了对于所有 <script type="math/tex">k</script>，<script type="math/tex">1\le k \le 2^n-1</script>，求 <script type="math/tex">\max_{i,j \subseteq k,i \neq j} a_i+a_j</script>。</p>
+<p>不难发现，我们的 <script type="math/tex">\max</script> 一定是最大和次大相加得到，所以只需要对于所有 <script type="math/tex">k</script>，维护子集最大和次大即可。</p>
+<p>这显然可以高维前缀和维护。</p>
+<p>复杂度 <script type="math/tex">O(n2^n)</script></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pii pair<span class="hljs-string">&lt;int,int&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> fi first</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> se second</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">18</span>)<span class="hljs-number">+10</span>,inf=<span class="hljs-number">1e18</span>;<br><span class="hljs-type">int</span> n,S;<br>pii f[maxn];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">upd</span><span class="hljs-params">(pii &amp;a,pii b)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(b.fi&gt;a.fi) a.se=<span class="hljs-built_in">max</span>(a.fi,b.se),a.fi=b.fi;<br>    <span class="hljs-keyword">else</span> a.se=<span class="hljs-built_in">max</span>(a.se,b.fi);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;S=(<span class="hljs-number">1</span>&lt;&lt;n)<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=S;++i) cin&gt;&gt;f[i].fi,f[i].se=-inf;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)&#123;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=<span class="hljs-number">0</span>;s&lt;=S;++s)&#123;<br>            <span class="hljs-keyword">if</span>((s&gt;&gt;i)&amp;<span class="hljs-number">1</span>) <span class="hljs-built_in">upd</span>(f[s],f[s^(<span class="hljs-number">1</span>&lt;&lt;i)]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> ans=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=S;++i) ans=<span class="hljs-built_in">max</span>(ans,f[i].fi+f[i].se),cout&lt;&lt;ans&lt;&lt;<span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF383E">Vowels</a></p>
+<p>光题意就理解了半天···</p>
+<p>一个非常直接的想法：对于每一个单词，我们都枚举超集，然后贡献到超集上。</p>
+<p>这里的贡献注意不要算重，所以需要容斥一下。</p>
+<p>具体的，我们对每一个子集都枚举超集，然后加贡献时带上容斥系数。</p>
+<p>设 <script type="math/tex">S</script> 为单词长度，<script type="math/tex">V</script> 为字符集大小，则总复杂度为 <script type="math/tex">O(n2^S2^V)</script></p>
+<p>但这样每次都枚举超集太浪费了，能不能优化？</p>
+<p>所以我们可以这样：对于每一个单词，先把贡献加到子集上，然后最后一块算贡献。</p>
+<p>这样就可以只枚举一次了。</p>
+<p>最后算贡献的时候，事实上就是求每个子集的子集和，高维前缀和即可。</p>
+<p>复杂度为 <script type="math/tex">O(n2^S+V2^V)</script></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">24</span>)<span class="hljs-number">+10</span>,m=<span class="hljs-number">24</span>,S=(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">24</span>)<span class="hljs-number">-1</span>;<br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> f[maxn];<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;<span class="hljs-type">char</span> c;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>        <span class="hljs-type">int</span> t=<span class="hljs-number">0</span>,cnt=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">3</span>;++j) cin&gt;&gt;c,t|=(<span class="hljs-number">1</span>&lt;&lt;(c-<span class="hljs-string">&#x27;a&#x27;</span>));<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=t;s;s=(s<span class="hljs-number">-1</span>)&amp;t)&#123;<br>            <span class="hljs-keyword">if</span>(__builtin_popcountll(s)&amp;<span class="hljs-number">1</span>) ++f[s];<br>            <span class="hljs-keyword">else</span> --f[s];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m;++i)&#123;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=<span class="hljs-number">0</span>;s&lt;=S;++s)&#123;<br>            <span class="hljs-keyword">if</span>((s&gt;&gt;i)&amp;<span class="hljs-number">1</span>) f[s]+=f[s^(<span class="hljs-number">1</span>&lt;&lt;i)];<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> ans=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=<span class="hljs-number">0</span>;s&lt;=S;++s) ans^=(f[s]*f[s]);<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/2786eb66/">2024.10.17 上一篇 →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">2.</span> <span class="toc-text">高维前缀和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">例题</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
