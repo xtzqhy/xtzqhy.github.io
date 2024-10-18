@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>拉格朗日插值学习笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>拉格朗日插值学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-18T11:38:21.000Z" id="date"> 2024-10-18</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-18T14:00:33.032Z" id="updated"> 2024-10-18</time></div></span><br><span>Word Count: <div class="control">1.5k</div></span><br><span>Read Time: <div class="control">7 min</div></span></div></div><hr><div id="post-content"><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>在初中时，我们都学过一次函数，一定也都做过这种题：</p>
+<blockquote>
+<p>给定两个点，求经过这两个点的一次函数的解析式。</p>
+</blockquote>
+<p>我们只需要待定系数法，然后把点坐标带进去解方程即可。</p>
+<p>那么推广一下，可以得到结论：</p>
+<blockquote>
+<p>在平面直角坐标系中，<script type="math/tex">n+1</script> 个点能唯一确定一个 <script type="math/tex">n</script> 次多项式。</p>
+</blockquote>
+<p>但如果我们暴力高斯消元，复杂度是 <script type="math/tex">O(n^3)</script> 的。</p>
+<p>而拉格朗日插值法可以在 <script type="math/tex">O(n^2)</script> 的复杂度内解决这个问题。</p>
+<h3 id="单点求值"><a href="#单点求值" class="headerlink" title="单点求值"></a>单点求值</h3><p>设 <script type="math/tex">f(x)</script> 为待求多项式，<script type="math/tex">(x_i,y_i)</script> 为第 <script type="math/tex">i</script> 个点的坐标。</p>
+<p>设<strong>拉格朗日基本多项式</strong>为</p>
+<script type="math/tex; mode=display">
+g_j(x)=\prod_{i=0,i\neq j}^n \frac {x-x_i}{x_j-x_i}</script><p>这个多项式十分巧妙。</p>
+<p>可以发现，<script type="math/tex">\forall i\in[0,n],g_j(x_i)=[i=j]</script>。</p>
+<p>根据基本多项式，我们可以构造出 <script type="math/tex">f(x)</script>：</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{i=0}^n y_ig_i(x)</script><p>根据基本多项式的性质，我们可以得到 <script type="math/tex">f(x_i)=y_i</script>，也就是恰好经过这 <script type="math/tex">n+1</script> 个点。</p>
+<p>那么单点求值时，只需要把那个点带进去即可。</p>
+<p>复杂度 <script type="math/tex">O(n^2)</script></p>
+<p>事实上应该线性求逆元才是严格 <script type="math/tex">O(n^2)</script> 的，但我懒了，所以写的是 <script type="math/tex">O(n^2\log n)</script> 的。</p>
+<p>例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4781">【模板】拉格朗日插值</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">2e3</span><span class="hljs-number">+10</span>,mod=<span class="hljs-number">998244353</span>;<br><span class="hljs-type">int</span> n,k,ans;<br><span class="hljs-type">int</span> x[maxn],y[maxn];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">qpow</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-type">int</span> res=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(b)&#123;<br>        <span class="hljs-keyword">if</span>(b&amp;<span class="hljs-number">1</span>) res=res*a%mod;<br>        b&gt;&gt;=<span class="hljs-number">1</span>;<br>        a=a*a%mod;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">inv</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-built_in">qpow</span>(x,mod<span class="hljs-number">-2</span>);&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;k;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) cin&gt;&gt;x[i]&gt;&gt;y[i];<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>        <span class="hljs-type">int</span> s1=y[i],s2=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;++j)&#123;<br>            <span class="hljs-keyword">if</span>(i!=j) s1=s1*((k-x[j])%mod+mod)%mod,s2=s2*((x[i]-x[j])%mod+mod)%mod;<br>        &#125;<br>        ans=(ans+s1%mod*<span class="hljs-built_in">inv</span>(s2)%mod)%mod;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="求出系数"><a href="#求出系数" class="headerlink" title="求出系数"></a>求出系数</h3><p>现在我们已经可以做到 <script type="math/tex">O(n^2)</script> 复杂度的单点求值了。</p>
+<p>但这还不够，因为我想具体求出来这个多项式。</p>
+<p>把上面那个东西拿过来：</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{i=0}^n y_i\prod_{j=0,j\neq i}^n\frac {x-x_j}{x_i-x_j}</script><p>提出常数部分：</p>
+<script type="math/tex; mode=display">
+a_i=\frac{y_i}{\prod_{j=0,j\neq i}^n(x_i-x_j)}</script><p>然后设 <script type="math/tex">g(k)=\prod_{i=0}^n(k-x_i)</script>，则</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{i=0}^n a_i\frac {g(x)}{x-x_i}</script><p>我们可以暴力的把 <script type="math/tex">g(x)</script> 这个多项式算出来，这是 <script type="math/tex">O(n^2)</script> 的。</p>
+<p>然后对于每一项，我们暴力模拟长除法，总复杂度是 <script type="math/tex">O(n^2)</script> 的。</p>
+<p>综上，我们在 <script type="math/tex">O(n^2)</script> 的复杂度内得到了多项式的系数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">2e3</span><span class="hljs-number">+10</span>,mod=<span class="hljs-number">998244353</span>;<br><span class="hljs-type">int</span> n,k;<br><span class="hljs-type">int</span> x[maxn],y[maxn];<br><span class="hljs-type">int</span> f[maxn],g[maxn];<br><span class="hljs-type">int</span> a[maxn];<br><span class="hljs-type">int</span> tmp[maxn];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">qpow</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-type">int</span> res=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(b)&#123;<br>        <span class="hljs-keyword">if</span>(b&amp;<span class="hljs-number">1</span>) res=res*a%mod;<br>        b&gt;&gt;=<span class="hljs-number">1</span>;<br>        a=a*a%mod;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">Inv</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-built_in">qpow</span>(x,mod<span class="hljs-number">-2</span>);&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">pre</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>        <span class="hljs-type">int</span> res=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;++j)&#123;<br>            <span class="hljs-keyword">if</span>(i!=j) res=res*(x[i]-x[j]+mod)%mod; <br>        &#125;<br>        a[i]=y[i]*<span class="hljs-built_in">Inv</span>(res)%mod;<br>    &#125;<br>    g[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i,<span class="hljs-built_in">swap</span>(g,tmp))&#123;<br>        tmp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=i;++j) tmp[j]=g[j<span class="hljs-number">-1</span>];<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=i;++j) tmp[j]=(tmp[j]+g[j]*(-x[i]+mod)%mod)%mod;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">Lagrange</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>        <span class="hljs-type">int</span> lst=<span class="hljs-number">0</span>,inv=<span class="hljs-built_in">Inv</span>(-x[i]+mod);<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;++j)&#123;<br>            tmp[j]=(g[j]-lst+mod)*inv%mod;<br>            f[j]=(f[j]+a[i]*tmp[j]%mod)%mod,lst=tmp[j];<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-type">int</span> ans=<span class="hljs-number">0</span>,res=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)&#123;<br>        ans=(ans+res*f[i]%mod)%mod;<br>        res=res*x%mod;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;k;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i) cin&gt;&gt;x[i]&gt;&gt;y[i];<br>    <span class="hljs-built_in">pre</span>();<br>    <span class="hljs-built_in">Lagrange</span>();<br>    cout&lt;&lt;<span class="hljs-built_in">calc</span>(k);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="x-取值连续时的优化"><a href="#x-取值连续时的优化" class="headerlink" title="x 取值连续时的优化"></a>x 取值连续时的优化</h3><p>此时式子变为</p>
+<script type="math/tex; mode=display">
+f(k)=\sum_{i=0}^n y_i\prod_{j=0,i\neq j}^n \frac{k-i}{i-j}</script><p>对于分子，我们维护前缀积和后缀积。</p>
+<p>对于分母，可以发现这是一个阶乘形式。</p>
+<p>所以式子变为</p>
+<script type="math/tex; mode=display">
+f(k)=\sum_{i=0}^n y_i\frac {pre_{i-1}\times suf_{i+1}}{(i-1)!\times (n-i)!}</script><p>当 <script type="math/tex">n-i</script> 为奇数时，分母应为负号。</p>
+<p>复杂度 <script type="math/tex">O(n)</script></p>
+<p>例题：求 <script type="math/tex">\sum_{i=1}^n i^k</script>。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF622F">The Sum of the k-th Powers</a></p>
+<p>可以证明，<script type="math/tex">\sum_{i=1}^n i^k</script> 为 <script type="math/tex">k+1</script> 次多项式。</p>
+<p>所以直接取 <script type="math/tex">k+2</script> 个点把它插出来即可。</p>
+<p>取值连续，所以可以做到 <script type="math/tex">O(n)</script>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e6</span><span class="hljs-number">+10</span>,mod=<span class="hljs-number">1e9</span><span class="hljs-number">+7</span>;<br><span class="hljs-type">int</span> n,m,k,ans;<br><span class="hljs-type">int</span> fac[maxn],pre[maxn],suf[maxn];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">qpow</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-type">int</span> res=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(b)&#123;<br>        <span class="hljs-keyword">if</span>(b&amp;<span class="hljs-number">1</span>) res=res*a%mod;<br>        b&gt;&gt;=<span class="hljs-number">1</span>;<br>        a=a*a%mod;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">inv</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-built_in">qpow</span>(x,mod<span class="hljs-number">-2</span>);&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;k;m=k<span class="hljs-number">+2</span>;<br>    pre[<span class="hljs-number">0</span>]=fac[<span class="hljs-number">0</span>]=suf[m<span class="hljs-number">+1</span>]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;++i) pre[i]=pre[i<span class="hljs-number">-1</span>]*(n-i)%mod;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=m;i&gt;=<span class="hljs-number">1</span>;--i) suf[i]=suf[i<span class="hljs-number">+1</span>]*(n-i)%mod;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;++i) fac[i]=fac[i<span class="hljs-number">-1</span>]*i%mod;<br>    <span class="hljs-type">int</span> y=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;++i)&#123;<br>        y=(y+<span class="hljs-built_in">qpow</span>(i,k)%mod)%mod;<br>        <span class="hljs-type">int</span> s1=pre[i<span class="hljs-number">-1</span>]%mod*suf[i<span class="hljs-number">+1</span>]%mod;<br>        <span class="hljs-type">int</span> s2=((m-i)&amp;<span class="hljs-number">1</span>?<span class="hljs-number">-1ll</span>:<span class="hljs-number">1ll</span>)*fac[i<span class="hljs-number">-1</span>]%mod*fac[m-i]%mod;<br>        ans=(ans+(y%mod*s1%mod*<span class="hljs-built_in">inv</span>(s2)%mod)%mod+mod)%mod;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/beb6cf6/">高维前缀和学习笔记 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E6%B1%82%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">单点求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E5%87%BA%E7%B3%BB%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">求出系数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x-%E5%8F%96%E5%80%BC%E8%BF%9E%E7%BB%AD%E6%97%B6%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">x 取值连续时的优化</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
