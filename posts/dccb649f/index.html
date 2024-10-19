@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>快速沃尔什变换(FWT)学习笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>快速沃尔什变换(FWT)学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-19T07:05:53.000Z" id="date"> 2024-10-19</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-19T10:00:01.308Z" id="updated"> 2024-10-19</time></div></span><br><span>Word Count: <div class="control">1.2k</div></span><br><span>Read Time: <div class="control">5 min</div></span></div></div><hr><div id="post-content"><p>在 OI 中，FWT 是用于解决对下标进行位运算卷积问题的一种方法。</p>
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>给出序列 <script type="math/tex">a,b</script>，我们想要求出 <script type="math/tex">c</script>，满足</p>
+<script type="math/tex; mode=display">
+c_i=\sum_{j \oplus k=i}a_j\times b_k</script><p>其中 <script type="math/tex">\oplus</script> 代表按位与，按位或，按位异或中的一种。</p>
+<p>直接求是 <script type="math/tex">O(n^2)</script> 的，而 FWT 通过构造出一种可逆的变换 <script type="math/tex">F</script>，使得 <script type="math/tex">F(c)=F(a) \cdot F(b)</script>，从而快速解决下标位运算卷积。</p>
+<h3 id="FWT-的运算"><a href="#FWT-的运算" class="headerlink" title="FWT 的运算"></a>FWT 的运算</h3><p>以下设 <script type="math/tex">\cup</script> 为按位或，<script type="math/tex">\cap</script> 为按位与，<script type="math/tex">\oplus</script> 为按位异或。</p>
+<h4 id="按位或"><a href="#按位或" class="headerlink" title="按位或"></a>按位或</h4><p>考虑构造 <script type="math/tex">F_i(a)=\sum_{j \cup i=i} a_j</script>，则</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+F_i(a)\times F_i(b)&=(\sum_{j\cup i=i}a_j)(\sum_{k\cup i=i}b_k)
+\\
+&=\sum_{j\cup i=i}\sum_{k \cup i=i} a_j\times b_k
+\\
+&=\sum_{(j\cup k)\cup i=i} a_j\times b_k
+\\
+&=F_i(c)
+\end{align*}</script><p>如果没看明白就把 <script type="math/tex">F_i(c)</script> 展开推一遍，然后就能发现这是一样的。</p>
+<p>那么我们现在只需要能做到快速求出 <script type="math/tex">F_i(a)</script> 且能快速进行逆运算就做完了。</p>
+<p>可以发现，这个 <script type="math/tex">F_i(a)</script>，不就是求子集和吗？</p>
+<p>对每个子集求子集和，这不是高维前缀和吗？</p>
+<p>考虑逆运算，显然只需要做一遍高维差分即可。</p>
+<p>复杂度 <script type="math/tex">O(n2^n)</script>，这里的 <script type="math/tex">n</script> 指的是维数。如果把 <script type="math/tex">n</script> 变成序列长度，则复杂度为 <script type="math/tex">O(n\log n)</script>。</p>
+<h4 id="按位与"><a href="#按位与" class="headerlink" title="按位与"></a>按位与</h4><p>考虑构造 <script type="math/tex">F_i(a)=\sum_{j \cap i=i} a_j</script>，可以发现形式和按位或的情况一模一样。</p>
+<p>证明也类似按位或，这里不再赘述。</p>
+<p>可以发现，和按位或的唯一区别在于之前是求子集和，现在是求超集和。</p>
+<p>依旧可以高维前缀和。</p>
+<p>复杂度 <script type="math/tex">O(n\log n)</script></p>
+<h4 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或"></a>按位异或</h4><p>因为还没学明白，所以基本都是抄的 <a target="_blank" rel="noopener" href="https://oi-wiki.org/math/poly/fwt/#异或运算">OI Wiki</a>。</p>
+<p>设 <script type="math/tex">x \otimes y=\operatorname{popcount}(x \cap y) \ mod \ 2</script> 。</p>
+<p>那么可以得到 <script type="math/tex">\otimes</script> 对 <script type="math/tex">\oplus</script> 有分配律：</p>
+<script type="math/tex; mode=display">
+x\otimes (y\oplus z)=(x\otimes y)\oplus (x\otimes z)</script><p>考虑构造 <script type="math/tex">F_i(a)=\sum_{i \otimes j=0}a_j-\sum_{i \otimes j=1}a_j</script>，则</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+F_i(a)\times F_i(b)&=(\sum_{i \otimes j=0}a_j-\sum_{i \otimes j=1}a_j)\times (\sum_{i \otimes k=0}b_k-\sum_{i \otimes k=1}b_k)
+\\
+&=(\sum_{i \otimes j=0}a_j\sum_{i \otimes k=0}b_k+\sum_{i \otimes j=1}a_j\sum_{i \otimes k=1}b_k)-(\sum_{i \otimes j=0}a_j\sum_{i \otimes k=1}b_k+\sum_{i \otimes j=1}a_j\sum_{i \otimes k=0}b_k)
+\\
+&=\sum_{i\otimes(j\oplus k)=0}a_jb_k-\sum_{i\otimes(j\oplus k)=1}a_jb_k
+\\
+&=F_i(c)
+\end{align*}</script><p>如何快速计算 <script type="math/tex">F(a)</script>？考虑分治。</p>
+<p>设 <script type="math/tex">i</script> 在当前位为 0 的子数列为 <script type="math/tex">F(a_0)</script>，在当前位为 1 的子数列为 <script type="math/tex">F(a_1)</script>，则</p>
+<script type="math/tex; mode=display">
+F(a)=merge(F(a_0)+F(a_1),F(a_0)-F(a_1))</script><p>其中 <script type="math/tex">merge</script> 表示拼接，<script type="math/tex">+,-</script> 表示对应位置加/减。</p>
+<p>逆变换为</p>
+<script type="math/tex; mode=display">
+F'(a)=merge(\frac{F'(a_0)+F'(a_1)}{2},\frac{F'(a_0)-F'(a_1)}{2})</script><p>复杂度 <script type="math/tex">O(n\log n)</script></p>
+<p>例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4717">【模板】快速莫比乌斯/沃尔什变换 (FMT/FWT)</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">17</span>)<span class="hljs-number">+10</span>,mod=<span class="hljs-number">998244353</span>,inv2=<span class="hljs-number">499122177</span>;<br><span class="hljs-type">int</span> n,S;<br><span class="hljs-type">int</span> A[maxn],B[maxn];<br><span class="hljs-type">int</span> a[maxn],b[maxn],c[maxn];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">in</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=S;++i) a[i]=A[i],b[i]=B[i];&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">get</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=S;++i) c[i]=a[i]*b[i]%mod;&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">out</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=S;++i) cout&lt;&lt;c[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;cout&lt;&lt;<span class="hljs-string">&#x27;\n&#x27;</span>;&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">OR</span><span class="hljs-params">(<span class="hljs-type">int</span> f[],<span class="hljs-type">int</span> op)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)&#123;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=<span class="hljs-number">0</span>;s&lt;=S;++s)&#123;<br>            <span class="hljs-keyword">if</span>((s&gt;&gt;i)&amp;<span class="hljs-number">1</span>) f[s]=((f[s]+f[s^(<span class="hljs-number">1</span>&lt;&lt;i)]*op)%mod+mod)%mod;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">AND</span><span class="hljs-params">(<span class="hljs-type">int</span> f[],<span class="hljs-type">int</span> op)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)&#123;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=<span class="hljs-number">0</span>;s&lt;=S;++s)&#123;<br>            <span class="hljs-keyword">if</span>((s&gt;&gt;i)&amp;<span class="hljs-number">1</span>) f[s^(<span class="hljs-number">1</span>&lt;&lt;i)]=((f[s^(<span class="hljs-number">1</span>&lt;&lt;i)]+f[s]*op)%mod+mod)%mod;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">XOR</span><span class="hljs-params">(<span class="hljs-type">int</span> f[],<span class="hljs-type">int</span> op)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>,len=<span class="hljs-number">1</span>;i&lt;n;++i,len&lt;&lt;=<span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> s=<span class="hljs-number">0</span>;s&lt;=S;s+=len*<span class="hljs-number">2</span>)&#123;<br>            <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;len;++j)&#123;<br>                f[s+j]=(f[s+j]+f[s+j+len])%mod;<br>                f[s+j+len]=((f[s+j]-f[s+j+len]*<span class="hljs-number">2</span>)%mod+mod)%mod;<br>                f[s+j]=((f[s+j]*op)%mod+mod)%mod;<br>                f[s+j+len]=((f[s+j+len]*op)%mod+mod)%mod;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;S=(<span class="hljs-number">1</span>&lt;&lt;n)<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=S;++i) cin&gt;&gt;A[i];<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=S;++i) cin&gt;&gt;B[i];<br>    <span class="hljs-built_in">in</span>(),<span class="hljs-built_in">OR</span>(a,<span class="hljs-number">1</span>),<span class="hljs-built_in">OR</span>(b,<span class="hljs-number">1</span>),<span class="hljs-built_in">get</span>(),<span class="hljs-built_in">OR</span>(c,<span class="hljs-number">-1</span>),<span class="hljs-built_in">out</span>();<br>    <span class="hljs-built_in">in</span>(),<span class="hljs-built_in">AND</span>(a,<span class="hljs-number">1</span>),<span class="hljs-built_in">AND</span>(b,<span class="hljs-number">1</span>),<span class="hljs-built_in">get</span>(),<span class="hljs-built_in">AND</span>(c,<span class="hljs-number">-1</span>),<span class="hljs-built_in">out</span>();<br>    <span class="hljs-built_in">in</span>(),<span class="hljs-built_in">XOR</span>(a,<span class="hljs-number">1</span>),<span class="hljs-built_in">XOR</span>(b,<span class="hljs-number">1</span>),<span class="hljs-built_in">get</span>(),<span class="hljs-built_in">XOR</span>(c,inv2),<span class="hljs-built_in">out</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/1126bb36/">拉格朗日插值学习笔记 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FWT-%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">FWT 的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E6%88%96"><span class="toc-number">2.1.</span> <span class="toc-text">按位或</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E"><span class="toc-number">2.2.</span> <span class="toc-text">按位与</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96"><span class="toc-number">2.3.</span> <span class="toc-text">按位异或</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
