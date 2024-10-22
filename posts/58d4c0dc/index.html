@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Slope Trick学习笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Slope Trick学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-22T10:44:09.000Z" id="date"> 2024-10-22</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-22T14:23:49.759Z" id="updated"> 2024-10-22</time></div></span><br><span>Word Count: <div class="control">1.4k</div></span><br><span>Read Time: <div class="control">5 min</div></span></div></div><hr><div id="post-content"><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cccomfy/p/17743031.html">参考文章</a></p>
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>太困难了···</p>
+<p>Slope Trick 是一种维护凸包的方法，通常用来优化 dp。</p>
+<p>一般可以使用 Slope Trick 优化的 dp 方程需要满足：</p>
+<ol>
+<li>是连续的</li>
+<li>是分段一次函数</li>
+<li>有凸性</li>
+</ol>
+<p>一些性质：</p>
+<ol>
+<li>两个凸函数相加还是凸函数</li>
+<li>凸函数加一次函数还是凸函数</li>
+</ol>
+<p>一些名词：</p>
+<ol>
+<li>拐点：函数斜率改变的点</li>
+<li>决策点：纵坐标为答案的点</li>
+</ol>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/yia5cviw.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/yia5cviw.png" alt=""></p>
+<p>具体内容通过例题讲解，不然还是太难懂了。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="Sequence-2200"><a href="#Sequence-2200" class="headerlink" title="Sequence *2200"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF13C">Sequence</a> *2200</h4><p>首先考虑暴力 dp。</p>
+<p>因为要将序列变为非降数列，所以有一个性质：最终序列的数集不会变大。</p>
+<p>证明很好证：</p>
+<p>因为只有序列某一位置严格递减时，我们才会进行修改。</p>
+<p>而修改要么将前面的数减到和后面的数一样大，要么将后面的数加到和前面的数一样大。</p>
+<p>这两个操作都不会让数集变大。</p>
+<p>所以设 <script type="math/tex">f_{i,j}</script> 表示将第 <script type="math/tex">i</script> 个数变为 <script type="math/tex">j</script> 的最小代价，转移为</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min_{k \le j} f_{i-1,k}+|a_i-j|</script><p>这是 <script type="math/tex">O(n^2)</script> 的，虽然能通过本题，但我们考虑优化。</p>
+<p>我们把这个 dp 变一下，方便理解。</p>
+<p>设 <script type="math/tex">f_{i,j}</script> 表示将第 <script type="math/tex">i</script> 个数变为 <script type="math/tex">j</script> 的最小代价，<script type="math/tex">g_{i,j}</script> 表示将第 <script type="math/tex">i</script> 个数变为 <script type="math/tex">\le j</script> 的最小代价。</p>
+<p>则转移为</p>
+<script type="math/tex; mode=display">
+f_{i,j}=g_{i-1,j}+|a_i-j|
+\\
+g_{i,j}=\min_{k\le j} f_{i,k}</script><p>我们固定 <script type="math/tex">i</script> ，以 <script type="math/tex">j</script> 为横坐标，dp 值为纵坐标建系。</p>
+<p>这里偷同学几张图。</p>
+<p>可以得到，<script type="math/tex">f_1</script> 为：</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/oxyallma.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/oxyallma.png" alt=""></p>
+<p>因为 <script type="math/tex">g</script> 是 <script type="math/tex">f</script> 的前缀 <script type="math/tex">\min</script>，所以 <script type="math/tex">g_1</script> 为：</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/cr2yxxnx.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/cr2yxxnx.png" alt=""></p>
+<p>根据 dp 式可以发现，<script type="math/tex">g_2</script> 是由 <script type="math/tex">f_1</script> 这个函数加一个绝对值函数得到的。</p>
+<p>这里需要分类讨论：绝对值函数的拐点在 <script type="math/tex">f_1</script> 的决策点的左/右侧。</p>
+<p>如果在右侧，那么是这样的</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/zrrdm2i9.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/zrrdm2i9.png" alt=""></p>
+<p>相加后可以得到 <script type="math/tex">g_2</script> 为</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/n207fy8h.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/n207fy8h.png" alt=""></p>
+<p>从而可以得到 <script type="math/tex">f_2</script> 为</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/7symb7dz.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/7symb7dz.png" alt=""></p>
+<p>如果在左侧，那么是这样的</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/6rtwr6oq.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/6rtwr6oq.png" alt=""></p>
+<p>相加后可以得到 <script type="math/tex">g_2</script> 为</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/nd7g4g8s.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/nd7g4g8s.png" alt=""></p>
+<p>从而可以得到 <script type="math/tex">f_2</script> 为</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/1od8ttxq.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/1od8ttxq.png" alt=""></p>
+<p>答案为 <script type="math/tex">f_n</script> 的最小值。</p>
+<p>可以发现，只有绝对值函数的拐点在决策点左侧时，答案才会更新。</p>
+<p>那么答案变化了多少呢？</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/mnjhkaac.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/mnjhkaac.png" alt=""></p>
+<p>图中 BAGH 为原来的 <script type="math/tex">f_i</script>，JCK 为加的绝对值函数，BMNO 为加完以后的 <script type="math/tex">f_i'</script>。</p>
+<p>那么答案的变化量为 N 和 G 的纵坐标之差。</p>
+<p>通过观察几何性质，可以发现这东西就等于原绝对值函数拐点的横坐标。</p>
+<p>然后考虑怎么维护函数 <script type="math/tex">f_i</script>。（接下来我可能会说的比较抽象且啰嗦，因为我实在不知道怎么才能说明白）</p>
+<p>我们可以维护一个堆，堆里存函数的所有拐点。这道题中我们需要维护大根堆，这样堆顶就是我们需要的决策点。</p>
+<p>然后我们把斜率挂到点上维护，当然我们需要钦定每个点维护的是左侧的线段还是右侧的线段。</p>
+<p>这里我们钦定每个点维护左侧的线段的斜率。</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/4hrlt770.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/4hrlt770.png" alt=""></p>
+<p>那这个斜率到底怎么表示呢？别急，看下面。</p>
+<p>然后考虑加绝对值函数的操作。可以发现，这个操作事实上就是在让绝对值函数拐点左侧的函数斜率 -1，拐点右侧的函数斜率 +1。</p>
+<p>当拐点在决策点右侧或决策点上时，我们会让拐点左侧的函数斜率 -1，右侧的函数斜率 +1。但因为取 <script type="math/tex">\min</script> 了，所以右侧函数斜率还是 0。</p>
+<p>对应到操作上，就是把绝对值函数拐点加进堆里。</p>
+<p>可以发现，此时堆中每个点维护的对应线段的斜率就是其在堆中排名 -1 的相反数（因为这个函数的斜率都是负数）。</p>
+<p>如果如果相邻两个点间的斜率差  <script type="math/tex">> 1</script> 怎么办？</p>
+<p>那就把一个点插入多次。</p>
+<p>但这样会存在一些假点，这些点并没有意义。</p>
+<p>所以我们的斜率要变一下：堆中每个点维护的对应线段的斜率就是与其值相同的最左侧的点在堆中排名 -1 的相反数。</p>
+<p>当拐点在决策点左侧时，因为要让拐点左侧的函数斜率 -1，右侧的函数斜率 +1，所以对应到操作上应该插入两个拐点，因为斜率变化为 2。</p>
+<p>插入完后，我们还要把原来的决策点扔掉，因为它已经不是当前的决策点了。</p>
+<p>然后我们维护完了这个函数，且求出了答案。</p>
+<p>复杂度 <script type="math/tex">O(n\log n)</script></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,ans;<br>priority_queue&lt;<span class="hljs-type">int</span>&gt; q;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-type">int</span> x;<br>    cin&gt;&gt;n&gt;&gt;x;<br>    q.<span class="hljs-built_in">push</span>(x);<span class="hljs-comment">//第一个点先直接插进去</span><br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;++i)&#123;<br>        cin&gt;&gt;x;<br>        <span class="hljs-keyword">if</span>(x&gt;=q.<span class="hljs-built_in">top</span>()) q.<span class="hljs-built_in">push</span>(x);<span class="hljs-comment">//拐点在决策点的右侧或决策点原位</span><br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">//拐点在决策点左侧</span><br>            ans+=q.<span class="hljs-built_in">top</span>()-x;<span class="hljs-comment">//加上答案变化量</span><br>            q.<span class="hljs-built_in">push</span>(x);<span class="hljs-comment">//插两个是因为斜率变化量为2</span><br>            q.<span class="hljs-built_in">push</span>(x);<br>            q.<span class="hljs-built_in">pop</span>();<span class="hljs-comment">//把原来的决策点扔掉，因为它已经不是当前的决策点了</span><br>        &#125;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="Buy-Low-Sell-High-2400"><a href="#Buy-Low-Sell-High-2400" class="headerlink" title="Buy Low Sell High *2400"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF865D">Buy Low Sell High</a> *2400</h4><div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/7f69f632/">操作树学习笔记 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sequence-2200"><span class="toc-number">2.1.</span> <span class="toc-text">Sequence *2200</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Buy-Low-Sell-High-2400"><span class="toc-number">2.2.</span> <span class="toc-text">Buy Low Sell High *2400</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
