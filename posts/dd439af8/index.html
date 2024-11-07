@@ -116,7 +116,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>东方Project相关试题选做</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-30T09:57:27.000Z" id="date"> 2024-10-30</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-11-07T09:55:16.588Z" id="updated"> 2024-11-07</time></div></span><br><span>Word Count: <div class="control">12.4k</div></span><br><span>Read Time: <div class="control">59 min</div></span></div></div><hr><div id="post-content"><p>不知道写什么题了，那就来刷东方题单吧！</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>东方Project相关试题选做</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-30T09:57:27.000Z" id="date"> 2024-10-30</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-11-07T14:30:22.971Z" id="updated"> 2024-11-07</time></div></span><br><span>Word Count: <div class="control">12.4k</div></span><br><span>Read Time: <div class="control">59 min</div></span></div></div><hr><div id="post-content"><p>不知道写什么题了，那就来刷东方题单吧！</p>
 <p>绿以下的题被以前的我秒完了，所以从绿开始写。</p>
 <p>大概只会做简单题。</p>
 <p>题目按照我做的顺序排列。</p>
@@ -170,7 +170,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 f_u=\min(mn_u,\sum_{v\in sub_u} f_v)</script><p>复杂度 <script type="math/tex">O(n)</script></p>
 <h3 id="三步必杀"><a href="#三步必杀" class="headerlink" title="三步必杀"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4231">三步必杀</a></h3><p>区间加等差数列，常见做法是维护差分，这样就变成对差分数组区间加了。</p>
 <p>但是这道题复杂度要求 <script type="math/tex">O(n)</script>，不能直接线段树。</p>
-<p>不过这道题没有一遍修改一遍查询，而是只有最后有一次查询，所以区间加可以差分一下变成单点加。</p>
+<p>不过没有一边修改一边查询，而是只有最后有一次查询，所以区间加可以差分一下变成单点加。</p>
 <p>因为做了两次差分，所以最后做两遍前缀和即可复原。</p>
 <h3 id="萃香的请柬"><a href="#萃香的请柬" class="headerlink" title="萃香的请柬"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4275">萃香的请柬</a></h3><p>考验选手观察能力。</p>
 <p>如果把题目中给的图继续往下写几行，就可以发现：序列的长度是斐波那契数列，1 的个数也是斐波那契数列。</p>
@@ -329,7 +329,7 @@ g_{i,j}=g_{i-1,j}+g_{i,j-1}\times a_i</script><p>转移容易理解，就是从�
 <p>还有注意取模，一定别取模少了（本来能一遍过就因为取模取少了）。</p>
 <p>是不是写的太简短了？那我在这里推一下 <script type="math/tex">k=3</script> 吧。</p>
 <script type="math/tex; mode=display">
-\begin{align}
+\begin{align*}
 ans &= \sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n A'_{i,k}\times A_{k,j}
 \\
 &=\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n (\sum_{p=1}^n A_{i,p}\times A_{p,k}) \times A_{k,j}
@@ -339,7 +339,7 @@ ans &= \sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n A'_{i,k}\times A_{k,j}
 &=\sum_{i=1}^n a_i\sum_{j=1}^n b_j\sum_{k=1}^n a_k\times b_k\sum_{p=1}^na_p\times b_p
 \\
 &=(\sum_{i=1}^n a_i)\times (\sum_{i=1}^n b_i)\times (\sum_{i=1}^n a_ib_i)^2
-\end{align}</script><h3 id="「Wdoi-1-5」魔理沙的计算器"><a href="#「Wdoi-1-5」魔理沙的计算器" class="headerlink" title="「Wdoi-1.5」魔理沙的计算器 "></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P8116">「Wdoi-1.5」魔理沙的计算器 </a></h3><p>纯数学题，跳了。</p>
+\end{align*}</script><h3 id="「Wdoi-1-5」魔理沙的计算器"><a href="#「Wdoi-1-5」魔理沙的计算器" class="headerlink" title="「Wdoi-1.5」魔理沙的计算器 "></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P8116">「Wdoi-1.5」魔理沙的计算器 </a></h3><p>纯数学题，跳了。</p>
 <h3 id="「Wdoi-5」模块化核熔炉"><a href="#「Wdoi-5」模块化核熔炉" class="headerlink" title="「Wdoi-5」模块化核熔炉"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P8228">「Wdoi-5」模块化核熔炉</a></h3><p>抽象坐标系。</p>
 <p>如果是普通的矩形加，那树套树可以轻松解决。</p>
 <p>但是这正六边形非常恶心啊，感觉根本做不了。</p>
