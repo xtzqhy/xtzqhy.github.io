@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>概率与期望学习笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>概率与期望学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-11-13T05:58:19.000Z" id="date"> 2024-11-13</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-11-13T11:50:36.575Z" id="updated"> 2024-11-13</time></div></span><br><span>Word Count: <div class="control">3.7k</div></span><br><span>Read Time: <div class="control">15 min</div></span></div></div><hr><div id="post-content"><p>学一遍不会一遍，遂决定写篇博客把东西记下来。</p>
+<p>主要还是记录怎么做题。</p>
+<h3 id="定义与性质"><a href="#定义与性质" class="headerlink" title="定义与性质"></a>定义与性质</h3><p>这一部分还是详见<a target="_blank" rel="noopener" href="https://oi-wiki.org/math/probability/basic-conception/">OI Wiki</a>吧。</p>
+<h3 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a>常见方法</h3><h4 id="定义法"><a href="#定义法" class="headerlink" title="定义法"></a>定义法</h4><p>对于一些题目来说，我们只需要根据期望的定义 <script type="math/tex">E(X)=\sum p_ix_i</script>，把期望转化为求概率，再把概率转化为数数，然后再想办法怎么计数即可。</p>
+<p>还有一种方法就是用 <script type="math/tex">\frac {所有情况的总价值}{总情况数}</script> 来得到期望。</p>
+<p>因为这种题目的难点都不在期望，只是套了个期望的壳子而已，所以我一般把这种题称作“假期望题”。</p>
+<p>这种题目还挺多，例如最近做的几道：</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5130">纯粹的弹幕地狱</a>：难点在后面的计数+莫反</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5129">不可思议的迷宫</a>：难点在后面的分讨</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P10268">符卡对决</a>：难点在后面的莫队</p>
+<p>不过也是有一些期望题能用定义做的，不过用这个方法做起来会比较麻烦。</p>
+<p>但毕竟是定义，所以我一做题就会先想到这个···</p>
+<h4 id="期望的线性性"><a href="#期望的线性性" class="headerlink" title="期望的线性性"></a>期望的线性性</h4><p>期望的线性性是一个非常好的性质：它让我们能够把贡献拆开分别统计，最后再合起来得到答案。</p>
+<p>拆贡献也是一种非常常见且重要的思想。</p>
+<h4 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h4><p>虽然说是 DP，但也有很多种状态设计。</p>
+<p>例如：正推，逆推等。</p>
+<p>在有关概率与期望的 DP 中，可以把每个状态看成一个节点，然后把 DP 的转移看成图上走路，这样会很好理解（事实上很多 DP 都能这么考虑吧）。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>下面我用例题带大家感受上面的方法应该如何运用。</p>
+<h4 id="绿豆蛙的归宿"><a href="#绿豆蛙的归宿" class="headerlink" title="绿豆蛙的归宿"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4316">绿豆蛙的归宿</a></h4><h5 id="方法一：利用期望的线性性"><a href="#方法一：利用期望的线性性" class="headerlink" title="方法一：利用期望的线性性"></a>方法一：利用期望的线性性</h5><p>因为要求路径期望总长度，所以可以把路径拆成边，那么就要求每条边产生的期望贡献之和。</p>
+<p>一条边产生的贡献的期望，根据期望的定义，等于这条边被经过的概率乘上边权。</p>
+<p>所以只需要求每条边被经过的概率即可。</p>
+<p>这里有一个套路：算边被经过的概率转化为求点被经过的概率。</p>
+<p>设 <script type="math/tex">f_u</script> 表示点 <script type="math/tex">u</script> 被经过的概率，<script type="math/tex">deg_u</script> 表示点 <script type="math/tex">u</script> 的出度，若存在有向边 <script type="math/tex">(u,v)</script>，则</p>
+<script type="math/tex; mode=display">
+f_v=\sum \frac {f_u}{deg_u}</script><p>那么边 <script type="math/tex">(u,v)</script> 被经过的概率为 <script type="math/tex">\frac {f_u}{deg_u}</script>。</p>
+<p>答案就是把每条边的贡献的期望值加起来。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long </span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> double long double</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e5</span><span class="hljs-number">+10</span>,maxm=<span class="hljs-number">2e5</span><span class="hljs-number">+10</span>;<br><span class="hljs-type">int</span> n,m,cnt;<br><span class="hljs-type">int</span> head[maxn],in[maxn],deg[maxn];<br><span class="hljs-type">double</span> ans,f[maxn];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">edge</span>&#123;<br>    <span class="hljs-type">int</span> to,nxt,w;<br>&#125;e[maxm];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> u,<span class="hljs-type">int</span> v,<span class="hljs-type">int</span> w)</span></span>&#123;<br>    ++in[v],++deg[u];<br>    e[++cnt]=&#123;v,head[u],w&#125;;<br>    head[u]=cnt;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">topo</span><span class="hljs-params">()</span></span>&#123;<br>    queue&lt;<span class="hljs-type">int</span>&gt; q;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> u=<span class="hljs-number">1</span>;u&lt;=n;++u) <span class="hljs-keyword">if</span>(!in[u]) q.<span class="hljs-built_in">push</span>(u);<br>    <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())&#123;<br>        <span class="hljs-type">int</span> u=q.<span class="hljs-built_in">front</span>();q.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=head[u];i;i=e[i].nxt)&#123;<br>            <span class="hljs-type">int</span> v=e[i].to;<br>            <span class="hljs-keyword">if</span>(!(--in[v])) q.<span class="hljs-built_in">push</span>(v);<br>            f[v]+=f[u]/deg[u];<br>            ans+=f[u]/deg[u]*e[i].w;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,u,v,w;i&lt;=m;++i) cin&gt;&gt;u&gt;&gt;v&gt;&gt;w,<span class="hljs-built_in">add</span>(u,v,w);<br>    f[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;<span class="hljs-built_in">topo</span>();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.2Lf&quot;</span>,ans);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="方法二：DP"><a href="#方法二：DP" class="headerlink" title="方法二：DP"></a>方法二：DP</h5><p>正推和逆推都是可以的，这里讲逆推。</p>
+<p>设 <script type="math/tex">f_u</script> 表示从 <script type="math/tex">u</script> 到 <script type="math/tex">n</script> 的路径期望总长度，若存在有向边 <script type="math/tex">(u,v)</script>，则转移为</p>
+<script type="math/tex; mode=display">
+f_u=\frac {1}{deg_u}\sum f_v+w_{u,v}</script><p>因为转移是 <script type="math/tex">v</script> 向 <script type="math/tex">u</script> 贡献，所以要建反图，然后在反图的拓扑序上 DP。</p>
+<p>初值为 <script type="math/tex">f_n=0</script>，答案为 <script type="math/tex">f_1</script>。</p>
+<p>注意：因为建了反图，所以转移里的 <script type="math/tex">u,v</script> 也变了。请仔细理解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&quot;bits/stdc++.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> re register</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long </span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> double long double</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e5</span><span class="hljs-number">+10</span>,maxm=<span class="hljs-number">2e5</span><span class="hljs-number">+10</span>;<br><span class="hljs-type">int</span> n,m,cnt;<br><span class="hljs-type">int</span> head[maxn],in[maxn],deg[maxn];<br><span class="hljs-type">double</span> f[maxn];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">edge</span>&#123;<br>    <span class="hljs-type">int</span> to,nxt,w;<br>&#125;e[maxm];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> u,<span class="hljs-type">int</span> v,<span class="hljs-type">int</span> w)</span></span>&#123;<br>    ++in[v],++deg[v];<br>    e[++cnt]=&#123;v,head[u],w&#125;;<br>    head[u]=cnt;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">topo</span><span class="hljs-params">()</span></span>&#123;<br>    queue&lt;<span class="hljs-type">int</span>&gt; q;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> u=<span class="hljs-number">1</span>;u&lt;=n;++u) <span class="hljs-keyword">if</span>(!in[u]) q.<span class="hljs-built_in">push</span>(u);<br>    <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())&#123;<br>        <span class="hljs-type">int</span> u=q.<span class="hljs-built_in">front</span>();q.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=head[u];i;i=e[i].nxt)&#123;<br>            <span class="hljs-type">int</span> v=e[i].to;<br>            <span class="hljs-keyword">if</span>(!(--in[v])) q.<span class="hljs-built_in">push</span>(v);<br>            f[v]+=<span class="hljs-number">1.0</span>*(f[u]+e[i].w)/deg[v];<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> ONLINE_JUDGE</span><br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.in&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,stdin);<br>    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;1.out&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,stdout);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>),cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,u,v,w;i&lt;=m;++i) cin&gt;&gt;u&gt;&gt;v&gt;&gt;w,<span class="hljs-built_in">add</span>(v,u,w);<br>    <span class="hljs-built_in">topo</span>();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.2Lf&quot;</span>,f[<span class="hljs-number">1</span>]);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="Beautiful-Mirrors"><a href="#Beautiful-Mirrors" class="headerlink" title="Beautiful Mirrors"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1265E">Beautiful Mirrors</a></h4><p>利用这道题介绍期望 DP 的各种 trick。</p>
+<p>以下的 <script type="math/tex">p_i</script> 为题目中的 <script type="math/tex">\frac {p_i}{100}</script>。</p>
+<h5 id="方法一：正推"><a href="#方法一：正推" class="headerlink" title="方法一：正推"></a>方法一：正推</h5><p>设 <script type="math/tex">f_i</script> 表示从第一面镜子到第 <script type="math/tex">i</script> 面镜子都高兴的期望天数。</p>
+<p>那么在第 <script type="math/tex">i</script> 天，有以下两种可能：</p>
+<ol>
+<li>询问失败，概率为 <script type="math/tex">1-p_i</script>。代价为 <script type="math/tex">f_{i-1}+1+f_i</script>。</li>
+<li>询问成功，概率为 <script type="math/tex">p_i</script>。代价为 <script type="math/tex">f_{i-1}</script>。</li>
+</ol>
+<p>根据期望的定义，概率乘代价再求和就是期望。则</p>
+<script type="math/tex; mode=display">
+f_i=(1-p_i)(f_{i-1}+1+f_i)+p_i(f_{i-1}+1)</script><p>移项，整理得</p>
+<script type="math/tex; mode=display">
+f_i=p_i(f_{i-1}+1)</script><p>初值为 <script type="math/tex">f_0=0</script>，答案为 <script type="math/tex">f_n</script>。</p>
+<p>可能有疑问：为什么询问失败的代价为 <script type="math/tex">f_{i-1}+1+f_i</script>？</p>
+<p>可以把代价拆开来看。</p>
+<p>首先，我们已经到了第 <script type="math/tex">i</script> 面镜子，说明前 <script type="math/tex">i-1</script> 面都没失败，这部分的代价为 <script type="math/tex">f_{i-1}</script>。</p>
+<p>然后，我们在第 <script type="math/tex">i</script> 面镜子处进行询问，会花费一天，这部分的代价为 <script type="math/tex">1</script>。</p>
+<p>最后，因为询问失败，我们回到了第一面镜子。但我们的状态为从第一面镜子到第 <script type="math/tex">i</script> 面镜子都高兴，所以我们还得从第一面镜子一直问到第 <script type="math/tex">i</script> 面镜子且保持高兴。这部分的代价为 <script type="math/tex">f_i</script>。</p>
+<h5 id="方法二：逆推"><a href="#方法二：逆推" class="headerlink" title="方法二：逆推"></a>方法二：逆推</h5><p>设 <script type="math/tex">f_i</script> 表示从第 <script type="math/tex">i</script> 面镜子到最后一面镜子的期望天数。</p>
+<p>那么在第 <script type="math/tex">i</script> 天，有以下两种可能：</p>
+<ol>
+<li>询问失败，概率为 <script type="math/tex">1-p_i</script>，我们会回到第一面镜子，代价为 <script type="math/tex">f_1+1</script>。</li>
+<li>询问成功，概率为 <script type="math/tex">p_i</script>，我们会走到下一面镜子，代价为 <script type="math/tex">f_{i+1}+1</script>。</li>
+</ol>
+<p>根据期望的定义，概率乘代价再求和就是期望。则</p>
+<script type="math/tex; mode=display">
+f_i=(1-p_i)(f_1+1)+p_i(f_{i+1}+1)</script><p>初值为 <script type="math/tex">f_{n+1}=0</script>，答案为 <script type="math/tex">f_1</script>。</p>
+<p>要求 <script type="math/tex">f_1</script>，但是转移用到了 <script type="math/tex">f_1</script>，考虑解方程。</p>
+<p>如果你把前几项写出来，会发现：</p>
+<p>当 <script type="math/tex">i=1</script> 时，<script type="math/tex">f_1=f_2+\frac {1}{p_1}</script>。</p>
+<p>当 <script type="math/tex">i=2</script> 时，<script type="math/tex">f_1=f_3+\frac {1+\frac {1}{p_1}}{p_2}</script>。</p>
+<p>当 <script type="math/tex">i=3</script> 时，<script type="math/tex">f_1=f_4+\frac {1+\frac {1+\frac {1}{p_1}}{p_2}}{p_3}</script>。</p>
+<p>所以：</p>
+<script type="math/tex; mode=display">
+f_1=\frac {1+\frac {1+\frac {\cdots}{p_{n-2}}}{p_{n-1}}}{p_n}</script><p>整理得：</p>
+<script type="math/tex; mode=display">
+f_1=\frac {1+p_1+p_1p_2+\cdots+p_1p_2\cdots p_{n-1}}{\prod_{i=1}^np_i}</script><h5 id="方法三：一种常见的状态设计但是我不知道怎么称呼"><a href="#方法三：一种常见的状态设计但是我不知道怎么称呼" class="headerlink" title="方法三：一种常见的状态设计但是我不知道怎么称呼"></a>方法三：一种常见的状态设计但是我不知道怎么称呼</h5><p>设 <script type="math/tex">f_i</script> 表示从第 <script type="math/tex">i</script> 面镜子到第 <script type="math/tex">i+1</script> 面镜子的期望天数。</p>
+<p>设 <script type="math/tex">s=\sum_{j=1}^{i-1} f_j</script>，则</p>
+<script type="math/tex; mode=display">
+f_i=p_i\times 1+(1-p_i)\times (1+f_i+s)</script><p>关于代价为什么是这个，可以参考正推。</p>
+<p>移项，整理得：</p>
+<script type="math/tex; mode=display">
+f_i=\frac {1+(1-p_i)\times s}{p_i}</script><p>答案为 <script type="math/tex">\sum_{i=1}^n f_i</script>。</p>
+<h5 id="方法四：设一次函数"><a href="#方法四：设一次函数" class="headerlink" title="方法四：设一次函数"></a>方法四：设一次函数</h5><p>还是逆推的 DP。</p>
+<p>设 <script type="math/tex">f_i=k_i\times f_1+b_i</script>，通过递推求出 <script type="math/tex">k_{n+1},b_{n+1}</script>，最后解方程 <script type="math/tex">k_{n+1}\times f_1+b_{n+1}=0</script> 即可。</p>
+<h4 id="六省联考-2017-分手是祝愿"><a href="#六省联考-2017-分手是祝愿" class="headerlink" title="[六省联考 2017] 分手是祝愿"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3750">[六省联考 2017] 分手是祝愿</a></h4><p>一道经典好题。</p>
+<p>利用这道题补充期望 DP 的各种 trick。</p>
+<p>首先考虑最优操作应该怎么按。</p>
+<p>感性理解一下，可以发现：每次按最右边的是最优的。因为除它以外没有数的约数包含它，所以它必须得按。</p>
+<p>事实上，这也是唯一的一种按法。证明参考<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/article/dp25jxfo">题解</a>。</p>
+<p>考虑 DP。</p>
+<p>设 <script type="math/tex">f_i</script> 表示当前还剩 <script type="math/tex">i</script> 个键要按的期望操作次数，则转移为：</p>
+<script type="math/tex; mode=display">
+f_i = \begin{cases} i & (i \le k) \\ \frac {i}{n} f_{i-1}+\frac {n-i}{n}f_{i+1}+1 & (i >k) \end{cases}</script><p>这应该挺好理解的吧，不再赘述了。</p>
+<p>但是这东西没法转移啊，只能高斯消元解方程，怎么办？</p>
+<h5 id="方法一：模拟高斯消元"><a href="#方法一：模拟高斯消元" class="headerlink" title="方法一：模拟高斯消元"></a>方法一：模拟高斯消元</h5><p>事实上，如果你把系数矩阵写出来，会发现它长这样（图片来自题解）：</p>
+<p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/zvnmed22.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/zvnmed22.png" alt=""></p>
+<p>对于这种带状矩阵，有复杂度为 <script type="math/tex">O(nd^2)</script> 的消元方法。</p>
+<p>具体可以参考文章：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/article/3zspg7qj">浅谈高斯消元拓展之 band-matrix</a>。</p>
+<p>但高斯消元这东西我学一次忘一次···</p>
+<h5 id="方法二：设一次函数"><a href="#方法二：设一次函数" class="headerlink" title="方法二：设一次函数"></a>方法二：设一次函数</h5><p>设 <script type="math/tex">f_i=f_{i-1}+b_i</script>，那么发现 <script type="math/tex">b_i</script> 是好求的。</p>
+<p>转移为</p>
+<script type="math/tex; mode=display">
+f_i=\frac {i}{n} f_{i-1}+\frac {n-i}{n}f_{i+1}+1</script><p>代入得</p>
+<script type="math/tex; mode=display">
+f_i=\frac {i}{n} (f_i-b_i)+\frac {n-i}{n}(f_i+b_{i+1})+1</script><p>发现 <script type="math/tex">f_i</script> 被消没了，则</p>
+<script type="math/tex; mode=display">
+b_i = \frac {(n-i)b_{i+1}+n}{i}</script><p>边界为 <script type="math/tex">b_n=1</script>。</p>
+<p>然后用 <script type="math/tex">b_i</script> 把 <script type="math/tex">f_i</script> 求出来即可。</p>
+<h5 id="方法三：一种常见的状态设计"><a href="#方法三：一种常见的状态设计" class="headerlink" title="方法三：一种常见的状态设计"></a>方法三：一种常见的状态设计</h5><p>把之前的 DP 扔了，换状态。</p>
+<p>设 <script type="math/tex">f_i</script> 表示从还剩 <script type="math/tex">i</script> 个键要按到还剩 <script type="math/tex">i-1</script> 个键要按的期望操作步数。</p>
+<p>那么还剩 <script type="math/tex">i</script> 个键时，有以下两种可能：</p>
+<ol>
+<li>按对了，概率为 <script type="math/tex">\frac {i}{n}</script>，代价为 <script type="math/tex">1</script>。</li>
+<li>按错了，概率为 <script type="math/tex">\frac {n-i}{n}</script>，代价为 <script type="math/tex">f_i+f_{i+1}+1</script>。</li>
+</ol>
+<p>则转移为</p>
+<script type="math/tex; mode=display">
+f_i = \frac {i}{n}+ \frac {n-i}{n}\times(f_i+f_{i+1}+1)</script><p>为什么代价是这个？</p>
+<p>感觉和之前那个一样吧，但还是再解释一遍：</p>
+<p>可以把代价拆开来看。</p>
+<p>首先，我们按了一次，代价为 <script type="math/tex">1</script>。</p>
+<p>然后，因为按错了，所以现在还剩 <script type="math/tex">i+1</script> 个键需要按。那么从还剩 <script type="math/tex">i+1</script> 个键到还剩 <script type="math/tex">i</script> 个键的代价为 <script type="math/tex">f_{i+1}</script>。</p>
+<p>最后，我们需要把还剩 <script type="math/tex">i</script> 个键变成还剩 <script type="math/tex">i-1</script> 个键（因为这是我们的状态），代价为 <script type="math/tex">f_i</script>。</p>
+<p>我们先按最优解的操作按一遍，得到操作次数 <script type="math/tex">cnt</script>。那么答案为</p>
+<script type="math/tex; mode=display">
+\begin{cases}cnt & (cnt \le k) \\ (\sum_{i=k+1}^{cnt} f_i)+k & (cnt > k)\end{cases}</script><h4 id="SHOI2002-百事世界杯之旅"><a href="#SHOI2002-百事世界杯之旅" class="headerlink" title="[SHOI2002] 百事世界杯之旅"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1291">[SHOI2002] 百事世界杯之旅</a></h4><p>设 <script type="math/tex">f_i</script> 表示当前已经拿了 <script type="math/tex">i</script> 种物品，那么转移为</p>
+<script type="math/tex; mode=display">
+f_i=\frac {i}{n}f_i+\frac {n-i}{n}f_{i+1}+1</script><p>移项整理得</p>
+<script type="math/tex; mode=display">
+f_i=f_{i+1}+\frac {n}{n-i}</script><p>初值为 <script type="math/tex">f_n=0</script>，答案为 <script type="math/tex">f_0</script>。</p>
+<p>事实上，你把式子再写一下，会发现 <script type="math/tex">f_0=\sum_{i=1}^n \frac {n}{i}</script>。</p>
+<h4 id="Let’s-Play-Osu"><a href="#Let’s-Play-Osu" class="headerlink" title="Let’s Play Osu!"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/CF235B">Let’s Play Osu!</a></h4><p>加强版：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1654">OSU!</a></p>
+<p>设 <script type="math/tex">f_i</script> 表示以 <script type="math/tex">i</script> 结尾连续成功长度的期望，<script type="math/tex">g_i</script> 表示以 <script type="math/tex">i</script> 结尾连续成功长度的平方的期望。</p>
+<p>然后根据期望的线性性，<script type="math/tex">E((X+1)^2)=E(X^2+2X+1)=E(X^2)+2E(X)+1</script>。</p>
+<p>所以转移为</p>
+<script type="math/tex; mode=display">
+f_i=p_i\times (f_{i-1}+1)
+\\
+g_i=p_i\times (g_{i-1}+2\times f_{i-1}+1)</script><p>弱化版答案为 <script type="math/tex">\sum_{i=1}^n p_i\times (2\times f_{i-1}+1)</script>。</p>
+<p>加强版答案为 <script type="math/tex">\sum_{i=1}^n p_i\times (3\times g_{i-1}+3\times f_{i-1}+1)</script>。</p>
+<h4 id="Cnoi2020-线形生物"><a href="#Cnoi2020-线形生物" class="headerlink" title="[Cnoi2020] 线形生物"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6835">[Cnoi2020] 线形生物</a></h4><p>期望的线性性好题。</p>
+<p>设 <script type="math/tex">f_{u \rightarrow v}</script> 表示 <script type="math/tex">u</script> 到 <script type="math/tex">v</script> 的期望步数，则 <script type="math/tex">f_{u \rightarrow v}=\sum_{i=u}^{v-1} f_{i \rightarrow i+1}</script>。</p>
+<p>设 <script type="math/tex">g_u</script> 表示 <script type="math/tex">u</script> 到 <script type="math/tex">u+1</script> 的期望步数，<script type="math/tex">deg_u</script> 表示 <script type="math/tex">u</script> 的返祖边条数，<script type="math/tex">E</script> 为 <script type="math/tex">u</script> 的返祖边集，则</p>
+<script type="math/tex; mode=display">
+g_u=\frac {1}{deg_u+1}\times 1+\frac {1}{deg_u+1}\times\sum_{(u,v)\in E} (f_{v,u+1}+1)</script><p>设 <script type="math/tex">s_i=\sum_{j=1}^i g_i</script>，则</p>
+<script type="math/tex; mode=display">
+g_u=1+\frac {1}{deg_u+1}\times\sum_{(u,v)\in E}s_u-s_{v-1}</script><p>把 <script type="math/tex">g_u</script> 都放到左边，整理得</p>
+<script type="math/tex; mode=display">
+g_u=(deg_u+1)+\sum_{(u,v)\in E}s_{u-1}-s_{v-1}</script><p>答案为 <script type="math/tex">s_n</script>。</p>
+<h4 id="HNOI2013-游走"><a href="#HNOI2013-游走" class="headerlink" title="[HNOI2013] 游走"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3232">[HNOI2013] 游走</a></h4><p>高斯消元经典题。</p>
+<p>设 <script type="math/tex">f_u</script> 表示点 <script type="math/tex">u</script> 得期望经过次数，<script type="math/tex">g_{u,v}</script> 表示边 <script type="math/tex">(u,v)</script> 的期望经过次数，<script type="math/tex">deg_u</script> 表示点 <script type="math/tex">u</script> 的出度，则</p>
+<script type="math/tex; mode=display">
+g_{u,v}=\frac {f_u}{deg_u}+\frac {f_v}{deg_v}
+\\
+f_u=\sum \frac {f_v}{deg_v}</script><p>然后高斯消元把 <script type="math/tex">f</script> 求出来，再用 <script type="math/tex">f</script> 把 <script type="math/tex">g</script> 求出来即可。</p>
+<p>至于编号，我们只需要贪心的给期望经过次数越大的边编号越小即可。</p>
+<p>忽略了很多细节，写的时候需要注意。</p>
+<h4 id="Broken-robot"><a href="#Broken-robot" class="headerlink" title="Broken robot"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF24D">Broken robot</a></h4><p>也是高斯消元经典题。</p>
+<p>设 <script type="math/tex">f_{i,j}</script> 表示从 <script type="math/tex">(i,j)</script> 走到最后一行的期望步数，转移为</p>
+<script type="math/tex; mode=display">
+f_{i,j}=
+\begin{cases}
+\frac{f_{i+1,j}+f_{i,1}+f_{i,2}}{3}+1 & (j=1)
+\\
+\frac{f_{i+1,m}+f_{i,m}+f_{i,m-1}}{3}+1 & (j=m)
+\\
+\frac{f_{i+1,j}+f_{i,j}+f_{i,j+1}+f_{i,j-1}}{4}+1 & otherwise
+\end{cases}</script><p>初始值为 <script type="math/tex">f_{n,i}=0</script>。</p>
+<p>因为只能往下走，所以行没有后效性，但列有后效性。</p>
+<p>所以从下往上消元即可。</p>
+<p>暴力消元复杂度不对，但是你把系数矩阵写出来，发现又是带状矩阵。</p>
+<p>所以按之前的方法消元就行了。</p>
+<h4 id="HNOI2015-亚瑟王"><a href="#HNOI2015-亚瑟王" class="headerlink" title="[HNOI2015] 亚瑟王"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3239">[HNOI2015] 亚瑟王</a></h4><p>根据期望的线性性，总伤害就是每张卡的伤害乘上该卡的发动概率，所以考虑如何求出每张卡的发动概率。</p>
+<p>这道题最难的地方就是轮次，如果根据轮次来 DP 的话，会发现有后效性。例如我一开始想的是 <script type="math/tex">f_{i,j}</script> 表示第 <script type="math/tex">i</script> 轮发动 <script type="math/tex">j</script> 的概率，发现转移不了。</p>
+<p>我们换一个思路，既然轮次有后效性，那就不能按轮次 DP 了，而是直接考虑卡牌。</p>
+<p>感觉是和<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5131">荷取融合</a>很像的套路。</p>
+<p>设 <script type="math/tex">f_{i,j}</script> 表示在整局游戏中，前 <script type="math/tex">i</script> 张牌发动了 <script type="math/tex">j</script> 张的概率，则转移为</p>
+<script type="math/tex; mode=display">
+f_{i,j}=f_{i-1,j}\times (1-p_i)^{r-j}+f_{i-1,j-1}\times (1-(1-p_i)^{r-j+1})</script><p>解释一下这个转移。</p>
+<p>如果 <script type="math/tex">f_{i,j}</script> 从 <script type="math/tex">f_{i-1,j}</script> 转移来，说明第 <script type="math/tex">i</script> 张牌在整局游戏中都没有发动。</p>
+<p>因为前面已经发动了 <script type="math/tex">j</script> 张，也就是占用了 <script type="math/tex">j</script> 轮的机会，所以概率为 <script type="math/tex">(1-p_i)^{r-j}</script>。</p>
+<p>如果 <script type="math/tex">f_{i,j}</script> 从 <script type="math/tex">f_{i-1,j-1}</script> 转移来，说明第 <script type="math/tex">i</script> 张牌发动了。</p>
+<p>但发动的概率不好求，考虑用 <script type="math/tex">1</script> 减去不发动的概率，为 <script type="math/tex">(1-p_i)^{r-j+1}</script>。</p>
+<p>那每张卡的发动概率就好求了：</p>
+<script type="math/tex; mode=display">
+P_i=\sum \limits_{j=0}^{i-1} f_{i-1,j}\times (1-(1-p_i)^{r-j})</script><h4 id="NOIP2016-提高组-换教室"><a href="#NOIP2016-提高组-换教室" class="headerlink" title="[NOIP2016 提高组] 换教室"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1850">[NOIP2016 提高组] 换教室</a></h4><p>感觉比较简单。</p>
+<p>设 <script type="math/tex">f_{i,j,0/1}</script> 表示前 <script type="math/tex">i</script> 节课成功换了 <script type="math/tex">j</script> 次教室。</p>
+<p>转移就是考虑换不换，如果换还要考虑能否成功，乘上最短路长度即可。</p>
+<p>是没啥意思的分类讨论，不展开写了。</p>
+<p>最短路用 Floyd 预处理即可。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/76592936/">2024.11.11 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%80%A7%E8%B4%A8"><span class="toc-number">1.</span> <span class="toc-text">定义与性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">常见方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">定义法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B%E7%9A%84%E7%BA%BF%E6%80%A7%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">期望的线性性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DP"><span class="toc-number">2.3.</span> <span class="toc-text">DP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%BF%E8%B1%86%E8%9B%99%E7%9A%84%E5%BD%92%E5%AE%BF"><span class="toc-number">3.1.</span> <span class="toc-text">绿豆蛙的归宿</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%88%A9%E7%94%A8%E6%9C%9F%E6%9C%9B%E7%9A%84%E7%BA%BF%E6%80%A7%E6%80%A7"><span class="toc-number">3.1.1.</span> <span class="toc-text">方法一：利用期望的线性性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9ADP"><span class="toc-number">3.1.2.</span> <span class="toc-text">方法二：DP</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Beautiful-Mirrors"><span class="toc-number">3.2.</span> <span class="toc-text">Beautiful Mirrors</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%AD%A3%E6%8E%A8"><span class="toc-number">3.2.1.</span> <span class="toc-text">方法一：正推</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E9%80%86%E6%8E%A8"><span class="toc-number">3.2.2.</span> <span class="toc-text">方法二：逆推</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E4%B8%80%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1%E4%BD%86%E6%98%AF%E6%88%91%E4%B8%8D%E7%9F%A5%E9%81%93%E6%80%8E%E4%B9%88%E7%A7%B0%E5%91%BC"><span class="toc-number">3.2.3.</span> <span class="toc-text">方法三：一种常见的状态设计但是我不知道怎么称呼</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%9B%9B%EF%BC%9A%E8%AE%BE%E4%B8%80%E6%AC%A1%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.4.</span> <span class="toc-text">方法四：设一次函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E7%9C%81%E8%81%94%E8%80%83-2017-%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF"><span class="toc-number">3.3.</span> <span class="toc-text">[六省联考 2017] 分手是祝愿</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%A8%A1%E6%8B%9F%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83"><span class="toc-number">3.3.1.</span> <span class="toc-text">方法一：模拟高斯消元</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E8%AE%BE%E4%B8%80%E6%AC%A1%E5%87%BD%E6%95%B0"><span class="toc-number">3.3.2.</span> <span class="toc-text">方法二：设一次函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E4%B8%80%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.3.</span> <span class="toc-text">方法三：一种常见的状态设计</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SHOI2002-%E7%99%BE%E4%BA%8B%E4%B8%96%E7%95%8C%E6%9D%AF%E4%B9%8B%E6%97%85"><span class="toc-number">3.4.</span> <span class="toc-text">[SHOI2002] 百事世界杯之旅</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Let%E2%80%99s-Play-Osu"><span class="toc-number">3.5.</span> <span class="toc-text">Let’s Play Osu!</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cnoi2020-%E7%BA%BF%E5%BD%A2%E7%94%9F%E7%89%A9"><span class="toc-number">3.6.</span> <span class="toc-text">[Cnoi2020] 线形生物</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HNOI2013-%E6%B8%B8%E8%B5%B0"><span class="toc-number">3.7.</span> <span class="toc-text">[HNOI2013] 游走</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Broken-robot"><span class="toc-number">3.8.</span> <span class="toc-text">Broken robot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HNOI2015-%E4%BA%9A%E7%91%9F%E7%8E%8B"><span class="toc-number">3.9.</span> <span class="toc-text">[HNOI2015] 亚瑟王</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NOIP2016-%E6%8F%90%E9%AB%98%E7%BB%84-%E6%8D%A2%E6%95%99%E5%AE%A4"><span class="toc-number">3.10.</span> <span class="toc-text">[NOIP2016 提高组] 换教室</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
