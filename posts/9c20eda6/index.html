@@ -116,13 +116,13 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>笛卡尔树学习笔记</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-09-28T14:01:06.000Z" id="date"> 2024-09-28</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-10-19T07:27:25.583Z" id="updated"> 2024-10-19</time></div></span><br><span>文章总字数: <div class="control">1.2k</div></span><br><span>预计阅读时间: <div class="control">4 分钟</div></span></div></div><hr><div id="post-content"><p>笛卡尔树是一种二叉树，它既满足二叉搜索树的性质，又满足堆的性质。</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>笛卡尔树学习笔记</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-09-28T14:01:06.000Z" id="date"> 2024-09-28</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-11-28T12:01:14.939Z" id="updated"> 2024-11-28</time></div></span><br><span>文章总字数: <div class="control">1.2k</div></span><br><span>预计阅读时间: <div class="control">4 分钟</div></span></div></div><hr><div id="post-content"><p>笛卡尔树是一种二叉树，它既满足二叉搜索树的性质，又满足堆的性质。</p>
 <p>例如 treap，就属于笛卡尔树的一种。</p>
 <p>以下规定：第一键值为满足二叉搜索树的键值，第二键值为满足堆的键值。</p>
 <h3 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h3><p>我们可以用单调栈做到 <script type="math/tex">O(n)</script> 建树。</p>
-<p>我们考虑将下标作为第一键值，权值作为第二键值。</p>
+<p>以对一个序列建树为例：我们将下标作为第一键值，权值作为第二键值。</p>
 <p>那么每次我们插入的元素必然在这棵树的右链（右链：即从根节点一直往右子树走，经过的节点形成的链）的末端。</p>
-<p>所以我们可以用栈来维护笛卡尔树的右链。</p>
+<p>所以我们可以用单调栈来维护笛卡尔树的右链。</p>
 <p>假设我们要建一颗大根笛卡尔树。</p>
 <p>设当前位置为 <script type="math/tex">i</script>，前 <script type="math/tex">i-1</script> 个位置已经构建好了。设栈顶元素为 <script type="math/tex">a_{top}</script>。</p>
 <p>我们维护值单调递增的单调栈。</p>
@@ -130,7 +130,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <p>否则一直弹栈，直到栈空或 <script type="math/tex">a_i \le a_{top}</script>。把最后一个弹出的元素设为 <script type="math/tex">i</script> 的左儿子。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(re <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>    <span class="hljs-type">int</span> tmp=top;<br>    <span class="hljs-keyword">while</span>(tmp&amp;&amp;a[stk[tmp]]&lt;a[i]) --tmp;<br>    <span class="hljs-keyword">if</span>(tmp) rs[stk[tmp]]=i;<br>    <span class="hljs-keyword">if</span>(tmp&lt;top) ls[i]=stk[tmp<span class="hljs-number">+1</span>];<br>    stk[++tmp]=i;<br>    top=tmp;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>事实上，如果要按某个值作为第一键值，那么按这个值排序即可。</p>
-<p>可以发现，笛卡尔树的根就是 <script type="math/tex">stk_1</script>。</p>
+<p>可以发现，笛卡尔树的根就是 <code>stk[1]</code>。</p>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>笛卡尔树大多用来 dp。</p>
 <p>对原问题转化后，变为笛卡尔树上的 dp 问题。</p>
 <p>而且一般只会用到思想，并不会真把树建出来。</p>
@@ -147,6 +147,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <p>因为我们建的是小根树，所以子树内的点的 <script type="math/tex">h_i</script> 都大于 <script type="math/tex">h_u</script>。</p>
 <p>因为下标是键，所以子树内的点构成一段连续区间。</p>
 <p>那么以 <script type="math/tex">h_u</script> 作为高时的最大面积为 <script type="math/tex">siz_u\times h_u</script>。</p>
+<p>事实上有简单单调栈做法。</p>
 <h4 id="COCI2008-2009-4-PERIODNI"><a href="#COCI2008-2009-4-PERIODNI" class="headerlink" title="[COCI2008-2009#4] PERIODNI"></a><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6453">[COCI2008-2009#4] PERIODNI</a></h4><p>我们考虑把这个多边形转成树。</p>
 <p>受上题启发，我们把下标作为第一键值，<script type="math/tex">h_i</script> 作为第二键值建立小根笛卡尔树。</p>
 <p class='item-img' data-src='https://cdn.luogu.com.cn/upload/image_hosting/6a5lp8on.png'><img src="https://cdn.luogu.com.cn/upload/image_hosting/6a5lp8on.png" alt=""></p>
