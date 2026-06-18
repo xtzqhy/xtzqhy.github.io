@@ -1,0 +1,814 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>线代概念入门 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>线代概念入门</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-06-16T12:13:58.000Z" id="date"> 2026-06-16</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-06-18T14:38:44.582Z" id="updated"> 2026-06-18</time></div></span><br><span>Word Count: <div class="control">15.1k</div></span><br><span>Read Time: <div class="control">55 min</div></span></div></div><hr><div id="post-content"><p>观<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ys411472E">3b1b 线性代数的本质</a>有感。</p>
+<p>显然自己总结是困难的，所以这篇文章大量的借助了AI（或者说这篇文章只是记录我和AI交流后得到的最终总结而已）。</p>
+<h2 id="一-关于向量与空间"><a href="#一-关于向量与空间" class="headerlink" title="一.关于向量与空间"></a>一.关于向量与空间</h2><h3 id="1-为什么会有“向量”？"><a href="#1-为什么会有“向量”？" class="headerlink" title="1.为什么会有“向量”？"></a>1.为什么会有“向量”？</h3><p><strong>核心思想：为了统一地描述自然界中“既有大小，又有方向，且遵循特定合成规则”的量。</strong></p>
+<ul>
+<li><strong>现实需求</strong>：力、位移、速度这些量，不能简单地用标量加减。比如，两个力的合成，效果遵循的是平行四边形法则，而不是大小直接相加。</li>
+<li><strong>数学抽象</strong>：我们把这类量统一抽象为一个新的数学对象——<strong>向量</strong>。在几何上，它被直观地表示为一个有向线段（箭头）。</li>
+<li><strong>关键结论</strong>：向量的运算规则（平行四边形加法、缩放），<strong>其底层逻辑是自然界固有的物理法则，是被数学家“发现”并加以精确“描述”的，而不是随意“发明”的游戏。</strong></li>
+</ul>
+<hr>
+<h3 id="2-“线性”与“空间”的公理"><a href="#2-“线性”与“空间”的公理" class="headerlink" title="2.“线性”与“空间”的公理"></a>2.“线性”与“空间”的公理</h3><p><strong>核心思想：提炼出“线性”这个核心规则，并定义出“向量”能够合法活动的舞台——“线性空间”。</strong></p>
+<p><strong>1. “线性”的精确定义</strong><br>这是整个学科最核心的“游戏规则”，它要求所有合法的操作必须同时满足两条铁律：</p>
+<ul>
+<li><strong>可加性</strong>：<script type="math/tex">T(u+v) = T(u) + T(v)</script></li>
+<li><strong>齐次性（比例性）</strong>：<script type="math/tex">T(k*v) = k * T(v)</script></li>
+</ul>
+<p><strong>2. “空间”的公理化定义</strong><br>线性空间，是为向量构建的一个“封闭小区”。它不是一个随意点的集合，而是<strong>向量的集合</strong>。这个集合必须对向量的两种核心运算保持“封闭”：</p>
+<ul>
+<li><strong>核心元素</strong>：向量本身，就是这个代数系统里的“元素”。</li>
+<li><strong>核心运算</strong>：<ul>
+<li><strong>加法</strong>（向量与向量）：规则源于物理事实（如平行四边形法则）。</li>
+<li><strong>数乘</strong>（实数与向量）：规则源于对“缩放”的直观。</li>
+</ul>
+</li>
+<li><strong>公理检验</strong>：一个集合，配上这两种运算，如果能满足8条公理（保证了加法构成交换群，且数乘与加法和谐统一），它就是一个合法的<strong>线性空间</strong>。空间里的任何成员，都叫<strong>向量</strong>。</li>
+<li><strong>重要区分</strong>：点，只是我们用坐标去“可视化”向量终点时，得到的一个辅助形象。空间的本质是向量的集合，不是点的集合。</li>
+</ul>
+<hr>
+<h3 id="3-线代的本质"><a href="#3-线代的本质" class="headerlink" title="3.线代的本质"></a>3.线代的本质</h3><p><strong>核心思想：在公理的基础上，线性代数主要研究两件事：空间自身的结构，以及空间之间的合法映射。</strong></p>
+<p><strong>1. 研究空间本身的结构</strong></p>
+<ul>
+<li><strong>核心问题</strong>：这个空间到底有多大？有几个“独立的方向”？</li>
+<li><strong>关键工具</strong>：<strong>基</strong>（撑起空间的最小“地基向量组”）、<strong>维数</strong>（基的向量个数）。</li>
+<li><strong>核心操作</strong>：任何一个向量，都能被“地基”（基）唯一地线性表示出来，其表示系数就是<strong>坐标</strong>。</li>
+</ul>
+<p><strong>2. 研究空间之间的“合法”映射（线性变换）</strong><br>这是线性代数的真正重头戏。一个映射 <code>T</code> 从一个空间到另一个空间，如果它严格遵守“可加性”和“齐次性”，它就是<strong>线性映射</strong>（或线性变换）。</p>
+<ul>
+<li><strong>变换的代言人</strong>：<strong>矩阵</strong>。一旦选定了空间的地基（基），任何一个线性变换，都可以被唯一地编码成一个数字表格——矩阵。</li>
+<li><strong>变换的执行</strong>：<strong>矩阵乘法</strong> <script type="math/tex">y = Ax</script>。它的本质，就是按照矩阵 <script type="math/tex">A</script> 的指令，把向量 <script type="math/tex">x</script> 变换成新向量 <script type="math/tex">y</script>。</li>
+<li><strong>变换的深入分析</strong>：于是，研究变换的性质，就变成了研究矩阵的性质：<ul>
+<li><strong>行列式</strong>：这个变换对空间造成了多大的拉伸或压缩？（体积变化率）。它是零，意味着空间被“压扁”了。</li>
+<li><strong>特征值与特征向量</strong>：在这个变换下，哪些“天选之子”（向量）只被拉伸/缩短，而方向完全不变？它们揭示了变换的本质和内在骨架。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-贯穿始终的哲学视角"><a href="#4-贯穿始终的哲学视角" class="headerlink" title="4.贯穿始终的哲学视角"></a>4.贯穿始终的哲学视角</h3><p><strong>核心思想：线性代数，本质上就是一门关于“线性空间”和“线性映射”的学科。</strong></p>
+<ul>
+<li><strong>代数系统的观点</strong>：整个知识体系，可以被看作一个层层递进的代数系统。<ul>
+<li><strong>底层</strong>：<script type="math/tex">(V, +)</script> 是一个阿贝尔群（交换群），保证了加法的良好性质。</li>
+<li><strong>顶层</strong>：在群的基础上，再叠加“数乘”运算，并通过公理将它与加法绑定，最终构成了更丰富的<strong>线性空间</strong>结构。</li>
+</ul>
+</li>
+<li><strong>数学的“通用语言”</strong>：向量的概念，远超几何箭头。所有满足公理的东西，比如“全体连续函数”，都是线性空间里的向量。线性代数为所有遵守“线性规则”的系统，提供了统一的描述语言和计算工具。</li>
+</ul>
+<h2 id="二-关于张成和基"><a href="#二-关于张成和基" class="headerlink" title="二.关于张成和基"></a>二.关于张成和基</h2><h3 id="1-把“张成”看作一个“生成器”"><a href="#1-把“张成”看作一个“生成器”" class="headerlink" title="1.把“张成”看作一个“生成器”"></a>1.把“张成”看作一个“生成器”</h3><p>当我们说“向量组 <script type="math/tex">S</script> （生成向量）的张成空间”时，我们其实是在做一件很具体的事：</p>
+<ol>
+<li><strong>原材料</strong>：你手里有一组向量 <script type="math/tex">S</script>。</li>
+<li><strong>合法操作</strong>：你被允许无限次地使用两种操作——向量加法、向量数乘。</li>
+<li><strong>生产结果</strong>：你穷尽所有可能的操作组合，会生产出一大堆新的向量。</li>
+</ol>
+<p><strong>“张成空间”就是你最终生产出来的这“一大堆新向量”的集合。</strong></p>
+<p>这个过程，和我们之前定义“空间”的逻辑是完全一样的：一个集合，配上加法和数乘运算，并且对这两种运算<strong>封闭</strong>。张成空间，天然就是封闭的。因为你是用加法和数乘生产出来的所有向量，你在这个集合里再做加法和数乘，结果当然还在这个集合里。</p>
+<h3 id="2-基是一种特殊的生成向量"><a href="#2-基是一种特殊的生成向量" class="headerlink" title="2.基是一种特殊的生成向量"></a>2.基是一种特殊的生成向量</h3><p>基必须是<strong>线性无关</strong>的。</p>
+<p>如果我们允许基里有冗余向量，那<strong>坐标系就崩溃了</strong>。</p>
+<p>线性无关，就是为了强行保证一件事：</p>
+<blockquote>
+<p><strong>空间里的任何一个向量，都能被基向量唯一地表示出来。</strong></p>
+</blockquote>
+<ul>
+<li><strong>有冗余（线性相关）</strong>：同一个点，可以对应无数种坐标表达。描述失去唯一性。</li>
+<li><strong>无冗余（线性无关）</strong>：一个点，有且只有一种方式，被拆解成基向量的加法组合。这组系数，就是你唯一的<strong>坐标</strong>。</li>
+</ul>
+<p>所以，基必须同时满足两个条件，缺一个都不行：</p>
+<ol>
+<li><strong>能盖满（张成整个空间）</strong>：保证地基够大，没漏掉任何点。</li>
+<li><strong>没闲人（线性无关）</strong>：保证地基最省，没任何多余向量，每个点只有一种搭法。</li>
+</ol>
+<p><strong>基，就是一组”刚好够用、一个不多”的张成集。</strong></p>
+<h2 id="三-关于变换和矩阵"><a href="#三-关于变换和矩阵" class="headerlink" title="三.关于变换和矩阵"></a>三.关于变换和矩阵</h2><h3 id="1-什么是变换？"><a href="#1-什么是变换？" class="headerlink" title="1. 什么是变换？"></a>1. 什么是变换？</h3><p>在数学里，<strong>变换</strong>这个词，其实就是<strong>函数</strong>或<strong>映射</strong>的同义词，只不过它往往特指<strong>从一个空间到它自身</strong>（或另一个空间）的映射。</p>
+<p>它的输入是一个向量，输出是另一个向量。</p>
+<p>你可以把它想象成一台机器：你从空间里抓一个向量 <script type="math/tex">\mathbf{v}</script>，扔进这台机器，它“砰”地一下，给你吐出来一个新向量 <script type="math/tex">\mathbf{w}</script>。</p>
+<p>我们把这种关系写作：</p>
+<script type="math/tex; mode=display">
+T: V \to W, \quad \mathbf{v} \mapsto T(\mathbf{v})</script><p>如果输入和输出在同一个空间 <script type="math/tex">V \to V\</script>，我们通常就直呼其为<strong>变换</strong>。</p>
+<hr>
+<h3 id="2-什么是“线性”变换？"><a href="#2-什么是“线性”变换？" class="headerlink" title="2. 什么是“线性”变换？"></a>2. 什么是“线性”变换？</h3><p>普通的变换可以很疯狂。它可以把你平整的网格线，扭成麻花，或者让原点飞到别处去。但<strong>线性变换</strong>是其中一种非常“守规矩”的变换。它必须严格遵守你早已熟知的<strong>两条铁律</strong>：</p>
+<ol>
+<li><strong>可加性</strong>：<script type="math/tex">T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})</script></li>
+<li><strong>齐次性</strong>：<script type="math/tex">T(k \cdot \mathbf{v}) = k \cdot T(\mathbf{v})</script></li>
+</ol>
+<p>这带来了一个极其深刻的几何特征，这也是你在3b1b视频里看到的：</p>
+<blockquote>
+<p><strong>线性变换保持“网格线平行且等距分布”，并且原点必须保持不动。</strong></p>
+</blockquote>
+<ul>
+<li><strong>原点不动</strong>：因为 <script type="math/tex">T(\mathbf{0}) = T(0 \cdot \mathbf{v}) = 0 \cdot T(\mathbf{v}) = \mathbf{0}</script>。</li>
+<li><strong>直线仍是直线</strong>：不会把直线变弯。</li>
+<li><strong>平行线保持平行</strong>。</li>
+</ul>
+<p><strong>旋转、拉伸、剪切、投影、镜像</strong>，这些都是线性变换。<strong>平移</strong>（除非加上升维的齐次坐标技巧）不是线性变换，因为它会移动原点。</p>
+<hr>
+<h3 id="3-为什么偏偏用矩阵来刻画线性变换？"><a href="#3-为什么偏偏用矩阵来刻画线性变换？" class="headerlink" title="3. 为什么偏偏用矩阵来刻画线性变换？"></a>3. 为什么偏偏用矩阵来刻画线性变换？</h3><p>这是线性代数最具魔法色彩的一步。答案是：</p>
+<p><strong>因为一旦你选定了空间的一组“基”，任何一个线性变换，都可以被唯一地、完全地编码成一个矩阵。</strong></p>
+<p>我们来拆解这个魔法背后的逻辑：</p>
+<h4 id="第一步：一个线性变换，完全由“基向量的命运”决定"><a href="#第一步：一个线性变换，完全由“基向量的命运”决定" class="headerlink" title="第一步：一个线性变换，完全由“基向量的命运”决定"></a>第一步：一个线性变换，完全由“基向量的命运”决定</h4><p>假设你有一个线性变换 <script type="math/tex">T</script>，要把二维空间映射到二维空间。现在空间里有一组基，比如我们熟悉的  <script type="math/tex">\mathbf{i} = (1,0)，\mathbf{j} = (0,1)</script>。</p>
+<p>现在，空间里的任何一个向量 <script type="math/tex">\mathbf{v} = (x, y)</script>，都可以写成基的线性组合：</p>
+<script type="math/tex; mode=display">
+\mathbf{v} = x\mathbf{i} + y\mathbf{j}</script><p>那么，看好了：</p>
+<script type="math/tex; mode=display">
+T(\mathbf{v}) = T(x\mathbf{i} + y\mathbf{j})</script><p>根据<strong>线性变换的铁律</strong>，它可以“拆”开来：</p>
+<script type="math/tex; mode=display">
+T(\mathbf{v}) = x \cdot T(\mathbf{i}) + y \cdot T(\mathbf{j})</script><p>你看，我们根本不需要知道 <script type="math/tex">T</script> 对每个向量的效果。<strong>只要我知道 <script type="math/tex">T</script> 把两个基向量 <script type="math/tex">\mathbf{i}, \mathbf{j}</script> 变成了什么，我就知道了 <script type="math/tex">T</script> 对空间里所有向量的效果！</strong></p>
+<p>基向量的“命运”，决定了一切向量的命运。</p>
+<h4 id="第二步：把基向量的“命运坐标”按列排好，就是矩阵"><a href="#第二步：把基向量的“命运坐标”按列排好，就是矩阵" class="headerlink" title="第二步：把基向量的“命运坐标”按列排好，就是矩阵"></a>第二步：把基向量的“命运坐标”按列排好，就是矩阵</h4><p>假设在标准基下：</p>
+<ul>
+<li><script type="math/tex">T(\mathbf{i})</script> 被变到了 <script type="math/tex">(a, c)</script>。</li>
+<li><script type="math/tex">T(\mathbf{j})</script> 被变到了 <script type="math/tex">(b, d)</script>。</li>
+</ul>
+<p>那么，刚才的公式就变成了：</p>
+<script type="math/tex; mode=display">
+T(\mathbf{v}) = x \begin{pmatrix} a \\ c \end{pmatrix} + y \begin{pmatrix} b \\ d \end{pmatrix} = \begin{pmatrix} ax + by \\ cx + dy \end{pmatrix}</script><p>而矩阵乘法，恰好就是：</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = x \begin{pmatrix} a \\ c \end{pmatrix} + y \begin{pmatrix} b \\ d \end{pmatrix}</script><p>所以，我们把 <script type="math/tex">T(\mathbf{i})</script> 和 <script type="math/tex">T(\mathbf{j})</script> 的坐标，作为<strong>列</strong>，塞进一个矩阵里：</p>
+<script type="math/tex; mode=display">
+A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}</script><p>这个矩阵 <script type="math/tex">A</script>，就是线性变换 <script type="math/tex">T</script> 在基 <script type="math/tex">\{\mathbf{i}, \mathbf{j}\}</script> 下的唯一化身。</p>
+<h3 id="4-为什么是矩阵左乘向量？"><a href="#4-为什么是矩阵左乘向量？" class="headerlink" title="4.为什么是矩阵左乘向量？"></a>4.为什么是矩阵<strong>左乘</strong>向量？</h3><h4 id="根源：我们选择了“向量是列向量”"><a href="#根源：我们选择了“向量是列向量”" class="headerlink" title="根源：我们选择了“向量是列向量”"></a>根源：我们选择了“向量是列向量”</h4><p>在开始之前，我们有一个最底层的约定：在纸上写一个向量时，我们把它写成一个<strong>竖着的列</strong>：</p>
+<script type="math/tex; mode=display">
+\mathbf{v} = \begin{pmatrix} x \\ y \end{pmatrix}</script><p>这是习惯。行向量和列向量在数学上互为转置，但选定一种，后面的符号系统就必须统一。</p>
+<h4 id="核心：矩阵的列，就是“基向量的命运”"><a href="#核心：矩阵的列，就是“基向量的命运”" class="headerlink" title="核心：矩阵的列，就是“基向量的命运”"></a>核心：矩阵的列，就是“基向量的命运”</h4><p>你还记得矩阵是怎么被造出来的吗？</p>
+<p>我们有一组原基（比如标准基 <script type="math/tex">\mathbf{i}, \mathbf{j}</script>）。一个线性变换 <script type="math/tex">T</script>，分别把 <script type="math/tex">\mathbf{i}</script> 和 <script type="math/tex">\mathbf{j}</script> 映射到了新向量。<br>我们把这两个新向量的坐标，作为<strong>列</strong>，塞进矩阵里：</p>
+<script type="math/tex; mode=display">
+A = \begin{pmatrix} T(\mathbf{i}) & T(\mathbf{j}) \end{pmatrix}</script><p>如果我们约定向量是<strong>列向量</strong>，那么矩阵自然地就长成了这个样子。</p>
+<h4 id="推导：左乘，是“列向量的线性组合”"><a href="#推导：左乘，是“列向量的线性组合”" class="headerlink" title="推导：左乘，是“列向量的线性组合”"></a>推导：左乘，是“列向量的线性组合”</h4><p>现在，我有一个旧向量 <script type="math/tex">\mathbf{v} = \begin{pmatrix} x \\ y \end{pmatrix}</script>。</p>
+<p>根据向量的坐标定义，它原本就是基的线性组合：</p>
+<script type="math/tex; mode=display">
+\mathbf{v}_{\text{旧}} = x \cdot \mathbf{i} + y \cdot \mathbf{j}</script><p>因为 <script type="math/tex">T</script> 是线性的，它在 <script type="math/tex">\mathbf{v}</script> 上的效果，必定是：</p>
+<script type="math/tex; mode=display">
+T(\mathbf{v}) = x \cdot T(\mathbf{i}) + y \cdot T(\mathbf{j})</script><p>翻译成代数语言：</p>
+<ul>
+<li><script type="math/tex">T(\mathbf{i})</script> 是矩阵的<strong>第一列</strong>，记为 <script type="math/tex">\mathbf{col}_1</script>。</li>
+<li><script type="math/tex">T(\mathbf{j})</script> 是矩阵的<strong>第二列</strong>，记为 <script type="math/tex">\mathbf{col}_2</script>。</li>
+</ul>
+<p>那么：</p>
+<script type="math/tex; mode=display">
+T(\mathbf{v}) = x \cdot \mathbf{col}_1 + y \cdot \mathbf{col}_2</script><p>现在，你想用一个简洁的符号来表达“矩阵 <script type="math/tex">A</script> 作用于向量 <script type="math/tex">\mathbf{v}</script>”这个动作。</p>
+<p>你观察上面这个表达式。它长什么样？它就是<strong>矩阵的列，用向量 <script type="math/tex">\mathbf{v}</script> 的分量作为权重，进行线性组合</strong>。</p>
+<p>什么样的乘法能产生这个效果？</p>
+<p><strong>矩阵 <script type="math/tex">A</script> 左乘列向量 <script type="math/tex">\mathbf{v}</script></strong>：</p>
+<script type="math/tex; mode=display">
+A\mathbf{v} = \begin{pmatrix} \text{col}_1 & \text{col}_2 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = x \cdot \text{col}_1 + y \cdot \text{col}_2</script><p>这个乘法规则，恰好完美地实现了“用向量的坐标去组合矩阵的列”。这是一个天作之合。</p>
+<h2 id="四-关于复合线性变换和矩阵乘法"><a href="#四-关于复合线性变换和矩阵乘法" class="headerlink" title="四.关于复合线性变换和矩阵乘法"></a>四.关于复合线性变换和矩阵乘法</h2><h3 id="1-变换对应矩阵"><a href="#1-变换对应矩阵" class="headerlink" title="1. 变换对应矩阵"></a>1. 变换对应矩阵</h3><p>我们已经知道，在选定一组基之后：</p>
+<ul>
+<li><strong>每一个线性变换 <script type="math/tex">T</script>，都唯一对应一个矩阵 <script type="math/tex">A</script>。</strong></li>
+<li><strong>对向量施加变换 <script type="math/tex">T(\mathbf{v})</script>，代数上就是矩阵左乘向量 <script type="math/tex">A\mathbf{v}</script>。</strong></li>
+</ul>
+<p>现在，我们有<strong>两个</strong>变换：</p>
+<ul>
+<li>变换 <script type="math/tex">T</script>：对应矩阵 <script type="math/tex">A</script>。</li>
+<li>变换 <script type="math/tex">S</script>：对应矩阵 <script type="math/tex">B</script>。</li>
+</ul>
+<hr>
+<h3 id="2-什么是“复合变换”？"><a href="#2-什么是“复合变换”？" class="headerlink" title="2. 什么是“复合变换”？"></a>2. 什么是“复合变换”？</h3><p>“复合”的意思，就是把两个动作连起来做：先做一个，再做一个。</p>
+<p>比如：</p>
+<ul>
+<li><strong>第一步</strong>：先对向量 <script type="math/tex">\mathbf{v}</script> 施加变换 <script type="math/tex">T</script>，得到中间结果 <script type="math/tex">\mathbf{u} = T(\mathbf{v})</script>。</li>
+<li><strong>第二步</strong>：再对中间结果 <script type="math/tex">\mathbf{u}</script> 施加变换 <script type="math/tex">S</script>，得到最终结果 <script type="math/tex">\mathbf{w} = S(\mathbf{u})</script>。</li>
+</ul>
+<p>这个“两步并一步”的新变换，就叫做 <strong><script type="math/tex">S</script> 和 <script type="math/tex">T</script> 的复合</strong>，记作 <script type="math/tex">S \circ T</script>：</p>
+<script type="math/tex; mode=display">
+(S \circ T)(\mathbf{v}) = S(T(\mathbf{v}))</script><p>现在问题是：<strong>这个复合变换 <script type="math/tex">S \circ T</script>，它的矩阵是什么？</strong></p>
+<hr>
+<h3 id="3-复合变换的矩阵，就是-BA"><a href="#3-复合变换的矩阵，就是-BA" class="headerlink" title="3. 复合变换的矩阵，就是 BA"></a>3. 复合变换的矩阵，就是 <script type="math/tex">BA</script></h3><p>既然每一个变换都有矩阵，那复合变换也应该有一个矩阵，我们叫它 <script type="math/tex">C</script>。</p>
+<p>我们来看看 <script type="math/tex">C</script> 应该长什么样，才能让代数运算和几何操作完全吻合。</p>
+<p>任意一个向量 <script type="math/tex">\mathbf{v}</script>：</p>
+<ul>
+<li><strong>经过 <script type="math/tex">T</script> 变换</strong>：<script type="math/tex">T(\mathbf{v}) = A\mathbf{v}</script></li>
+<li><strong>再经过 <script type="math/tex">S</script> 变换</strong>：<script type="math/tex">S(T(\mathbf{v})) = S(A\mathbf{v}) = B(A\mathbf{v})</script></li>
+</ul>
+<p>而 <strong>矩阵乘法是满足结合律的</strong>（这是它最重要的性质之一）：</p>
+<script type="math/tex; mode=display">
+B(A\mathbf{v}) = (BA)\mathbf{v}</script><p>你看，这个复合变换 <script type="math/tex">S \circ T</script> 作用在 <script type="math/tex">\mathbf{v}</script> 上的效果，恰好等于用矩阵 <script type="math/tex">BA</script> 直接左乘 <script type="math/tex">\mathbf{v}</script>。所以，<strong>复合变换 <script type="math/tex">S \circ T</script> 的矩阵，就是 <script type="math/tex">BA</script></strong>。</p>
+<hr>
+<h3 id="4-为什么矩阵乘法要定义成“前行乘后列”？"><a href="#4-为什么矩阵乘法要定义成“前行乘后列”？" class="headerlink" title="4. 为什么矩阵乘法要定义成“前行乘后列”？"></a>4. 为什么矩阵乘法要定义成“前行乘后列”？</h3><p>你现在可以反向理解为什么矩阵乘法规则长这样了。它不是数学家心血来潮的约定，而是<strong>被“复合变换”这个几何需求逼出来的唯一结果</strong>。</p>
+<p>我们拆解一下：</p>
+<ul>
+<li><script type="math/tex">T</script> 把基向量 <script type="math/tex">\mathbf{e}_j</script> 变到哪里去了？<ul>
+<li>变到了 <script type="math/tex">A</script> 的第 <script type="math/tex">j</script> 列。</li>
+</ul>
+</li>
+<li><script type="math/tex">S \circ T</script> 这个复合变换，把基向量 <script type="math/tex">\mathbf{e}_j</script> 变到哪里去了？<ul>
+<li>第一步，<script type="math/tex">T</script> 把它变成 <script type="math/tex">A</script> 的第 <script type="math/tex">j</script> 列（记作 <script type="math/tex">\mathbf{a}_j</script>）。</li>
+<li>第二步，<script type="math/tex">S</script> 再把这个中间向量 <script type="math/tex">\mathbf{a}_j</script> 变一次。<script type="math/tex">S</script> 的矩阵是 <script type="math/tex">B</script>，所以结果就是 <script type="math/tex">B\mathbf{a}_j</script>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>也就是说，复合变换的矩阵的第 <script type="math/tex">j</script> 列，必须等于 <script type="math/tex">B</script> 乘以 <script type="math/tex">A</script> 的第 <script type="math/tex">j</script> 列。</strong></p>
+<p>而我们定义的矩阵乘法 <script type="math/tex">BA</script>，正是这样工作的。</p>
+<p><strong>所以，“前行乘后列”规则的几何意义就是：用后面的变换（<script type="math/tex">A</script>）给出中间结果，再用前面的变换（<script type="math/tex">B</script>）对这个中间结果的每一个基向量分量施加二次变换。</strong></p>
+<hr>
+<h3 id="5-一个极其重要的细节：顺序"><a href="#5-一个极其重要的细节：顺序" class="headerlink" title="5. 一个极其重要的细节：顺序"></a>5. 一个极其重要的细节：顺序</h3><p>请注意，在代数表达式 <script type="math/tex">BA</script> 中：</p>
+<ul>
+<li><strong>写在右边的矩阵 <script type="math/tex">A</script>，对应先做的变换 <script type="math/tex">T</script>。</strong></li>
+<li><strong>写在左边的矩阵 <script type="math/tex">B</script>，对应后做的变换 <script type="math/tex">S</script>。</strong></li>
+</ul>
+<p>作用向量时，是从右向左读的（就像复合函数 <script type="math/tex">f(g(x))</script> 是从里往外读一样）：</p>
+<script type="math/tex; mode=display">
+\mathbf{v} \xrightarrow{A} A\mathbf{v} \xrightarrow{B} (BA)\mathbf{v}</script><p>这也完美解释了为什么矩阵乘法<strong>不满足交换律</strong>：</p>
+<ul>
+<li><script type="math/tex">AB</script> 表示先做 <script type="math/tex">B</script> 变换，后做 <script type="math/tex">A</script> 变换。</li>
+<li><script type="math/tex">BA</script> 表示先做 <script type="math/tex">A</script> 变换，后做 <script type="math/tex">B</script> 变换。</li>
+<li>先旋转再剪切，和先剪切再旋转，结果当然不同。所以 <script type="math/tex">AB \neq BA</script> 才是常态。</li>
+</ul>
+<h2 id="五-关于行列式"><a href="#五-关于行列式" class="headerlink" title="五.关于行列式"></a>五.关于行列式</h2><p>行列式是线性代数里最容易被当成“纯计算”的东西，但如果拉回到几何视角，它其实只有一个核心画面。</p>
+<p><strong>行列式，就是一个线性变换把空间拉伸或压缩的比例因子。</strong> 它回答了：“经过这个变换后，原来单位大小的面积（或体积），现在变成了多少？”</p>
+<hr>
+<h3 id="1-几何本质：面积的缩放比"><a href="#1-几何本质：面积的缩放比" class="headerlink" title="1. 几何本质：面积的缩放比"></a>1. 几何本质：面积的缩放比</h3><p>你手里有一个线性变换 <script type="math/tex">T</script>，它的矩阵是 <script type="math/tex">A</script>。在变换之前，先看整个平面上的那个“1×1”的标准正方形（由基向量 <script type="math/tex">\mathbf{i}</script> 和 <script type="math/tex">\mathbf{j}</script> 张成）。它的面积是 1。</p>
+<p>现在，<script type="math/tex">T</script> 把这个正方形，变成了一个由新基向量 <script type="math/tex">T(\mathbf{i})</script> 和 <script type="math/tex">T(\mathbf{j})</script> 张成的<strong>平行四边形</strong>。</p>
+<p><strong>行列式 <script type="math/tex">\det(A)</script>，就是这个平行四边形的（有向）面积。</strong> 更准确地说，是新面积 ÷ 旧面积，也就是缩放因子。</p>
+<p>所以：</p>
+<ul>
+<li><script type="math/tex">\det(A) = 2</script>：空间被拉伸到原来的 2 倍面积。</li>
+<li><script type="math/tex">\det(A) = 0.5</script>：空间被压缩为一半。</li>
+<li><script type="math/tex">\det(A) = 0</script>：空间被完全压扁，面积变成零（这就是“降维打击”，后面细说）。</li>
+</ul>
+<p>扩展到三维：行列式就是单位立方体经变换后，张成的平行六面体的有向体积。</p>
+<hr>
+<h3 id="2-符号：方向"><a href="#2-符号：方向" class="headerlink" title="2. 符号：方向"></a>2. 符号：方向</h3><p>行列式可以为负。负号不代表面积是负的，而是代表<strong>空间发生了翻转</strong>。</p>
+<p>想象原来的平面，从 <script type="math/tex">\mathbf{i}</script> 轴逆时针转到 <script type="math/tex">\mathbf{j}</script> 轴是正向。变换后，如果你必须<strong>顺时针</strong>才能从新 <script type="math/tex">\mathbf{i}</script> 转到新 <script type="math/tex">\mathbf{j}</script>，那这个变换就把空间翻转了，行列式就是负的。</p>
+<p>在三维里，负号代表左手系变右手系（或反过来），也就是镜像翻转。</p>
+<hr>
+<h3 id="3-降维打击"><a href="#3-降维打击" class="headerlink" title="3.降维打击"></a>3.降维打击</h3><p>这是行列式最重要的一个特殊值。</p>
+<p>当 <script type="math/tex">\det(A) = 0</script> 时，意味着那个平行四边形被压扁成了一条线段，甚至一个点。换句话说，原来的二维空间，被这个变换<strong>压缩到了一个一维或零维的空间里</strong>。</p>
+<p>这对应的就是“线性相关”。基向量变换后不再能撑起一个二维空间，它们被拍平了。所以，<strong>行列式为零 ⇔ 空间被降维 ⇔ 矩阵不可逆</strong>。因为一旦降维，你就丢失了信息，再也回不去了。</p>
+<hr>
+<h3 id="4-乘法性质：复合变换的缩放因子"><a href="#4-乘法性质：复合变换的缩放因子" class="headerlink" title="4. 乘法性质：复合变换的缩放因子"></a>4. 乘法性质：复合变换的缩放因子</h3><p>行列式最美妙的性质：<script type="math/tex">\det(AB) = \det(A)\det(B)</script>。</p>
+<p>它的几何意义非常直白：</p>
+<ul>
+<li>复合变换的缩放因子 = 各个变换缩放因子的乘积。</li>
+</ul>
+<p>先做变换 <script type="math/tex">T</script>，空间缩放比例是 <script type="math/tex">\det(T)</script>；再做变换 <script type="math/tex">S</script>，缩放比例是 <script type="math/tex">\det(S)</script>。复合起来，净缩放比例自然就是 <script type="math/tex">\det(T) \times \det(S)</script>。</p>
+<p>所以，这个乘法性质本质上就是“缩放比例的链式反应”，一点都不神秘。</p>
+<h2 id="六-关于线性方程组"><a href="#六-关于线性方程组" class="headerlink" title="六.关于线性方程组"></a>六.关于线性方程组</h2><h3 id="1-为什么必须引入线性方程组？"><a href="#1-为什么必须引入线性方程组？" class="headerlink" title="1.为什么必须引入线性方程组？"></a>1.为什么必须引入线性方程组？</h3><p>前面几节，我们一直都在做“正向”的事：给定一个向量 <script type="math/tex">\mathbf{x}</script>，用一个变换 <script type="math/tex">A</script> 把它变成新向量 <script type="math/tex">\mathbf{b}</script>：</p>
+<script type="math/tex; mode=display">
+\mathbf{b} = A\mathbf{x}</script><p>这就是矩阵乘法的几何意义。</p>
+<p>但真实世界里，绝大部分问题都是<strong>逆向的</strong>：</p>
+<ul>
+<li>我知道最终要达到的状态（<script type="math/tex">\mathbf{b}</script>），也知道变换的规则（<script type="math/tex">A</script>），但我不知道初始条件是什么（<script type="math/tex">\mathbf{x}</script>）。</li>
+<li>比如：我知道电路最终各点的电压（<script type="math/tex">\mathbf{b}</script>），知道电路元件的关系（<script type="math/tex">A</script>），求初始电流分布（<script type="math/tex">\mathbf{x}</script>）。</li>
+</ul>
+<p>这个逆向问题写成代数表达式，就是我们再熟悉不过的<strong>线性方程组</strong>：</p>
+<script type="math/tex; mode=display">
+A\mathbf{x} = \mathbf{b}</script><p>所以，3b1b 在这里引入线性方程组，恰恰是为了用前面建立的<strong>几何直觉</strong>，去照亮这个你高中就见过、但可能没理解透的东西。他不是在讲新东西，而是在用“变换”的语言重新翻译“解方程”这件事。</p>
+<h3 id="2-逆矩阵——什么时候有唯一解？"><a href="#2-逆矩阵——什么时候有唯一解？" class="headerlink" title="2. 逆矩阵——什么时候有唯一解？"></a>2. 逆矩阵——什么时候有唯一解？</h3><p>如果变换 <script type="math/tex">A</script> 没有把空间“压扁”（行列式 <script type="math/tex">\neq 0</script>），那么这个变换是可逆的。几何上，它就是一个“不丢失信息”的变换，你可以把每个输出向量 <script type="math/tex">\mathbf{b}</script>，唯一地追溯到它的输入 <script type="math/tex">\mathbf{x}</script>。</p>
+<p>这个追溯的动作，就是<strong>逆变换</strong> <script type="math/tex">A^{-1}</script>。它对应的矩阵，就是逆矩阵。</p>
+<p>于是方程的解就是：</p>
+<script type="math/tex; mode=display">
+\mathbf{x} = A^{-1}\mathbf{b}</script><p>几何意义：把 <script type="math/tex">\mathbf{b}</script> 沿着变换 <script type="math/tex">A</script> 的“来路”，原样倒回去。</p>
+<h3 id="3-列空间——对任意-mathbf-b-都有解吗？"><a href="#3-列空间——对任意-mathbf-b-都有解吗？" class="headerlink" title="3. 列空间——对任意  \mathbf{b}  都有解吗？"></a>3. 列空间——对任意  <script type="math/tex">\mathbf{b}</script>  都有解吗？</h3><p>当 <script type="math/tex">\mathbf{b}</script> 变化时，<script type="math/tex">A\mathbf{x} = \mathbf{b}</script> 有没有解，取决于 <script type="math/tex">\mathbf{b}</script> 是不是在变换 <script type="math/tex">A</script> 的“射程”内。</p>
+<p>而我们已经知道：矩阵 <script type="math/tex">A</script> 把整个输入空间变换为它的<strong>列空间</strong>（由矩阵的列向量张成的空间）。所以：</p>
+<ul>
+<li><strong>有解</strong> ⇔ <script type="math/tex">\mathbf{b}</script> 位于 <script type="math/tex">A</script> 的列空间中。</li>
+<li><strong>无解</strong> ⇔ <script type="math/tex">\mathbf{b}</script> 不在列空间内（它被变换漏过去了，根本变不出它）。</li>
+</ul>
+<p>因此，列空间就是<strong>所有可能的输出结果的集合</strong>。它回答了“对什么样的 <script type="math/tex">\mathbf{b}</script>，这个方程有解”。</p>
+<h3 id="4-零空间（核）——当解不唯一时，解长什么样？"><a href="#4-零空间（核）——当解不唯一时，解长什么样？" class="headerlink" title="4. 零空间（核）——当解不唯一时，解长什么样？"></a>4. 零空间（核）——当解不唯一时，解长什么样？</h3><p>如果变换 <script type="math/tex">A</script> 把空间压扁了（行列式 <script type="math/tex">=0</script>，不可逆），那么有可能出现：多个不同的 <script type="math/tex">\mathbf{x}</script>，经过 <script type="math/tex">A</script> 后变成同一个 <script type="math/tex">\mathbf{b}</script>。解就不唯一了。</p>
+<p>但有一个特殊情形是研究关键：<strong>哪个 <script type="math/tex">\mathbf{x}</script> 会被变成零向量？</strong></p>
+<p>所有满足 <script type="math/tex">A\mathbf{x} = \mathbf{0}</script> 的向量 <script type="math/tex">\mathbf{x}</script>，构成的集合就是<strong>零空间</strong>（也叫核）。</p>
+<p>零空间的几何意义：<strong>完全被变换 <script type="math/tex">A</script> “压缩掉”的方向</strong>。如果零空间里不只有零向量，说明变换 <script type="math/tex">A</script> 把某些非零向量直接“拍扁”到了原点。</p>
+<p>那么，当你有 <script type="math/tex">A\mathbf{x} = \mathbf{b}</script> 的一个特解 <script type="math/tex">\mathbf{x}_p</script> 时，把它加上零空间里的任何向量，结果还是 <script type="math/tex">A</script> 变成 <script type="math/tex">\mathbf{b}</script>（因为加上的部分会被压为零）。所以<strong>通解 = 特解 + 零空间</strong>。</p>
+<h3 id="5-秩"><a href="#5-秩" class="headerlink" title="5.秩"></a>5.秩</h3><p>你已经知道：</p>
+<ul>
+<li><strong>列空间</strong>：是矩阵所有列向量张成的空间，也就是变换后你还能“够到”的区域。</li>
+<li><strong>维数</strong>：是这个空间里，线性无关的基向量的个数。</li>
+</ul>
+<p>那么，<strong>秩，就是列空间的维数</strong>。</p>
+<p>你之前听到，零空间是被完全“压缩掉”的方向的集合。</p>
+<p>一个非常优美的定理，把秩和零空间联系了起来：</p>
+<blockquote>
+<p><strong>输入空间的维数 = 秩 + 零空间的维数</strong></p>
+</blockquote>
+<p>现在，我们可以把秩和前面学的行列式完全打通：</p>
+<ul>
+<li><strong>满秩</strong>：对于 <script type="math/tex">n \times n</script> 矩阵，如果秩 <script type="math/tex">= n</script>，说明列空间就是整个 <script type="math/tex">\mathbb{R}^n</script>，变换没有降维。<ul>
+<li>行列式 <script type="math/tex">\neq 0</script>。</li>
+<li>零空间只有零向量。</li>
+<li>矩阵可逆。</li>
+</ul>
+</li>
+<li><strong>降秩</strong>：如果秩 <script type="math/tex">< n</script>，说明空间被压扁了。<ul>
+<li>行列式 <script type="math/tex">= 0</script>。</li>
+<li>零空间里有非零向量。</li>
+<li>矩阵不可逆（信息丢了，回不去了）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>秩，就是用“输出还剩几维”这个更精细的标尺，取代了行列式“是零还是非零”的二元判断。</strong> 行列式只告诉你“扁没扁”，秩还告诉你“扁成了几维”。</p>
+<h3 id="6-行空间"><a href="#6-行空间" class="headerlink" title="6.行空间"></a>6.行空间</h3><p>似乎感觉不到行空间的几何意义？？但其实是有的。</p>
+<p>要理解行空间，我们需要先接受一个视角的转换。</p>
+<p>到目前为止，我们一直默认：</p>
+<ul>
+<li><strong>向量</strong> = 列向量（空间里的点/箭头）。</li>
+<li><strong>矩阵</strong> = 对列向量施加的变换。</li>
+</ul>
+<p>在这个设定下，矩阵的<strong>列</strong>，就是变换后的新基向量，几何意义非常直白。</p>
+<p>但<strong>行</strong>是什么？<br>如果你把行向量单独拿出来看，它们就像是“横着的向量”。它们和列向量不在同一个空间里。它们活在一个叫<strong>对偶空间</strong>的地方。</p>
+<p>不过，我们暂时不用深入“对偶空间”这个抽象概念。可以先用一个你更熟悉的视角来理解：<strong>把行向量看作“约束条件”或“线性函数”。</strong></p>
+<p>一个矩阵：</p>
+<script type="math/tex; mode=display">
+A = \begin{pmatrix} 
+— & \mathbf{r}_1 & — \\
+— & \mathbf{r}_2 & — \\
+\end{pmatrix}</script><p>它的每一行，其实都可以看作<strong>一个规则</strong>。</p>
+<p>当我们写 <script type="math/tex">A\mathbf{x} = \mathbf{b}</script> 时：</p>
+<ul>
+<li><strong>第一行</strong> <script type="math/tex">\mathbf{r}_1</script> 在说：“喂，向量 <script type="math/tex">\mathbf{x}</script>，你和我的点积，必须是 <script type="math/tex">b_1</script>。”</li>
+<li><strong>第二行</strong> <script type="math/tex">\mathbf{r}_2</script> 在说：“你和我的点积，必须是 <script type="math/tex">b_2</script>。”</li>
+</ul>
+<p>所以，<strong>每一行，就是给向量 <script type="math/tex">\mathbf{x}</script> 定下的一条规矩</strong>。</p>
+<p>那么，<strong>行空间</strong>是什么？它就是<strong>所有这些“规矩”（行向量）本身，通过线性组合，能生成的所有新规矩的集合</strong>。</p>
+<p>这有什么几何意义呢？当我们解方程组时，其实是在找一个点 <script type="math/tex">\mathbf{x}</script>，它能同时满足所有这些规矩。而行空间的结构，就决定了这些规矩里有没有“废话”，以及解的形态。</p>
+<p>回到你熟悉的零空间：<script type="math/tex">A\mathbf{x} = \mathbf{0}</script> 的所有解 <script type="math/tex">\mathbf{x}</script> 构成的集合。</p>
+<p>注意看：<script type="math/tex">A\mathbf{x} = \mathbf{0}</script> 是什么意思？<br>它是在说：<strong>矩阵的每一行，与向量 <script type="math/tex">\mathbf{x}</script> 的点积，都是 0。</strong></p>
+<p>点积为零，在几何上意味着：<strong>垂直</strong>。</p>
+<p>所以，零空间里的每一个向量 <script type="math/tex">\mathbf{x}</script>，都与 <script type="math/tex">A</script> 的所有行向量垂直。</p>
+<p>既然 <script type="math/tex">\mathbf{x}</script> 垂直于每一行，那它也必然垂直于这些行的任何线性组合——也就是<strong>垂直于整个行空间</strong>。</p>
+<p>于是我们得到了一组极其优美的关系：</p>
+<blockquote>
+<p><strong>行空间 与 零空间 互为“正交补”。</strong></p>
+</blockquote>
+<p>翻译成几何画面：</p>
+<ul>
+<li>你的输入空间（比如 <script type="math/tex">\mathbb{R}^3</script>），被<strong>劈成了两个互相垂直的子空间</strong>。</li>
+<li>一个是<strong>行空间</strong>：由所有“规矩”张成的空间。</li>
+<li>一个是<strong>零空间</strong>：由所有“满足所有规矩（点积为零）”的解张成的空间。</li>
+</ul>
+<p>它们两个拼在一起，刚好覆盖整个输入空间。而且，<strong>行空间的维数 + 零空间的维数 = 输入空间的总维数 <script type="math/tex">n</script></strong>。</p>
+<p>你还记得之前说的 <strong>秩 = 列空间的维数</strong> 吗？<br>而有一个定理说：列秩 = 行秩。所以：</p>
+<script type="math/tex; mode=display">
+\text{秩} = \dim(\text{行空间})</script><p>代回刚才的公式：</p>
+<script type="math/tex; mode=display">
+n = \text{秩} + \dim(\text{零空间})</script><p>这正是我们之前学过的那个核心公式。现在你看到了它在几何上的“另一半”解释：<strong>秩，也是行空间的维数，它代表了“有效规矩”的数量；零空间，是那些被这些规矩“判定为合格（点积为零）”的方向。</strong></p>
+<h3 id="7-方阵和非方阵"><a href="#7-方阵和非方阵" class="headerlink" title="7.方阵和非方阵"></a>7.方阵和非方阵</h3><p><strong>一个 <script type="math/tex">m \times n</script> 的矩阵，代表一个从 <script type="math/tex">\mathbb{R}^n</script> 到 <script type="math/tex">\mathbb{R}^m</script> 的线性变换。</strong></p>
+<p>我们可以把矩阵的尺寸拆成两个数字来看：</p>
+<ul>
+<li><p><strong>列数 <script type="math/tex">n</script>：是输入空间的维数</strong><br>它告诉你，这个变换要吃几个数。或者说，原始向量 <script type="math/tex">\mathbf{x}</script> 里有多少个独立分量。从计算上看，矩阵乘以向量，必须要求向量的分量数等于矩阵的列数，才能做“前行乘后列”的点积。</p>
+</li>
+<li><p><strong>行数 <script type="math/tex">m</script>：是输出空间的维数</strong><br>它告诉你，这个变换会吐出一个几维的向量。也就是变换后的结果 <script type="math/tex">\mathbf{b}</script>，它生活在几维空间里。</p>
+</li>
+</ul>
+<p>方阵：<script type="math/tex">n \times n</script> 矩阵</p>
+<ul>
+<li><strong>变换类型</strong>：<script type="math/tex">\mathbb{R}^n \to \mathbb{R}^n</script></li>
+<li><strong>几何意义</strong>：输入和输出在<strong>同一个空间</strong>里。这是你之前学到的所有旋转、拉伸、剪切、降维。你可以讨论行列式、逆矩阵、特征值，因为变换前后的空间维度一致。</li>
+</ul>
+<p>非方阵：<script type="math/tex">m \times n</script> 矩阵（<script type="math/tex">m \neq n</script>）</p>
+<p>非方阵代表<strong>跨维度的变换</strong>。</p>
+<p><strong>情况一：<script type="math/tex">m > n</script> （行多列少，矩阵是“瘦高”的）</strong></p>
+<ul>
+<li><strong>变换类型</strong>：<script type="math/tex">\mathbb{R}^n \to \mathbb{R}^m</script></li>
+<li><strong>例子</strong>：一个 <script type="math/tex">3 \times 2</script> 矩阵，把二维向量映射成三维向量。</li>
+<li><strong>几何直觉</strong>：你把一张二维的纸（平面），<strong>嵌入</strong>到了一个三维的空间里。纸仍然是二维的，但它现在在三维世界里弯曲、伸展。它的列空间是三维空间里的一个二维平面。信息没有增多，只是被放进了更高维的背景里。</li>
+</ul>
+<p><strong>情况二：<script type="math/tex">m < n</script> （行少列多，矩阵是“矮胖”的）</strong></p>
+<ul>
+<li><strong>变换类型</strong>：<script type="math/tex">\mathbb{R}^n \to \mathbb{R}^m</script></li>
+<li><strong>例子</strong>：一个 <script type="math/tex">2 \times 3</script> 矩阵，把三维向量映射成二维向量。</li>
+<li><strong>几何直觉</strong>：你把一个三维的物体，<strong>压扁</strong>成了一张二维的影子。信息丢失了，零空间里一定有非零向量（那些被你压扁掉的方向）。</li>
+</ul>
+<p><strong>高维到低维的线性变换，一定会把某些非零方向压扁到零，导致信息不可恢复，从而必定不可逆。</strong></p>
+<h2 id="七-点积、叉积与对偶性"><a href="#七-点积、叉积与对偶性" class="headerlink" title="七.点积、叉积与对偶性"></a>七.点积、叉积与对偶性</h2><p>感觉这是最难的一节。</p>
+<h3 id="1-为什么有点积？"><a href="#1-为什么有点积？" class="headerlink" title="1.为什么有点积？"></a>1.为什么有点积？</h3><p><strong>点积的“计算形式”（<script type="math/tex">x_1x_2 + y_1y_2</script>）确实是人定义的，但它背后所描述的“投影长度相乘”这个几何事实，是自然界固有的。</strong></p>
+<p>想象你是一个只学过“线性变换”的数学家。你已经会用矩阵做拉伸、旋转、剪切了，但有一个巨大的空白：<strong>你无法谈论“长度”和“角度”。</strong></p>
+<p>没有长度和角度，空间就只是一个可以变形、但毫无“刚性”的橡皮膜。你不知道两个向量什么时候“垂直”，不知道力的大小怎么算，不知道光线反射的规律。</p>
+<p>于是，你决定<strong>引入一种运算，给空间赋予“度量”</strong>。</p>
+<p>这个运算必须能定义两件事：</p>
+<ul>
+<li>一个向量自己的长度（模）。</li>
+<li>两个向量之间的夹角（或垂直）。</li>
+</ul>
+<p>你开始提要求。假设我们把这个新运算记作 <script type="math/tex">\mathbf{u} \cdot \mathbf{v}</script>，它吃掉两个向量，吐出一个数。</p>
+<p>为了让这个数能代表“投影长度相乘”，它必须满足：</p>
+<p><strong>条件一：和自己运算，等于长度的平方</strong></p>
+<script type="math/tex; mode=display">\mathbf{v} \cdot \mathbf{v} = |\mathbf{v}|^2</script><p><strong>条件二：和另一个向量运算，等于长度乘投影</strong></p>
+<script type="math/tex; mode=display">\mathbf{u} \cdot \mathbf{v} = |\mathbf{u}| \cdot \text{v在u上的投影长度}</script><p>由三角学，这就是 <script type="math/tex">|\mathbf{u}| |\mathbf{v}| \cos\theta</script>。</p>
+<p><strong>条件三：必须是一个“双线性型”</strong><br>为了让这个运算能和我们已建立的“线性变换”体系兼容，它必须对两个输入都满足线性（可加性、齐次性）。否则，你就没法用矩阵来操作它。</p>
+<p>现在，我们把这个新运算放进我们最熟悉的坐标系里。</p>
+<p>假设两个向量：</p>
+<script type="math/tex; mode=display">\mathbf{u} = (a, b)，\mathbf{v} = (c, d)</script><p>它们都可以写成基向量的组合：</p>
+<script type="math/tex; mode=display">\mathbf{u} = a\mathbf{i} + b\mathbf{j}</script><script type="math/tex; mode=display">\mathbf{v} = c\mathbf{i} + d\mathbf{j}</script><p>因为我们必须要求这个运算是<strong>双线性的</strong>（对两个输入都可加、可数乘），我们可以把它展开：</p>
+<script type="math/tex; mode=display">
+\mathbf{u} \cdot \mathbf{v} = (a\mathbf{i} + b\mathbf{j}) \cdot (c\mathbf{i} + d\mathbf{j})
+= ac(\mathbf{i} \cdot \mathbf{i}) + ad(\mathbf{i} \cdot \mathbf{j}) + bc(\mathbf{j} \cdot \mathbf{i}) + bd(\mathbf{j} \cdot \mathbf{j})</script><p>现在，我们只需要定义基向量之间的点积。</p>
+<p>根据我们想要的效果：</p>
+<ul>
+<li><script type="math/tex; mode=display">\mathbf{i} 和 \mathbf{j} 互相垂直 → \mathbf{i} \cdot \mathbf{j} = 0</script></li>
+<li><script type="math/tex; mode=display">\mathbf{i} 和 \mathbf{j} 自己的长度都是 1 → \mathbf{i} \cdot \mathbf{i} = 1，\mathbf{j} \cdot \mathbf{j} = 1</script></li>
+</ul>
+<p>把这些代入，结果瞬间简化成：</p>
+<script type="math/tex; mode=display">
+\mathbf{u} \cdot \mathbf{v} = ac + bd</script><p><strong>你看，<script type="math/tex">x_1y_1 + x_2y_2</script> 这个公式，不是凭空拍脑袋写的。它是“双线性”这个结构要求，加上“标准基是正交单位基”这个几何事实，所共同逼出来的唯一结果。</strong></p>
+<p>最后，回到你最深层的困惑：为什么会有这个运算？</p>
+<p>因为<strong>“投影”是自然界真实存在的物理量。</strong></p>
+<p>力做的功，就是力向量在位移向量上的投影乘以位移长度。<br>光照射一个面，有效光通量取决于光向量和面法向量夹角的余弦。</p>
+<p>这些物理事实，不依赖任何数学定义。我们只是<strong>发明了一个叫“点积”的公式，去忠实地计算这个早就存在的物理量。</strong></p>
+<h3 id="2-点积的几何意义"><a href="#2-点积的几何意义" class="headerlink" title="2.点积的几何意义"></a>2.点积的几何意义</h3><blockquote>
+<p>为什么点积（<script type="math/tex">x_1y_1 + x_2y_2</script>）这种纯粹的代数计算，在几何上却恰好对应着“投影长度相乘”？</p>
+</blockquote>
+<p>答案是：<strong>因为点积的背后，隐藏着一种你之前没意识到的“一维线性变换”，而对偶性就是连接这两个世界的桥梁。</strong></p>
+<p>核心任务：<strong>把“向量”本身，解释成一种“线性变换”。</strong></p>
+<p>这非常反直觉。因为我们之前一直在说：向量是被变换的对象，矩阵是施加变换的动作。<br>但这一节告诉你：<strong>一个向量，也可以被看作是一个“把高维空间压缩到一维实数轴”的线性变换。</strong></p>
+<p>这就是“对偶性”的含义：<strong>向量与（一类特殊的）线性变换，是一一对应、互为镜像的。</strong></p>
+<p>回忆一下点积的定义：</p>
+<script type="math/tex; mode=display">
+\mathbf{u} \cdot \mathbf{v} = u_1 v_1 + u_2 v_2</script><p>现在，我们把左边的向量 <script type="math/tex">\mathbf{u}</script> <strong>固定</strong>，把右边的 <script type="math/tex">\mathbf{v}</script> <strong>看作输入变量</strong>。<br>这相当于定义了一个函数：</p>
+<script type="math/tex; mode=display">
+f_{\mathbf{u}}(\mathbf{v}) = \mathbf{u} \cdot \mathbf{v}</script><p>这个函数吃掉一个向量 <script type="math/tex">\mathbf{v}</script>，吐出一个数。</p>
+<p>关键来了：<strong>这个函数 <script type="math/tex">f_{\mathbf{u}}</script>，是一个线性变换。</strong></p>
+<p>验证那两条铁律：</p>
+<ol>
+<li><script type="math/tex; mode=display">f_{\mathbf{u}}(\mathbf{v}+\mathbf{w}) = \mathbf{u}\cdot(\mathbf{v}+\mathbf{w}) = \mathbf{u}\cdot\mathbf{v} + \mathbf{u}\cdot\mathbf{w} = f_{\mathbf{u}}(\mathbf{v}) + f_{\mathbf{u}}(\mathbf{w})</script></li>
+<li><script type="math/tex; mode=display">f_{\mathbf{u}}(k\mathbf{v}) = \mathbf{u}\cdot(k\mathbf{v}) = k(\mathbf{u}\cdot\mathbf{v}) = k f_{\mathbf{u}}(\mathbf{v})</script></li>
+</ol>
+<p>所以，<strong>固定任何一个向量 <script type="math/tex">\mathbf{u}</script>，都能定义一个从 <script type="math/tex">\mathbb{R}^n</script> 到 <script type="math/tex">\mathbb{R}</script>（一维实数轴）的线性变换。</strong></p>
+<p>我们之前学的：任何线性变换，都可以用矩阵表示。</p>
+<p>一个从 <script type="math/tex">\mathbb{R}^n</script> 到 <script type="math/tex">\mathbb{R}</script> 的线性变换，它的矩阵是什么形状？</p>
+<ul>
+<li>输入是 <script type="math/tex">n</script> 维，输出是 1 维。</li>
+<li>所以矩阵是 <script type="math/tex">1 \times n</script> 的，也就是一个<strong>行向量</strong>。</li>
+</ul>
+<p>那么，变换 <script type="math/tex">f_{\mathbf{u}}</script> 对应的矩阵（行向量）是什么？<br>我们看它对标准基的作用：</p>
+<ul>
+<li><script type="math/tex; mode=display">f_{\mathbf{u}}(\mathbf{i}) = \mathbf{u} \cdot \mathbf{i} = u_1</script></li>
+<li><script type="math/tex; mode=display">f_{\mathbf{u}}(\mathbf{j}) = \mathbf{u} \cdot \mathbf{j} = u_2</script></li>
+</ul>
+<p>所以，这个变换的矩阵就是：</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix} u_1 & u_2 \end{pmatrix}</script><p>这正是原向量 <script type="math/tex">\mathbf{u}</script> <strong>转置</strong>后变成的行向量。</p>
+<p>现在，我们把两条线汇合：</p>
+<p><strong>线一（几何直觉）</strong>：<br>点积 <script type="math/tex">\mathbf{u} \cdot \mathbf{v}</script>，几何上是“把 <script type="math/tex">\mathbf{v}</script> 投影到 <script type="math/tex">\mathbf{u}</script> 所在的直线上，然后乘以 <script type="math/tex">\mathbf{u}</script> 的长度”。</p>
+<p><strong>线二（对偶性视角）</strong>：<br>点积 <script type="math/tex">\mathbf{u} \cdot \mathbf{v}</script>，代数上是“用 <script type="math/tex">\mathbf{u}</script> 定义的那个一维线性变换，去作用在 <script type="math/tex">\mathbf{v}</script> 上”。</p>
+<p>而“把 <script type="math/tex">\mathbf{v}</script> 投影到 <script type="math/tex">\mathbf{u}</script> 所在的直线上，再缩放”，这本身就是一个<strong>线性变换</strong>——它把二维向量压缩到一维的实数轴上。<br>这个变换的矩阵，恰好就是 <script type="math/tex">\begin{pmatrix} u_1 & u_2 \end{pmatrix}</script>。</p>
+<p>所以，整个逻辑链是：</p>
+<ol>
+<li>任何一个向量 <script type="math/tex">\mathbf{u}</script>，都唯一对应一个<strong>一维线性变换</strong>（把空间压缩到它所在的直线上）。</li>
+<li>这个一维线性变换的<strong>矩阵</strong>，就是 <script type="math/tex">\mathbf{u}</script> 的转置 <script type="math/tex">\begin{pmatrix} u_1 & u_2 \end{pmatrix}</script>。</li>
+<li>这个矩阵作用在 <script type="math/tex">\mathbf{v}</script> 上，就是 <script type="math/tex">\begin{pmatrix} u_1 & u_2 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = u_1 v_1 + u_2 v_2</script>。</li>
+<li>而这个代数结果，在几何上正是“投影到 <script type="math/tex">\mathbf{u}</script> 直线上的缩放量”。</li>
+</ol>
+<p><strong>点积，就是你用“向量 <script type="math/tex">\mathbf{u}</script> 所对应的那个一维线性变换”去观察另一个向量 <script type="math/tex">\mathbf{v}</script> 时，得到的一维坐标值。</strong></p>
+<p>这一节不是让你算点积算得更快，而是让你意识到：</p>
+<p><strong>向量和线性变换之间，存在一种更深的对偶关系。</strong></p>
+<p>之前你一直觉得，矩阵是变换，向量是对象。但现在你发现，每一个向量也可以被“竖起来”，变成一个从高维到一维的线性变换。反过来，每一个从高维到一维的线性变换，也必然对应一个向量。</p>
+<p>这种视角的统一，就是“对偶性”。它让你以后在看到点积、转置、投影这些操作时，能立刻反应过来它们背后是同一个几何画面：<strong>把一个空间，沿着某个方向，压缩成一条实数线。</strong></p>
+<h3 id="3-为什么有叉积？"><a href="#3-为什么有叉积？" class="headerlink" title="3.为什么有叉积？"></a>3.为什么有叉积？</h3><p><strong>定义叉积，是因为我们需要一种简洁的代数工具，来同时描述“有方向的面积”和“旋转”。</strong></p>
+<p>自然界里有两类量：</p>
+<ul>
+<li>标量：只有大小。比如 5 平方米的面积。</li>
+<li>向量：有大小和方向。比如一个力。</li>
+</ul>
+<p>但有一类东西非常尴尬：<strong>旋转，以及有方向的面积。</strong><br>比如，你拧水龙头，手给它的力矩，有大小，也有旋转方向（顺时针或逆时针）。你用平行四边形法则去合成两个力矩，会发现它们遵循的是一种特殊的规则。<br>这东西既不是标量，也不是普通的向量。我们需要一种新的工具来描述它。</p>
+<p><strong>叉积，就是数学家为这类“有方向的面积/旋转”量身定做的数学对象。</strong></p>
+<p><strong>第一，它是“有方向面积”的向量化身。</strong><br>叉积 <script type="math/tex">\mathbf{v} \times \mathbf{w}</script> 的长度，恰好等于 <script type="math/tex">\mathbf{v}, \mathbf{w}</script> 张成的平行四边形面积。它的方向，垂直于这个平面。这就把一块二维的面积，编码成了一个三维向量。</p>
+<p><strong>第二，它是产生“垂直向量”的标准工厂。</strong><br>在三维空间里，给定两个不共线的向量，叉积是能唯一给出一个同时垂直于它们的新向量的代数操作。这在图形学、物理（求法线、求旋转轴）里，是每天都在用的核心运算。</p>
+<p><strong>第三，它是描述“旋转效应”的语言。</strong><br>物理里，力矩、角速度、磁场对运动电荷的作用力，全都是叉积。因为这些东西的本质，都是一种“有方向的旋转趋势”。叉积是描述这种趋势的数学母语。</p>
+<p><strong>点积在任何维度都长一个样；而真正的叉积，只存在于三维。它是一种只为三维空间量身定做的运算。</strong></p>
+<h3 id="4-叉积的几何意义"><a href="#4-叉积的几何意义" class="headerlink" title="4.叉积的几何意义"></a>4.叉积的几何意义</h3><p><strong>常规讲法：</strong><br>给你两个向量 <script type="math/tex">\mathbf{v}</script> 和 <script type="math/tex">\mathbf{w}</script>，告诉你按公式算：</p>
+<script type="math/tex; mode=display">
+\mathbf{v} \times \mathbf{w} = \begin{pmatrix} v_2 w_3 - v_3 w_2 \\ v_3 w_1 - v_1 w_3 \\ v_1 w_2 - v_2 w_1 \end{pmatrix}</script><p>结果是一个新向量。你只要记住这个算法就行。</p>
+<p>但为什么这个算出来的新向量，恰好垂直于 <script type="math/tex">\mathbf{v}</script> 和 <script type="math/tex">\mathbf{w}</script>？为什么它的长度恰好是平行四边形面积？这真的只是巧合吗？并非。</p>
+<p>想象你有三个向量 <script type="math/tex">\mathbf{a}, \mathbf{b}, \mathbf{c}</script>。它们张成一个平行六面体（一个斜的盒子）。</p>
+<p>定义一个函数 <script type="math/tex">f(\mathbf{a}, \mathbf{b}, \mathbf{c})</script>，它输出这个盒子的<strong>有向体积</strong>。</p>
+<p>这个函数有一个关键性质：<strong>它是“多重线性”的。</strong><br>也就是说，如果你固定其中两个向量不动，只把第三个向量看作变量，那么体积关于这个变量是线性的。</p>
+<p>比如，我固定 <script type="math/tex">\mathbf{v}</script> 和 <script type="math/tex">\mathbf{w}</script> 不动，只把第三个向量 <script type="math/tex">\mathbf{x}</script> 看作输入：</p>
+<script type="math/tex; mode=display">
+\text{Vol}(\mathbf{v}, \mathbf{w}, \mathbf{x})</script><p>这个函数，吃掉一个向量 <script type="math/tex">\mathbf{x}</script>，吐出一个数（体积）。它是线性的吗？是的。因为当 <script type="math/tex">\mathbf{x}</script> 被拉长或与另一个向量相加时，整个盒子的体积也按同样的线性规则变化。</p>
+<p>所以：<strong>固定 <script type="math/tex">\mathbf{v}, \mathbf{w}</script> 后，<script type="math/tex">\text{Vol}(\mathbf{v}, \mathbf{w}, \mathbf{x})</script> 是一个从三维到一维的线性变换。</strong></p>
+<p><strong>而任何线性变换，都对应一个向量。</strong></p>
+<p>这是点积那一节最重要的遗产：任何一个从多维到一维的线性变换，都唯一对应一个向量，使得这个线性变换的作用效果，就等于和这个向量做点积。</p>
+<p>既然 <script type="math/tex">\text{Vol}(\mathbf{v}, \mathbf{w}, \mathbf{x})</script> 是一个线性变换，那么<strong>必然存在一个唯一的向量 <script type="math/tex">\mathbf{p}</script>，使得对于任何 <script type="math/tex">\mathbf{x}</script>，都有：</strong></p>
+<script type="math/tex; mode=display">
+\text{Vol}(\mathbf{v}, \mathbf{w}, \mathbf{x}) = \mathbf{p} \cdot \mathbf{x}</script><p><strong>这个向量 <script type="math/tex">\mathbf{p}</script> 是谁？</strong></p>
+<p>根据体积的几何意义：</p>
+<ul>
+<li>如果 <script type="math/tex">\mathbf{x}</script> 正好垂直于 <script type="math/tex">\mathbf{v}</script> 和 <script type="math/tex">\mathbf{w}</script>，那么体积 = 底面平行四边形面积 × <script type="math/tex">\mathbf{x}</script> 在垂直方向上的投影长度。</li>
+<li>根据点积的几何意义，<script type="math/tex">\mathbf{p} \cdot \mathbf{x}</script> 就是 <script type="math/tex">\mathbf{x}</script> 在 <script type="math/tex">\mathbf{p}</script> 方向上的投影长度乘以 <script type="math/tex">\mathbf{p}</script> 的长度。</li>
+</ul>
+<p>这两个要相等，对于任何 <script type="math/tex">\mathbf{x}</script> 都成立。唯一可能的是：</p>
+<ul>
+<li><strong><script type="math/tex">\mathbf{p}</script> 的方向</strong>：必须垂直于 <script type="math/tex">\mathbf{v}</script> 和 <script type="math/tex">\mathbf{w}</script> 张成的平面。</li>
+<li><strong><script type="math/tex">\mathbf{p}</script> 的长度</strong>：必须等于 <script type="math/tex">\mathbf{v}</script> 和 <script type="math/tex">\mathbf{w}</script> 张成的平行四边形面积。</li>
+</ul>
+<p>而满足这两个条件的向量，不是别的，正是<strong>叉积 <script type="math/tex">\mathbf{v} \times \mathbf{w}</script></strong>。</p>
+<p>当我们用标准坐标去计算这个“体积函数”时，它必然长成行列式的形式。而把行列式按第一行展开（或者用那个奇怪的公式去算），本质上就是在解“哪个向量 <script type="math/tex">\mathbf{p}</script> 能满足 <script type="math/tex">\mathbf{p} \cdot \mathbf{x} = \text{Vol}</script> 对任意 <script type="math/tex">\mathbf{x}</script> 成立”。解出来的坐标，恰好就是那个计算叉积的公式。</p>
+<h3 id="5-对偶性"><a href="#5-对偶性" class="headerlink" title="5.对偶性"></a>5.对偶性</h3><p>对偶性，说白了就是一句话：</p>
+<blockquote>
+<p><strong>任何从高维到一维的线性变换，都等价于“和一个特定向量做点积”。</strong></p>
+</blockquote>
+<p>点积和叉积，都是这个原理在不同场景下的应用。</p>
+<p>在点积那一节，我们干了这么一件事：</p>
+<ol>
+<li>固定一个向量 <script type="math/tex">\mathbf{u}</script>。</li>
+<li>定义一个新的操作：把任何向量 <script type="math/tex">\mathbf{v}</script>，<strong>投影到 <script type="math/tex">\mathbf{u}</script> 的直线上，再乘以 <script type="math/tex">\mathbf{u}</script> 的长度</strong>。</li>
+<li>发现这个操作是一个线性变换，而且是从二维到一维的。</li>
+<li>既然是线性变换，它就必须对应一个矩阵。</li>
+<li>在标准基下，这个矩阵刚好就是 <script type="math/tex">\begin{pmatrix} u_1 & u_2 \end{pmatrix}</script>，即 <script type="math/tex">\mathbf{u}</script> 的转置。</li>
+<li>所以，这个线性变换作用在 <script type="math/tex">\mathbf{v}</script> 上，就是 <script type="math/tex">u_1 v_1 + u_2 v_2</script>，也就是点积 <script type="math/tex">\mathbf{u} \cdot \mathbf{v}</script>。</li>
+</ol>
+<p>这一步揭示的核心是：<strong>向量 <script type="math/tex">\mathbf{u}</script> 不只是一个箭头，它同时也是“把空间投影到自己身上并缩放”这个线性变换的化身。</strong> 向量和对偶向量（那个行向量矩阵），本质上是同一个东西的两种表现形式。</p>
+<p>而叉积则是对偶性在三维空间的特殊应用。</p>
+<p>叉积想找这样一个向量 <script type="math/tex">\mathbf{p} = \mathbf{v} \times \mathbf{w}</script>，它满足：</p>
+<ul>
+<li>方向垂直于 <script type="math/tex">\mathbf{v}, \mathbf{w}</script> 张成的平面。</li>
+<li>长度等于 <script type="math/tex">\mathbf{v}, \mathbf{w}</script> 张成的平行四边形面积。</li>
+</ul>
+<p>为什么会凭空冒出这样一个向量？其实不是凭空，而是<strong>被对偶性逼出来的</strong>。</p>
+<p>逻辑是这样：</p>
+<ol>
+<li>先不管叉积，定义三元函数：<script type="math/tex">f(\mathbf{v}, \mathbf{w}, \mathbf{x})</script> = 三个向量张成的平行六面体的<strong>有向体积</strong>。</li>
+<li>固定 <script type="math/tex">\mathbf{v}, \mathbf{w}</script>，让 <script type="math/tex">\mathbf{x}</script> 自由变化。那么这个函数就变成了只关于 <script type="math/tex">\mathbf{x}</script> 的线性函数：<script type="math/tex">f_{\mathbf{v},\mathbf{w}}(\mathbf{x}) = \text{Vol}(\mathbf{v}, \mathbf{w}, \mathbf{x})</script>。</li>
+<li>这个函数是从三维到一维的线性变换。根据对偶性，<strong>一定存在唯一的向量 <script type="math/tex">\mathbf{p}</script>，使得对任意 <script type="math/tex">\mathbf{x}</script>，都有 <script type="math/tex">\text{Vol}(\mathbf{v}, \mathbf{w}, \mathbf{x}) = \mathbf{p} \cdot \mathbf{x}</script></strong>。</li>
+<li>现在，我们从几何意义反推 <script type="math/tex">\mathbf{p}</script> 必须长什么样：<ul>
+<li>点积 <script type="math/tex">\mathbf{p} \cdot \mathbf{x}</script> = <script type="math/tex">\mathbf{p}</script> 的长度 × <script type="math/tex">\mathbf{x}</script> 在 <script type="math/tex">\mathbf{p}</script> 方向上的投影。</li>
+<li>体积 <script type="math/tex">\text{Vol}</script> = 底面积（<script type="math/tex">\mathbf{v}, \mathbf{w}</script> 张成平行四边形的面积） × <script type="math/tex">\mathbf{x}</script> 在垂直于底面的方向上的投影（高）。</li>
+<li>要使得两者恒等，<strong><script type="math/tex">\mathbf{p}</script> 的方向必须是底面的法线方向</strong>，<strong><script type="math/tex">\mathbf{p}</script> 的长度必须等于底面积</strong>。</li>
+</ul>
+</li>
+<li>这个 <script type="math/tex">\mathbf{p}</script>，不是别的，正是<strong>叉积 <script type="math/tex">\mathbf{v} \times \mathbf{w}</script></strong>。</li>
+</ol>
+<p>你看，这里对偶性扮演了什么角色？它充当了一座桥梁，把“体积函数”这种几何上的东西，转化成了“找一个对偶向量”的代数操作。而叉积的公式，就是在具体坐标系下，解出这个对偶向量的结果。</p>
+<p>综合点积和叉积，对偶性可以这样理解：</p>
+<p><strong>任何一个线性函数（从多维空间到一维实数），都对应空间中的一个向量。这个函数的作用，就等于和那个向量做点积。</strong></p>
+<p>在叉积中，那个线性函数是“体积”，而对应的对偶向量，就是叉积。</p>
+<p>“对偶”是指，这两个东西——<strong>“向量”和“从多维到一维的线性函数”</strong>——是成对出现、互为镜象的。</p>
+<ul>
+<li>任何一个向量 <script type="math/tex">\mathbf{p}</script>，都可以定义一个线性函数 <script type="math/tex">g(\mathbf{x}) = \mathbf{p} \cdot \mathbf{x}</script>。</li>
+<li>反过来，任何一个从多维到一维的线性函数 <script type="math/tex">g</script>，也必然存在唯一的向量 <script type="math/tex">\mathbf{p}</script>，使得 <script type="math/tex">g(\mathbf{x}) = \mathbf{p} \cdot \mathbf{x}</script>。</li>
+</ul>
+<p>这种一一对应，就叫<strong>对偶</strong>。向量生活在“原空间”里，而线性函数生活在“对偶空间”里，但它们之间可以自由转换。点积和叉积，都是这种转换的具体案例。</p>
+<h2 id="八-基变换"><a href="#八-基变换" class="headerlink" title="八.基变换"></a>八.基变换</h2><p>最轻松的一节。</p>
+<p>基变换，就是<strong>把一种语言的坐标，翻译成另一种语言的坐标</strong>。</p>
+<p>之前学的所有线性变换（旋转、拉伸、剪切），都是在一个固定坐标系（标准基）下，用矩阵乘以坐标向量的。</p>
+<p>但现在，问题来了：<strong>如果我们换一组基，同一个线性变换，它的矩阵长什么样？</strong></p>
+<p>想象你是一个美国人，用英语写了一份旋转操作说明（矩阵 <script type="math/tex">A</script>）。现在你要把它交给一个中文团队执行。你需要做什么？</p>
+<p>你不能直接让他们看英语。你需要：</p>
+<ol>
+<li>先把中文团队的坐标系<strong>翻译成</strong>英语坐标系（基变换矩阵 <script type="math/tex">P</script>）。</li>
+<li>在英语坐标系下<strong>执行旋转</strong>（矩阵 <script type="math/tex">A</script>）。</li>
+<li>再把结果<strong>翻译回</strong>中文坐标系（逆矩阵 <script type="math/tex">P^{-1}</script>）。</li>
+</ol>
+<p>整个过程就是：<script type="math/tex">P^{-1} A P</script>。</p>
+<p>这个 <script type="math/tex">P^{-1} A P</script>，就是旋转这个操作，在中文坐标系下的矩阵表示。它和 <script type="math/tex">A</script> 长得不一样，但描述的是同一个旋转动作。</p>
+<p><strong>在数学上，如果有两个矩阵 <script type="math/tex">A</script> 和 <script type="math/tex">B</script>，满足 <script type="math/tex">B = P^{-1} A P</script>，我们就说它们“相似”。</strong> 相似，就是“它们是同一个线性变换在不同基下的表达”。</p>
+<p>为什么要纠结这个？</p>
+<p>因为一个线性变换的本质，和它具体在某个坐标系下的样子，是两码事。</p>
+<p>比如，旋转矩阵是 <script type="math/tex">[\cos\theta, -\sin\theta; \sin\theta, \cos\theta]</script>。这是一个在标准基下的矩阵。在别的基下，同一个旋转变换的矩阵可以长得完全不像旋转矩阵，它可能看起来像一堆杂乱的数字。但它的“旋转本质”，是由特征值这些不随基变化的东西决定的。</p>
+<p><strong>相似变换，就是帮你把不同语言描述下的“杂乱矩阵”，还原成其本质操作的工具。</strong></p>
+<p>用刚学的点积和叉积来举例，点积公式 <script type="math/tex">u_1v_1 + u_2v_2</script> 只有在<strong>标准正交基</strong>下才长这样。如果你换一组斜的、长短不一的基，点积的公式会变得巨复杂。</p>
+<p>基变换这一节就是在告诉你：如果你不小心换了一组基，怎么找到新的点积公式，或者怎么回到标准基的世界里，用那个简单的公式。</p>
+<p>在线性代数入门阶段，几乎所有讨论都是基于<strong>标准基</strong>进行的。标准基就是：</p>
+<script type="math/tex; mode=display">\mathbf{i} = (1, 0),\mathbf{j} = (0, 1)</script><p>它恰好是单位正交基：长度为 1，互相垂直。</p>
+<p>为什么默认用它？两个原因：</p>
+<ul>
+<li><strong>它让我们能直接用坐标计算一切。</strong> 在标准基下，任何一个向量的坐标，就是它自己。点积就是简单相乘相加，矩阵乘以向量就是前行乘后列。</li>
+<li><strong>它符合我们的几何直觉。</strong> 我们用方格纸、直角坐标系思考，默认就觉得坐标轴应该互相垂直、刻度均匀。</li>
+</ul>
+<p>当你换基后：</p>
+<ul>
+<li><strong>同一个向量</strong>，它的坐标表示会变（基变换）。</li>
+<li><strong>同一个线性变换</strong>，它的矩阵表示也会变（相似变换）。</li>
+</ul>
+<p>但好消息是，标准正交基确实是一个完美的“计算锚点”。在实际应用中，我们通常策略是：</p>
+<ul>
+<li>需要计算时，<strong>通过基变换矩阵，把问题拉到标准基里算</strong>（因为那里点积、矩阵乘法都最简单）。</li>
+<li>算完之后，<strong>再把结果变回去</strong>。</li>
+</ul>
+<p>这就是基变换和相似变换在实战中的核心价值：有了它们，你可以自由选择坐标系，用最方便的那个来算。</p>
+<h2 id="九-特征向量、特征值和特征基"><a href="#九-特征向量、特征值和特征基" class="headerlink" title="九.特征向量、特征值和特征基"></a>九.特征向量、特征值和特征基</h2><h3 id="1-特征向量与特征值"><a href="#1-特征向量与特征值" class="headerlink" title="1. 特征向量与特征值"></a>1. 特征向量与特征值</h3><p>假设你手里有一个线性变换，比如一个 <script type="math/tex">2 \times 2</script> 矩阵 <script type="math/tex">A</script>。它把整个二维平面拉伸、旋转、剪切。</p>
+<p>现在问一个问题：<strong>在这个变换下，有没有哪个向量，只是被拉长或缩短，而方向完全不变？</strong></p>
+<p>这种“天选之子”就是<strong>特征向量</strong>。</p>
+<p>而<strong>特征值</strong>，就是这个天选之子被拉长或缩短的<strong>倍数</strong>。</p>
+<p>用公式写出来就是：</p>
+<script type="math/tex; mode=display">
+A \mathbf{v} = \lambda \mathbf{v}</script><ul>
+<li><script type="math/tex">\mathbf{v}</script> 是特征向量。</li>
+<li><script type="math/tex">\lambda</script> 是特征值。</li>
+</ul>
+<p>比如，特征值 <script type="math/tex">\lambda = 2</script>，意味着沿着 <script type="math/tex">\mathbf{v}</script> 方向的所有向量，变换后长度翻倍。<br>特征值 <script type="math/tex">\lambda = -1</script>，意味着沿着 <script type="math/tex">\mathbf{v}</script> 方向的所有向量，变换后长度不变，但方向反转。<br>特征值 <script type="math/tex">\lambda = 0</script>，意味着沿着 <script type="math/tex">\mathbf{v}</script> 方向的所有向量，变换后被拍扁到原点。这对应的就是零空间。</p>
+<p><strong>所以，特征值几何上就是：在特征向量这个特定方向上，空间被拉伸的缩放因子。</strong></p>
+<h3 id="2-为什么要找特征向量？"><a href="#2-为什么要找特征向量？" class="headerlink" title="2. 为什么要找特征向量？"></a>2. 为什么要找特征向量？</h3><p>一个线性变换，在标准基下看，它的矩阵 <script type="math/tex">A</script> 可能很复杂，有旋转有剪切，数字乱七八糟。</p>
+<p>但我们可以这样想：<strong>这个变换本身一定有它最“自然”的方向。</strong></p>
+<p>就像你在拧一个螺丝，这个旋转动作，本质上绕着一个固定的轴在转。那个轴，就是它的特征向量（对应特征值 <script type="math/tex">1</script>，因为轴上的点不动）。</p>
+<p>我们找特征向量，本质上就是在问：<strong>有没有一组基底，在这个基底看来，这个变换变得极其简单？</strong></p>
+<p>答案是：<strong>如果矩阵有 <script type="math/tex">n</script> 个线性无关的特征向量，那么以它们为基底，这个变换的矩阵就会变成一个对角矩阵，对角线上就是特征值。</strong></p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+\lambda_1 & 0 & \cdots & 0 \\
+0 & \lambda_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_n
+\end{pmatrix}</script><p>这意味着，在那个“特征基”下，整个变换<strong>没有任何剪切和旋转，它只是在每个特征方向上，各自独立地拉伸或压缩</strong>。</p>
+<h3 id="3-与基变换的关系"><a href="#3-与基变换的关系" class="headerlink" title="3. 与基变换的关系"></a>3. 与基变换的关系</h3><p>假设标准基下有一个复杂的变换 <script type="math/tex">A</script>。我们要计算 <script type="math/tex">A^{100}</script>（把变换重复做100次）。</p>
+<p>直接算？矩阵乘法做100次，疯掉。</p>
+<p>但我们可以这样玩：</p>
+<ol>
+<li><strong>找到 <script type="math/tex">A</script> 的特征向量</strong>，把它们作为新基。</li>
+<li><strong>基变换</strong>：把标准基下的向量，变换到“特征基”下。这个变换矩阵 <script type="math/tex">P</script>，它的列就是特征向量。</li>
+<li>在“特征基”下，<script type="math/tex">A</script> 变成了对角矩阵 <script type="math/tex">D</script>（对角线上是特征值）。</li>
+<li>在这个新基下做100次变换，就是 <script type="math/tex">D^{100}</script>。而对角矩阵的100次幂，就是对角线上每个特征值各自做100次幂。极其简单。</li>
+<li><strong>逆基变换</strong>：把结果再变回标准基。</li>
+</ol>
+<p>整个过程就是：</p>
+<script type="math/tex; mode=display">
+A^{100} = P D^{100} P^{-1}</script><p>这样就极大地简化了运算。</p>
+<h3 id="4-如何求特征值和特征向量"><a href="#4-如何求特征值和特征向量" class="headerlink" title="4. 如何求特征值和特征向量"></a>4. 如何求特征值和特征向量</h3><p>从定义出发：</p>
+<script type="math/tex; mode=display">
+A\mathbf{v} = \lambda \mathbf{v}</script><p>第一步，把右边移到左边：</p>
+<script type="math/tex; mode=display">
+A\mathbf{v} - \lambda \mathbf{v} = \mathbf{0}</script><p>第二步，把 <script type="math/tex">\mathbf{v}</script> 提出来。注意，中间要加一个单位矩阵 <script type="math/tex">I</script>，因为 <script type="math/tex">A</script> 是矩阵，<script type="math/tex">\lambda</script> 是数，不能直接相减：</p>
+<script type="math/tex; mode=display">
+(A - \lambda I)\mathbf{v} = \mathbf{0}</script><p>现在，这是一个齐次线性方程组。</p>
+<p>我们想要的是<strong>非零的 <script type="math/tex">\mathbf{v}</script></strong>（零向量永远是解，但没意义）。</p>
+<p>什么时候 <script type="math/tex">(A - \lambda I)\mathbf{v} = \mathbf{0}</script> 会有非零解？</p>
+<p>当且仅当矩阵 <script type="math/tex">(A - \lambda I)</script> 把空间压扁了，也就是说，它的行列式为零：</p>
+<script type="math/tex; mode=display">
+\det(A - \lambda I) = 0</script><p><strong>这个方程，就是特征值的来源。</strong></p>
+<p>它叫<strong>特征方程</strong>。</p>
+<p>解这个方程，得到的 <script type="math/tex">\lambda</script>，就是特征值。</p>
+<p>一旦有了 <script type="math/tex">\lambda</script>，代回 <script type="math/tex">(A - \lambda I)\mathbf{v} = \mathbf{0}</script>，解出来的非零 <script type="math/tex">\mathbf{v}</script>，就是对应的特征向量。</p>
+<ul>
+<li>如果 <script type="math/tex">\lambda = 0</script>，这个方向上的向量直接被拍扁到原点。</li>
+<li>如果 <script type="math/tex">|\lambda| > 1</script>，这个方向会越变越长。</li>
+<li>如果 <script type="math/tex">|\lambda| < 1</script>，这个方向会越变越短。</li>
+</ul>
+<p>找到了特征值之后，找特征向量就是顺藤摸瓜。</p>
+<p>你已经知道，特征值和特征向量满足：</p>
+<script type="math/tex; mode=display">
+A\mathbf{v} = \lambda \mathbf{v}</script><p>我们之前把这个式子等价地改写成了：</p>
+<script type="math/tex; mode=display">
+(A - \lambda I)\mathbf{v} = \mathbf{0}</script><p>现在，<script type="math/tex">\lambda</script> 已经求出来了（比如 <script type="math/tex">\lambda_1 = 3, \lambda_2 = 2</script>），只需要<strong>把每一个 <script type="math/tex">\lambda</script> 代回去，解这个齐次线性方程组</strong>，求出来的非零 <script type="math/tex">\mathbf{v}</script>，就是对应的特征向量。</p>
+<h3 id="5-重根"><a href="#5-重根" class="headerlink" title="5.重根"></a>5.重根</h3><p>如果某个特征值出现两次（或更多），就叫<strong>重根</strong>。</p>
+<p>比如，解出 <script type="math/tex">\lambda_1 = 3, \lambda_2 = 3</script>。代数上，这只是在告诉你：“矩阵 <script type="math/tex">A</script> 在某个方向上拉伸了 3 倍”，而这个“3”恰好被计算了两次。</p>
+<p>但真正的复杂性在于：<strong>对应于这个“3”的独立特征向量，可能有一个，也可能有两个。</strong></p>
+<p>这就引出了重根最重要的分类，也是它几何意义的核心。</p>
+<p><strong>情况一：有多个独立的特征向量（代数重数 = 几何重数）</strong></p>
+<p>这是最和谐的情况。虽然特征值相同，但你能找到多个方向不同、彼此线性无关的特征向量，它们都对应同一个特征值。</p>
+<ul>
+<li><strong>几何直觉</strong>：变换把这两个特征向量所在方向全都拉伸了 3 倍。而这两个向量张成的整个平面里的任何向量，也都被整体拉伸了 3 倍。</li>
+<li><strong>典型例子</strong>：缩放矩阵 <script type="math/tex">\begin{pmatrix} 3 & 0 \\ 0 & 3 \end{pmatrix}</script>。它的特征值是 3（二重根），但特征向量可以是任何非零向量。因为<strong>整个平面都被均匀拉伸了 3 倍</strong>。</li>
+<li><strong>结论</strong>：这种情况，矩阵仍然可以对角化。它本质上就是对一个平面（或子空间）做了一次整体均匀拉伸。</li>
+</ul>
+<p><strong>情况二：只有一个独立的特征向量（代数重数 &gt; 几何重数）</strong></p>
+<p>这是重根真正麻烦的地方。特征方程告诉你拉伸倍数是 3，但找遍全空间，只找到一个方向上的向量满足 <script type="math/tex">A\mathbf{v} = 3\mathbf{v}</script>。</p>
+<ul>
+<li><strong>几何直觉</strong>：光用拉伸倍数已经不足以描述这个变换了。它除了拉伸，还夹杂了<strong>剪切</strong>。</li>
+<li><strong>典型例子</strong>：剪切矩阵 <script type="math/tex">\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}</script>。特征值是 <script type="math/tex">\lambda=1</script>（二重根）。但满足 <script type="math/tex">A\mathbf{v} = \mathbf{v}</script> 的向量，只有水平方向上的那些（x 轴上的点）。而竖直方向上的向量，被向右“推”了一下。</li>
+<li><strong>结论</strong>：这种情况，找不到足够多的特征向量组成空间的基，矩阵<strong>不能对角化</strong>。它只能化成“若尔当标准型”，这标志着变换内部带有剪切成分。</li>
+</ul>
+<p>所以，重根的意义，不能只看它自身，而要看它背后<strong>线性无关的特征向量的个数</strong>。</p>
+<ul>
+<li><strong>完美重根</strong>：能找齐独立特征向量。这意味着变换在这个子空间里就是干净的均匀拉伸，没有其它动作。</li>
+<li><strong>缺陷重根</strong>：找不齐独立特征向量。这意味着变换在这个子空间里，不单是拉伸，还藏着剪切。它无法被简化成纯粹的对角矩阵，空间的结构被“扭曲”了。</li>
+</ul>
+<p>这也是为什么在线性代数里，我们如此在意<strong>几何重数</strong>（独立特征向量的个数）和<strong>代数重数</strong>（重根的次数）。当几何重数小于代数重数时，这个变换就不再是一个“好脾气”的均匀拉伸了。</p>
+<h2 id="十-抽象向量空间"><a href="#十-抽象向量空间" class="headerlink" title="十.抽象向量空间"></a>十.抽象向量空间</h2><p>和线代具体内容以及没有关系了。</p>
+<h3 id="1-和群论的关系"><a href="#1-和群论的关系" class="headerlink" title="1. 和群论的关系"></a>1. 和群论的关系</h3><p>你已经学过群论，这太好了，我们可以直接用群的语言来对照。</p>
+<p><strong>群</strong>，是一个集合，配上<strong>一种</strong>运算（比如加法），满足封闭、结合、单位元、逆元四条公理。</p>
+<p><strong>线性空间</strong>，则是在这个基础上，做了两件事：</p>
+<ol>
+<li><strong>保留群的骨架</strong>：线性空间里的向量，配上加法，首先必须是一个<strong>阿贝尔群</strong>（交换群）。你之前问的“向量为什么要那样定义加法”，就是为了让它满足群公理。</li>
+<li><strong>穿上数乘的外衣</strong>：在群的骨架上，再引入<strong>数乘</strong>运算（实数或复数乘以向量），并用4条分配律和结合律，把加法和数乘优雅地绑在一起。</li>
+</ol>
+<p>所以，<strong>线性空间 = 一个阿贝尔群（向量加法） + 一个数域（实数/复数）+ 数乘运算</strong>。</p>
+<p>这一节叫“抽象向量空间”，它做的事情，就是告诉你：<strong>别老想着箭头了。只要一个集合，配上你定义的“加法”和“数乘”，能乖乖满足那8条公理，它就是线性空间，里面的元素就是向量。</strong> 这和群论里“只要满足群公理，管你是数字、置换还是对称操作，统统是群”的思维方式，如出一辙。</p>
+<h3 id="2-和泛函的关系"><a href="#2-和泛函的关系" class="headerlink" title="2. 和泛函的关系"></a>2. 和泛函的关系</h3><p>泛函分析，可以毫不夸张地说，就是<strong>把线性代数推广到无穷维空间</strong>。</p>
+<p>我们之前学的线性代数，空间维数都是有限的（二维、三维、n维）。向量就是有n个分量的坐标。</p>
+<p>但很多问题，它天然活在无穷维空间里。比如：</p>
+<ul>
+<li>一段连续函数，它需要<strong>无穷多个</strong>独立的值才能完整描述（每一点上的取值都是一个“坐标”）。</li>
+<li>这和我们在二维平面里，用 x 坐标和 y 坐标描述一个点，道理完全一样。</li>
+</ul>
+<p>在泛函分析里：</p>
+<ul>
+<li><strong>函数，就是向量。</strong></li>
+<li><strong>函数的集合（比如所有连续函数），就是一个线性空间。</strong></li>
+<li><strong>求导、积分，就是作用在这个空间上的线性变换（算子）。</strong></li>
+<li><strong>点积推广为内积，长度推广为范数。</strong></li>
+</ul>
+<p>这一节里，你会看到“多项式空间”、“函数空间”这些例子。它们就是在为你将来学泛函分析埋下种子。当你看这些例子时，只要不断心里默念“多项式就是向量，基底可以是 1, x, x^2…；函数就是向量，它的坐标就是它在各点的取值”，你就会发现，泛函分析不过是把线性代数这台机器，开到了无穷维的高速公路上。</p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h3><ul>
+<li><strong>群论</strong>：提供了最基础的“代数系统”的思维模板（集合 + 运算 + 公理）。</li>
+<li><strong>线性代数</strong>：在这个模板上，建造了“向量空间”和“线性变换”的宏伟大厦。</li>
+<li><strong>抽象向量空间</strong>：是线性代数的<strong>公理化完成体</strong>。它告诉你，别再依赖几何直觉了，一切只看公理。</li>
+<li><strong>泛函分析</strong>：是这座大厦的<strong>无穷维扩展</strong>。它把线性代数的方法，应用到了函数、微分方程、量子力学等更广阔的天地。</li>
+</ul>
+<p>你现在的感觉——“它和群论、泛函有很大关系”，正是一个数学专业的学生学完线性代数后，回头看时最标准的感受。<strong>线性代数是桥梁，一头连着离散的代数结构（群、环、域），一头连着连续的分析世界（微积分、泛函）。</strong> </p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/d433793b/">高数学习笔记（吐槽？） Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@126.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%85%B3%E4%BA%8E%E5%90%91%E9%87%8F%E4%B8%8E%E7%A9%BA%E9%97%B4"><span class="toc-number">1.</span> <span class="toc-text">一.关于向量与空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89%E2%80%9C%E5%90%91%E9%87%8F%E2%80%9D%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">1.为什么会有“向量”？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E2%80%9C%E7%BA%BF%E6%80%A7%E2%80%9D%E4%B8%8E%E2%80%9C%E7%A9%BA%E9%97%B4%E2%80%9D%E7%9A%84%E5%85%AC%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2.“线性”与“空间”的公理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BA%BF%E4%BB%A3%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.3.</span> <span class="toc-text">3.线代的本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%B4%AF%E7%A9%BF%E5%A7%8B%E7%BB%88%E7%9A%84%E5%93%B2%E5%AD%A6%E8%A7%86%E8%A7%92"><span class="toc-number">1.4.</span> <span class="toc-text">4.贯穿始终的哲学视角</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%85%B3%E4%BA%8E%E5%BC%A0%E6%88%90%E5%92%8C%E5%9F%BA"><span class="toc-number">2.</span> <span class="toc-text">二.关于张成和基</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%8A%E2%80%9C%E5%BC%A0%E6%88%90%E2%80%9D%E7%9C%8B%E4%BD%9C%E4%B8%80%E4%B8%AA%E2%80%9C%E7%94%9F%E6%88%90%E5%99%A8%E2%80%9D"><span class="toc-number">2.1.</span> <span class="toc-text">1.把“张成”看作一个“生成器”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E6%98%AF%E4%B8%80%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%9A%84%E7%94%9F%E6%88%90%E5%90%91%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">2.基是一种特殊的生成向量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%85%B3%E4%BA%8E%E5%8F%98%E6%8D%A2%E5%92%8C%E7%9F%A9%E9%98%B5"><span class="toc-number">3.</span> <span class="toc-text">三.关于变换和矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E6%8D%A2%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">1. 什么是变换？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E7%BA%BF%E6%80%A7%E2%80%9D%E5%8F%98%E6%8D%A2%EF%BC%9F"><span class="toc-number">3.2.</span> <span class="toc-text">2. 什么是“线性”变换？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%81%8F%E5%81%8F%E7%94%A8%E7%9F%A9%E9%98%B5%E6%9D%A5%E5%88%BB%E7%94%BB%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%EF%BC%9F"><span class="toc-number">3.3.</span> <span class="toc-text">3. 为什么偏偏用矩阵来刻画线性变换？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%EF%BC%8C%E5%AE%8C%E5%85%A8%E7%94%B1%E2%80%9C%E5%9F%BA%E5%90%91%E9%87%8F%E7%9A%84%E5%91%BD%E8%BF%90%E2%80%9D%E5%86%B3%E5%AE%9A"><span class="toc-number">3.3.1.</span> <span class="toc-text">第一步：一个线性变换，完全由“基向量的命运”决定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%8A%8A%E5%9F%BA%E5%90%91%E9%87%8F%E7%9A%84%E2%80%9C%E5%91%BD%E8%BF%90%E5%9D%90%E6%A0%87%E2%80%9D%E6%8C%89%E5%88%97%E6%8E%92%E5%A5%BD%EF%BC%8C%E5%B0%B1%E6%98%AF%E7%9F%A9%E9%98%B5"><span class="toc-number">3.3.2.</span> <span class="toc-text">第二步：把基向量的“命运坐标”按列排好，就是矩阵</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E7%9F%A9%E9%98%B5%E5%B7%A6%E4%B9%98%E5%90%91%E9%87%8F%EF%BC%9F"><span class="toc-number">3.4.</span> <span class="toc-text">4.为什么是矩阵左乘向量？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B9%E6%BA%90%EF%BC%9A%E6%88%91%E4%BB%AC%E9%80%89%E6%8B%A9%E4%BA%86%E2%80%9C%E5%90%91%E9%87%8F%E6%98%AF%E5%88%97%E5%90%91%E9%87%8F%E2%80%9D"><span class="toc-number">3.4.1.</span> <span class="toc-text">根源：我们选择了“向量是列向量”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%EF%BC%9A%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%97%EF%BC%8C%E5%B0%B1%E6%98%AF%E2%80%9C%E5%9F%BA%E5%90%91%E9%87%8F%E7%9A%84%E5%91%BD%E8%BF%90%E2%80%9D"><span class="toc-number">3.4.2.</span> <span class="toc-text">核心：矩阵的列，就是“基向量的命运”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%EF%BC%9A%E5%B7%A6%E4%B9%98%EF%BC%8C%E6%98%AF%E2%80%9C%E5%88%97%E5%90%91%E9%87%8F%E7%9A%84%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88%E2%80%9D"><span class="toc-number">3.4.3.</span> <span class="toc-text">推导：左乘，是“列向量的线性组合”</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%85%B3%E4%BA%8E%E5%A4%8D%E5%90%88%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%92%8C%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">四.关于复合线性变换和矩阵乘法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%98%E6%8D%A2%E5%AF%B9%E5%BA%94%E7%9F%A9%E9%98%B5"><span class="toc-number">4.1.</span> <span class="toc-text">1. 变换对应矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E5%A4%8D%E5%90%88%E5%8F%98%E6%8D%A2%E2%80%9D%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">2. 什么是“复合变换”？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%8D%E5%90%88%E5%8F%98%E6%8D%A2%E7%9A%84%E7%9F%A9%E9%98%B5%EF%BC%8C%E5%B0%B1%E6%98%AF-BA"><span class="toc-number">4.3.</span> <span class="toc-text">3. 复合变换的矩阵，就是 BA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E8%A6%81%E5%AE%9A%E4%B9%89%E6%88%90%E2%80%9C%E5%89%8D%E8%A1%8C%E4%B9%98%E5%90%8E%E5%88%97%E2%80%9D%EF%BC%9F"><span class="toc-number">4.4.</span> <span class="toc-text">4. 为什么矩阵乘法要定义成“前行乘后列”？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%80%E4%B8%AA%E6%9E%81%E5%85%B6%E9%87%8D%E8%A6%81%E7%9A%84%E7%BB%86%E8%8A%82%EF%BC%9A%E9%A1%BA%E5%BA%8F"><span class="toc-number">4.5.</span> <span class="toc-text">5. 一个极其重要的细节：顺序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%85%B3%E4%BA%8E%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">五.关于行列式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%A0%E4%BD%95%E6%9C%AC%E8%B4%A8%EF%BC%9A%E9%9D%A2%E7%A7%AF%E7%9A%84%E7%BC%A9%E6%94%BE%E6%AF%94"><span class="toc-number">5.1.</span> <span class="toc-text">1. 几何本质：面积的缩放比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AC%A6%E5%8F%B7%EF%BC%9A%E6%96%B9%E5%90%91"><span class="toc-number">5.2.</span> <span class="toc-text">2. 符号：方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%99%8D%E7%BB%B4%E6%89%93%E5%87%BB"><span class="toc-number">5.3.</span> <span class="toc-text">3.降维打击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B9%98%E6%B3%95%E6%80%A7%E8%B4%A8%EF%BC%9A%E5%A4%8D%E5%90%88%E5%8F%98%E6%8D%A2%E7%9A%84%E7%BC%A9%E6%94%BE%E5%9B%A0%E5%AD%90"><span class="toc-number">5.4.</span> <span class="toc-text">4. 乘法性质：复合变换的缩放因子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%85%B3%E4%BA%8E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-number">6.</span> <span class="toc-text">六.关于线性方程组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E5%BC%95%E5%85%A5%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%EF%BC%9F"><span class="toc-number">6.1.</span> <span class="toc-text">1.为什么必须引入线性方程组？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%86%E7%9F%A9%E9%98%B5%E2%80%94%E2%80%94%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%9C%89%E5%94%AF%E4%B8%80%E8%A7%A3%EF%BC%9F"><span class="toc-number">6.2.</span> <span class="toc-text">2. 逆矩阵——什么时候有唯一解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%97%E7%A9%BA%E9%97%B4%E2%80%94%E2%80%94%E5%AF%B9%E4%BB%BB%E6%84%8F-mathbf-b-%E9%83%BD%E6%9C%89%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="toc-number">6.3.</span> <span class="toc-text">3. 列空间——对任意  \mathbf{b}  都有解吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%9B%B6%E7%A9%BA%E9%97%B4%EF%BC%88%E6%A0%B8%EF%BC%89%E2%80%94%E2%80%94%E5%BD%93%E8%A7%A3%E4%B8%8D%E5%94%AF%E4%B8%80%E6%97%B6%EF%BC%8C%E8%A7%A3%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="toc-number">6.4.</span> <span class="toc-text">4. 零空间（核）——当解不唯一时，解长什么样？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%A7%A9"><span class="toc-number">6.5.</span> <span class="toc-text">5.秩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%A1%8C%E7%A9%BA%E9%97%B4"><span class="toc-number">6.6.</span> <span class="toc-text">6.行空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%96%B9%E9%98%B5%E5%92%8C%E9%9D%9E%E6%96%B9%E9%98%B5"><span class="toc-number">6.7.</span> <span class="toc-text">7.方阵和非方阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%82%B9%E7%A7%AF%E3%80%81%E5%8F%89%E7%A7%AF%E4%B8%8E%E5%AF%B9%E5%81%B6%E6%80%A7"><span class="toc-number">7.</span> <span class="toc-text">七.点积、叉积与对偶性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E7%82%B9%E7%A7%AF%EF%BC%9F"><span class="toc-number">7.1.</span> <span class="toc-text">1.为什么有点积？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%82%B9%E7%A7%AF%E7%9A%84%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89"><span class="toc-number">7.2.</span> <span class="toc-text">2.点积的几何意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E5%8F%89%E7%A7%AF%EF%BC%9F"><span class="toc-number">7.3.</span> <span class="toc-text">3.为什么有叉积？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%8F%89%E7%A7%AF%E7%9A%84%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89"><span class="toc-number">7.4.</span> <span class="toc-text">4.叉积的几何意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AF%B9%E5%81%B6%E6%80%A7"><span class="toc-number">7.5.</span> <span class="toc-text">5.对偶性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E5%9F%BA%E5%8F%98%E6%8D%A2"><span class="toc-number">8.</span> <span class="toc-text">八.基变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E3%80%81%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%9F%BA"><span class="toc-number">9.</span> <span class="toc-text">九.特征向量、特征值和特征基</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E4%B8%8E%E7%89%B9%E5%BE%81%E5%80%BC"><span class="toc-number">9.1.</span> <span class="toc-text">1. 特征向量与特征值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%89%BE%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%EF%BC%9F"><span class="toc-number">9.2.</span> <span class="toc-text">2. 为什么要找特征向量？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%8E%E5%9F%BA%E5%8F%98%E6%8D%A2%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">9.3.</span> <span class="toc-text">3. 与基变换的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%A6%82%E4%BD%95%E6%B1%82%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="toc-number">9.4.</span> <span class="toc-text">4. 如何求特征值和特征向量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%87%8D%E6%A0%B9"><span class="toc-number">9.5.</span> <span class="toc-text">5.重根</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E6%8A%BD%E8%B1%A1%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4"><span class="toc-number">10.</span> <span class="toc-text">十.抽象向量空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%92%8C%E7%BE%A4%E8%AE%BA%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">10.1.</span> <span class="toc-text">1. 和群论的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%92%8C%E6%B3%9B%E5%87%BD%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">10.2.</span> <span class="toc-text">2. 和泛函的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93"><span class="toc-number">10.3.</span> <span class="toc-text">3. 总结</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
