@@ -116,17 +116,186 @@ document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo in
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>高数学习笔记（吐槽？）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-06-15T11:24:32.000Z" id="date"> 2026-06-15</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-06-15T14:11:01.470Z" id="updated"> 2026-06-15</time></div></span><br><span>Word Count: <div class="control">268</div></span><br><span>Read Time: <div class="control">1 min</div></span></div></div><hr><div id="post-content"><h3 id="一-函数与极限"><a href="#一-函数与极限" class="headerlink" title="一.函数与极限"></a>一.函数与极限</h3><p>1.感觉满射这概念很幽默</p>
-<p>2.为什么取整默认下取整？？？分开两个定义不好吗</p>
-<p>3.为啥很多概念都非得弄成对称的？？例如有界和函数趋于无穷的极限，明明对称的非常少啊</p>
-<p>4.单射不一定单调，因为不一定连续，上高中上的现在对连续这个东西很不敏感</p>
-<p>5.保号性要求极限不为0，但凡仔细读一遍定义……</p>
-<p>6.关于极限证明一些心得：</p>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>高数学习笔记（吐槽？）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-06-15T11:24:32.000Z" id="date"> 2026-06-15</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-07-01T02:50:27.518Z" id="updated"> 2026-07-01</time></div></span><br><span>Word Count: <div class="control">268</div></span><br><span>Read Time: <div class="control">1 min</div></span></div></div><hr><div id="post-content"><h3 id="一-函数与极限"><a href="#一-函数与极限" class="headerlink" title="一.函数与极限"></a>一.函数与极限</h3><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p>感觉满射这概念很幽默</p>
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>为什么取整默认下取整？？？分开两个定义不好吗</p>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>为啥很多概念都非得弄成对称的？？例如有界和函数趋于无穷的极限，明明对称的非常少啊</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>单射不一定单调，因为不一定连续，上高中上的现在对连续这个东西很不敏感</p>
+<h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3><p>保号性要求极限不为0，但凡仔细读一遍定义……</p>
+<h3 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h3><p>关于极限证明一些心得：</p>
 <p>其实感觉和高中导数一些找点问题很像，非常喜欢这类问题，因为自由度一般比较高，搞一堆神秘放缩+神秘估值最后找出来一个大式子的感觉谁懂</p>
 <p>数列极限和函数趋于无穷时极限：本质找 <script type="math/tex">N</script> ,把 <script type="math/tex">|x_n-a|<\epsilon</script> 整理为 <script type="math/tex">f(n)>g(\epsilon)</script>，通常可借助代数变形或放缩让不等式能解，最后解出 <script type="math/tex">n>\phi(\epsilon)</script> ，然后取 <script type="math/tex">N=\lceil \phi(\epsilon) \rceil</script> 即可。</p>
 <p>函数单点极限：把 <script type="math/tex">|f(x)-A|<\epsilon</script> 写成 <script type="math/tex">|\frac{f(x)-A}{x-x_0}(x-x_0)|<\epsilon</script> 通常可借助代数变形或放缩让不等式变为 <script type="math/tex">|x-x_0|<\phi(\epsilon)</script> ,然后取 <script type="math/tex">\delta=\phi(\epsilon)</script> 即可。</p>
-<p>7.无穷小是一个函数？？？理解了好久才能接受啊</p>
-<p>其实本质是没理解极限是局部性质，例如 <script type="math/tex">\alpha(x)=f(x)-A</script>，在 <script type="math/tex">x</script> 离 <script type="math/tex">x_0</script> 很远的时候可以有 <script type="math/tex">\alpha(x)</script> 很大，但我们说 <script type="math/tex">\alpha(x)</script> 是无穷小的前提条件是 <script type="math/tex">x \to x_0</script> </p>
-<p>8.<script type="math/tex">\equiv</script> 这个符号有恒等的意思也有等价的意思，例如 <script type="math/tex">\sin x \equiv x</script> 和 <script type="math/tex">\sin x \sim x</script> 一样</p>
-<p>9.求极限注意事项</p>
-<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/posts/65bf62c6/">← Next 线代概念入门</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/e2517c/">省选联考2024游记 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@126.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%81%E9%99%90"><span class="toc-number">1.</span> <span class="toc-text">一.函数与极限</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><p>符号 <script type="math/tex">\equiv</script> 有恒等的意思也有等价的意思，例如 <script type="math/tex">\sin x \equiv x</script> 和 <script type="math/tex">\sin x \sim x</script> 一样</p>
+<h3 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h3><p>绝对值相关性质：</p>
+<script type="math/tex; mode=display">
+|ab|=|a||b|,|\frac{a}{b}|=\frac{|a|}{|b|}\\
+|a+b|\le|a|+|b|\\
+||a|-|b||\le|a-b|</script><p>证明：</p>
+<script type="math/tex; mode=display">
+\because |a+b|^2=a^2+2ab+b^2,ab\le|ab|=|a||b|\\
+\therefore a^2+2ab+b^2\le|a|^2+2|a||b|+|b|^2=(|a|+|b|)^2\\
+即\ |a+b|^2\le(|a|+|b|)^2\\
+\therefore |a+b|\le|a|+|b|</script><p>证明：</p>
+<script type="math/tex; mode=display">
+\because |a|=|(a-b)+b|\le|a-b|+|b|\\
+\therefore |a|-|b|\le|a-b|\\
+同理\ |b|-|a|\le|a-b|\\
+\therefore ||a|-|b||\le|a-b|</script><p>这几个性质真神了。前两个用于拆开便于放缩，后边两个就是两个放缩。</p>
+<h3 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h3><p>适当放缩可以大幅减少运算量，看着不好算的直接放就行，这又不是高中卡一个特别死的范围让你一放就错。例如经常把 <script type="math/tex">|\sin|</script> 放成 1。</p>
+<h3 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h3><p>一种常见的取 <script type="math/tex">x</script> 范围的方法：</p>
+<p>例：当 <script type="math/tex">\delta</script> 等于多少时，使 <script type="math/tex">|x-2|<\delta</script> 时，<script type="math/tex">|x^2-4|<0.001</script>？</p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+取\ \delta=0.0002，则\\
+\because |x-2|<\delta\\
+\therefore -\delta+2<x<\delta+2\\
+\therefore|x^2-4|=|(x-2)(x+2)|=|x-2||x+2|<\delta(\delta+4)<0.001</script><p>思路：</p>
+<p>因为 <script type="math/tex">x \to 2</script>，我们只关心 <script type="math/tex">x=2</script> 附近的点，所以可以限制 <script type="math/tex">|x-2| < 1</script>，于是 <script type="math/tex">x < 3</script>，<script type="math/tex">x+2 < 5</script>。</p>
+<p>然后用常数 5 把式子放大：</p>
+<script type="math/tex; mode=display">
+|x-2||x+2| < 5|x-2|\\
+故只需\ 5|x-2|<0.001\ 即可</script><p>这就把问题简化了。</p>
+<p>例：求证：<script type="math/tex">\lim_{x\to 2}x^2=4</script></p>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+令\ \delta=\min\{1,\frac{\epsilon}{5}\},则\ \forall \epsilon>0,当\ 0<|x-2|<\delta \ 时,有\ |x^2-4|=|x-2||x+2|<5|x-2|<\epsilon</script><p>思路：</p>
+<p>因为 <script type="math/tex">x \to 2</script>，我们只关心 <script type="math/tex">x=2</script> 附近的点，所以可以限制 <script type="math/tex">|x-2| < 1</script>，于是 <script type="math/tex">x < 3</script>，<script type="math/tex">x+2 < 5</script>。</p>
+<p>然后用常数 5 把式子放大：</p>
+<script type="math/tex; mode=display">
+|x-2||x+2| < 5|x-2|\\
+故只需\ 5|x-2|<\epsilon \ 即可\\
+故取\ \delta = \frac{\epsilon}{5}</script><p>这在 <script type="math/tex">\epsilon</script> 较小时没问题，但很大时，可能会出现 <script type="math/tex">0<|x-2|<\delta</script> 成立但 <script type="math/tex">|x-2| < 1</script> 不成立，所以其实这两个要同时满足，即：</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+|x-2|<1\\
+|x-2|<\frac{\epsilon}{5}
+\end{cases}</script><p>故取 <script type="math/tex">\delta =\min\{1,\frac{\epsilon}{5}\}</script>。</p>
+<h3 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h3><p>要弄清无穷小的定义：若 <script type="math/tex">f(x)</script> 在 <script type="math/tex">x\to x_0</script> 时的极限为0，则 <script type="math/tex">f(x)</script> 是 <script type="math/tex">x\to x_0</script> 时的无穷小。</p>
+<p>所以无穷小其实是函数。</p>
+<p>极限为0有两种情况，一种是在 <script type="math/tex">x_0</script> 的去心邻域范围内函数值为0，另一种是 <script type="math/tex">f(x_0)=0</script>（当然两个可以同时存在）。</p>
+<p>例如：</p>
+<script type="math/tex; mode=display">
+f(x)=\begin{cases}
+0 \ ,x<2  \\
+1 \ ,x=2\\
+0 \ ,x>2
+\end{cases}</script><p>此时 <script type="math/tex">f(x)</script> 是 <script type="math/tex">x\to 2</script> 时的无穷小。</p>
+<p>不对啊这本质不就是求单点极限吗，那分这一堆情况干什么。唐了。</p>
+<p>无穷小不是趋于负无穷而是趋于 0。</p>
+<h3 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h3><p>有限个无穷小的和为无穷小，这里有限个指的是常数个，如果是 <script type="math/tex">n</script> 个就叫无限个了，因为 <script type="math/tex">n</script> 能趋于 <script type="math/tex">\infty</script>。</p>
+<h3 id="13"><a href="#13" class="headerlink" title="13."></a>13.</h3><p>在证明一些定理时，有界函数经常直接放缩为 <script type="math/tex">M</script>，例如 <script type="math/tex">|\sin|</script> 经常放成 1。</p>
+<h3 id="14"><a href="#14" class="headerlink" title="14."></a>14.</h3><p>其实那个 <script type="math/tex">\epsilon</script> 不一定非得是 <script type="math/tex">\epsilon</script>，只要能取遍正数就行，例如 <script type="math/tex">\frac{\epsilon}{M}</script>。</p>
+<h3 id="15"><a href="#15" class="headerlink" title="15."></a>15.</h3><p>连续函数可以直接把 <script type="math/tex">x_0</script> 代入函数求函数值就是极限，其实这本末导致了，因为连续的定义就是用 <script type="math/tex">\lim_{x\to x_0}f(x)=f(x_0)</script> 定义的。不过可以记住初等函数在定义域内连续，所以初等函数求单点极限是容易的。</p>
+<h3 id="16"><a href="#16" class="headerlink" title="16."></a>16.</h3><p>极限为无穷大其实是不存在极限的，说极限为无穷大只是便于理解。</p>
+<h3 id="17"><a href="#17" class="headerlink" title="17."></a>17.</h3><p>其实极限关注的是从两侧逼近一个点时趋于的结果而不关注这个点真实的值甚至不关注该点是否有定义，所以在有突变的情况下极限和函数值并不一样。对于复合函数的极限运算法则，那句 <script type="math/tex">g(x)\neq u_0</script>，就是为了避免这个。例如：</p>
+<script type="math/tex; mode=display">
+f(x)=\begin{cases}
+0 \ ,x\neq0  \\
+1 \ ,x=0\\
+\end{cases}\\
+g(x)=0</script><p>那么 <script type="math/tex">\lim_{x\to 0} f(g(x))</script> 应该为 1，但如果没有那条保险用定理会得到 0。其实是保证了极限里的空心邻域里的空心了。</p>
+<p>其实定理的本质就是用外层极限代替整体极限，这在一般情况下是对的，只有在这种特殊情况下有问题。</p>
+<h3 id="18"><a href="#18" class="headerlink" title="18."></a>18.</h3><p>一种常见反证：</p>
+<p>求证：若 <script type="math/tex">\lim_{x\to x_0}f(x)</script> 存在，<script type="math/tex">\lim_{x\to x_0}g(x)</script> 不存在，那么 <script type="math/tex">\lim_{x\to x_0}[f(x)+g(x)]</script> 不存在。</p>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+假设\ \lim_{x\to x_0}[f(x)+g(x)]\ 存在\\
+\lim_{x\to x_0}g(x)=\lim_{x\to x_0}[f(x)+g(x)]-\lim_{x\to x_0}f(x)\\
+\because \lim_{x\to x_0}f(x)存在，\lim_{x\to x_0}[f(x)+g(x)]\ 存在\\
+\therefore \lim_{x\to x_0}g(x)存在\\
+与条件矛盾，故\lim_{x\to x_0}[f(x)+g(x)]不存在</script><h3 id="19"><a href="#19" class="headerlink" title="19."></a>19.</h3><p>有界指有上界且有下界，但在单调有界准则中一般只需考虑一个界，因为如单调递增只需考虑上界因为首项就是下界。这个准则 <script type="math/tex">\mathrm{II}^{'}</script> 对左右邻域都是一样的，但虽然左右极限可能都存在但不一定相等，故该点不一定有极限。</p>
+<h3 id="20"><a href="#20" class="headerlink" title="20."></a>20.</h3><p>高数中的单调递增或单调递减均为非严格的。</p>
+<h3 id="21"><a href="#21" class="headerlink" title="21."></a>21.</h3><p>一些换元：</p>
+<p>例：求：<script type="math/tex">\lim_{x\to 0} \frac{\arcsin x}{x}</script></p>
+<p>解：令 <script type="math/tex">t=\arcsin x</script>，则 <script type="math/tex">x=\sin t</script>，当 <script type="math/tex">x\to 0</script> 时，有 <script type="math/tex">t\to 0</script>，故 <script type="math/tex">\lim_{x\to 0} \frac{\arcsin x}{x}=\lim_{t\to 0} \frac{t}{\sin t}=1</script></p>
+<p>例：求 <script type="math/tex">\lim_{x\to 0} (1-x)^{\frac{1}{x}}</script></p>
+<p>解：令 <script type="math/tex">t=-\frac{1}{x}</script>，则 <script type="math/tex">x=-\frac{1}{t}</script>，当 <script type="math/tex">x\to 0</script> 时，有 <script type="math/tex">t\to \infty</script>，故 <script type="math/tex">\lim_{x\to 0} (1-x)^{\frac{1}{x}}=\lim_{t\to \infty} (1+\frac{1}{t})^{-t}=\lim_{t\to \infty} \frac{1}{(1+\frac{1}{t})^{t}}=\frac{1}{e}</script></p>
+<p>其实挺常规的？</p>
+<h3 id="22"><a href="#22" class="headerlink" title="22."></a>22.</h3><p>数列递推能这么求极限？？？</p>
+<p>原来这种数列递推类都是单调有界准则做的啊。</p>
+<p>例：已知 <script type="math/tex">a_1=2,a_{n+1}=\frac{1}{2}(a_n+\frac{1}{a_n})</script>，证明 <script type="math/tex">\lim_{n\to \infty}a_n</script> 存在并求之。</p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+\because a_1=2>1,设\ a_k>1,则\ a_{k+1}=\frac{1}{2}(a_k+\frac{1}{a_k})>1\\
+由数学归纳法可知，\{a_n\}存在下界1\\
+\because a_{n+1}-a_n=\frac{1}{2}(\frac{1}{a_n}-a_n),a_n>1\\
+\therefore a_n>a_{n+1}\\
+由单调有界准则可知，\lim_{n\to \infty}a_n存在\\
+设\lim_{n\to \infty}a_n= a\\
+\lim_{n\to \infty}a_{n+1}=\lim_{n\to \infty}\frac{1}{2}(a_n+\frac{1}{a_n})\\
+则\ a=\frac{1}{2}(a+\frac{1}{a})\\
+解得\ a=1或a=-1(舍去)</script><p>这个上界要先把极限求出来这样就好证了，先画靶子后射箭这一块。而且这个证有界一般都是数学归纳法。不过有时候不一定要用极限当界，因为极限的数可能不太好看。其实证单调也可以数学归纳法，有些题目里作差不一定能说明？</p>
+<p>例：已知 <script type="math/tex">a_1=1,a_{n+1}=1+\frac{a_n}{1+a_n}</script>，证明 <script type="math/tex">\lim_{n\to \infty}a_n</script> 存在并求之。</p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+a_1=1,a_2=1+\frac{1}{1+1}=\frac{3}{2},则\ a_1<a_2,显然\ a_n>0\\
+设\ a_n>a_{n-1},则\\
+a_{n+1}-a_n=1+\frac{a_n}{1+a_n}-1-\frac{a_{n-1}}{1+a_{n-1}}=\frac{a_n-a_{n-1}}{(1+a_n)(1+a_{n-1})}>0\\
+由数学归纳法可知，\{a_n\} 单调递增\\
+\because a_{n+1}=1+\frac{a_n}{1+a_n}=2-\frac{1}{1+a_n}<2\\
+\therefore \{a_n\} 存在上界\\
+由单调有界准则可知，\lim_{n\to \infty}a_n存在\\
+设\lim_{n\to \infty}a_n= a\\
+则\ a=1+\frac{1}{1+a}\\
+解得\ a=\frac{1+\sqrt{5}}{2}或\ a=\frac{1-\sqrt{5}}{2}(舍去)</script><h3 id="23"><a href="#23" class="headerlink" title="23."></a>23.</h3><p>放缩时经常能把分母的常数放掉，这和高中时做的一道数列不等式一样啊，当时一直不敢相信竟然能这么放，感觉这玩意太松了，非常不智慧啊，现在为了好算真是啥都能放。</p>
+<h3 id="24"><a href="#24" class="headerlink" title="24."></a>24.</h3><p>夹逼准则常见放缩：</p>
+<p>1.对于求和或连乘（都是正数），放小就是所有都放成最小项，放大就是所有都放成最大项。例如 <script type="math/tex">n!\le n^n</script></p>
+<p>2.对于求和或连乘（都是正数），放小可以只放小一项，放大可以只放大一项。</p>
+<p>3.对于求和，略去正项则缩小，略去负项则变大。</p>
+<p>4.对于连乘（都是正数），略去大于1的则缩小，略去小于1的则变大。</p>
+<p>5.<script type="math/tex">\lim_{n\to \infty}\sqrt[n]{n!}=\lim_{n\to \infty}\frac{n}{e}=+\infty</script></p>
+<p>6.<script type="math/tex">\lim_{n\to \infty}\sqrt[n]{a}=1(a>0)</script></p>
+<p>7.<script type="math/tex">\lim_{n\to \infty}\sqrt[n]{n的多项式}=1</script></p>
+<p>例：求 <script type="math/tex">\lim_{n\to \infty}\sum_{i=1}^n \frac{i}{n^2+n+i}</script></p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+\because \frac{i}{n^2+n+n}\le\frac{i}{n^2+n+i}\le\frac{i}{n^2+n+1}\\
+\therefore \frac{n^2+n}{2(n^2+2n)}\le\sum_{i=1}^n \frac{i}{n^2+n+i}\le\frac{n^2+n}{2(n^2+n+1)}\\
+\because \lim_{n\to \infty} \frac{n^2+n}{2(n^2+2n)}=\frac{1}{2},\lim_{n\to \infty} \frac{n^2+n}{2(n^2+n+1)}=\frac{1}{2}\\
+\therefore 由夹逼准则可知，\lim_{n\to \infty}\sum_{i=1}^n \frac{i}{n^2+n+i}=\frac{1}{2}</script><p>这种分母有平方的 <script type="math/tex">n</script> 项分式求和太板了，做法都是对分母非平方项放缩时分母一致后便于求和，这种做法不会改变极限因为平方太有权威了（换个更高次也是一样的）。</p>
+<p>例：已知 <script type="math/tex">a_i>0</script>，求 <script type="math/tex">\lim_{n\to \infty}\sqrt[n]{\sum_{i=1}^m a_i^n}</script></p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+设\ a_{max}=\max_{i=1}^ma_i,则\\
+\sqrt[n]{a_{max}^n}<\sqrt[n]{\sum_{i=1}^m a_i^n}\le\sqrt[n]{ma_{max}^n}\\
+\because \lim_{n\to \infty}\sqrt[n]{a_{max}^n}=a_{max},\lim_{n\to \infty}\sqrt[n]{ma_{max}^n}=\lim_{n\to \infty}a_{max}\sqrt[n]{m}=a_{max}\\
+\therefore 由夹逼准则可知，\lim_{n\to \infty}\sqrt[n]{\sum_{i=1}^m a_i^n}=a_{max}</script><p>这个可以当结论记住。</p>
+<p>例：求 <script type="math/tex">\lim_{n\to \infty}(n!)^{\frac{1}{n^2}}</script></p>
+<p>法一：</p>
+<script type="math/tex; mode=display">
+\because (n!)^{\frac{1}{n^2}}=e^{\frac{ln(n!)}{n^2}}\\
+\therefore e^0<e^{\frac{ln(n!)}{n^2}}<e^{\frac{nln n}{n^2}}\\
+\because \lim_{n\to \infty}e^0=1,\lim_{n\to \infty}e^{\frac{ln n}{n}}=1\\
+\therefore 由夹逼准则可知，\lim_{n\to \infty}(n!)^{\frac{1}{n^2}}=1</script><p>还能化成指数的啊，感觉麻烦了。</p>
+<p>法二：</p>
+<script type="math/tex; mode=display">
+\because 1^{\frac{1}{n^2}}<(n!)^{\frac{1}{n^2}}\le (n^n)^{\frac{1}{n^2}}\\
+\therefore 1<(n!)^{\frac{1}{n^2}}\le \sqrt[n]{n}\\
+\because \lim_{n\to \infty}1=1,\lim_{n\to \infty}\sqrt[n]{n}=1\\
+\therefore 由夹逼准则可知，\lim_{n\to \infty}(n!)^{\frac{1}{n^2}}=1</script><p>例：求 <script type="math/tex">\lim_{n\to \infty}\frac{\sum_{i=1}^n i!}{n!}</script></p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+\because n!<\sum_{i=1}^n i!<(n-2)(n-2)!+(n-1)!+n!=2(n-1)!-(n-2)!+n!<2(n-1)!+n!\\
+\therefore 1<\sum_{i=1}^n i!<\frac{2(n-1!)}{n!}+1=\frac{2}{n}+1\\
+\because \lim_{n\to \infty}1=1,\lim_{n\to \infty}\frac{2}{n}+1=1\\
+\therefore 由夹逼准则可知，\lim_{n\to \infty}\frac{\sum_{i=1}^n i!}{n!}=1</script><h3 id="25"><a href="#25" class="headerlink" title="25."></a>25.</h3><p>两个重要极限常见题型：</p>
+<p>其实就是硬凑，你看和两个重要极限长的有点像的就往这凑就完事了。</p>
+<p>虽然有时候能换元，但是换元很可能反解不出来，不如直接凑啊。</p>
+<p>例：求 <script type="math/tex">\lim_{x\to \infty}x \sin \frac{2x}{x^2+1}</script></p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+\lim_{x\to \infty}x \sin \frac{2x}{x^2+1}=\lim_{x\to \infty}\frac{2x^2}{x^2+1}\frac{\sin \frac{2x}{x^2+1}}{\frac{2x}{x^2+1}}\\
+\because x\to \infty\\
+\therefore \frac{2x}{x^2+1}\to 0\\
+\therefore \lim_{x\to \infty}\frac{2x^2}{x^2+1}\frac{\sin \frac{2x}{x^2+1}}{\frac{2x}{x^2+1}}=\lim_{x\to \infty}\frac{2x^2}{x^2+1}\times\lim_{x\to \infty}\frac{\sin \frac{2x}{x^2+1}}{\frac{2x}{x^2+1}}=\lim_{x\to \infty}\frac{2x^2}{x^2+1}=2</script><p>第二个重要极限有一些变形：</p>
+<script type="math/tex; mode=display">
+\lim_{x\to \infty}(1+\frac{1}{x})^x=e\\
+\lim_{x\to \infty}(1-\frac{1}{x})^x=\frac{1}{e}\\</script><p>重点还是括号里的和指数要为倒数，且一定是 <script type="math/tex">1^{\infty}</script> 型的。</p>
+<p>例：求 <script type="math/tex">\lim_{x\to \infty}(\frac{x+1}{x-2})^{2x-1}</script></p>
+<p>解：</p>
+<script type="math/tex; mode=display">
+\lim_{x\to \infty}(\frac{x+1}{x-2})^{2x-1}=\lim_{x\to \infty}[(1+\frac{3}{x-2})^{\frac{x-2}{3}}]^{\frac{6x-3}{x-2}}\\
+\because x\to \infty \\
+\therefore \frac{3}{x-2}\to 0\\
+\therefore \lim_{x\to \infty}[(1+\frac{3}{x-2})^{\frac{x-2}{3}}]^{\frac{6x-3}{x-2}}=e^6</script><p>其实还用了一下复合函数极限运算法则，那个指数其实相当于外层函数，直接求就可以了。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/posts/65bf62c6/">← Next 线代概念入门</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/e2517c/">省选联考2024游记 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@126.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%81%E9%99%90"><span class="toc-number">1.</span> <span class="toc-text">一.函数与极限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">2.</span> <span class="toc-text">1.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">3.</span> <span class="toc-text">2.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3"><span class="toc-number">4.</span> <span class="toc-text">3.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-number">5.</span> <span class="toc-text">4.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5"><span class="toc-number">6.</span> <span class="toc-text">5.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6"><span class="toc-number">7.</span> <span class="toc-text">6.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7"><span class="toc-number">8.</span> <span class="toc-text">7.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8"><span class="toc-number">9.</span> <span class="toc-text">8.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9"><span class="toc-number">10.</span> <span class="toc-text">9.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10"><span class="toc-number">11.</span> <span class="toc-text">10.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11"><span class="toc-number">12.</span> <span class="toc-text">11.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12"><span class="toc-number">13.</span> <span class="toc-text">12.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13"><span class="toc-number">14.</span> <span class="toc-text">13.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14"><span class="toc-number">15.</span> <span class="toc-text">14.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15"><span class="toc-number">16.</span> <span class="toc-text">15.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16"><span class="toc-number">17.</span> <span class="toc-text">16.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17"><span class="toc-number">18.</span> <span class="toc-text">17.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18"><span class="toc-number">19.</span> <span class="toc-text">18.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19"><span class="toc-number">20.</span> <span class="toc-text">19.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20"><span class="toc-number">21.</span> <span class="toc-text">20.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21"><span class="toc-number">22.</span> <span class="toc-text">21.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22"><span class="toc-number">23.</span> <span class="toc-text">22.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23"><span class="toc-number">24.</span> <span class="toc-text">23.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24"><span class="toc-number">25.</span> <span class="toc-text">24.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25"><span class="toc-number">26.</span> <span class="toc-text">25.</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
