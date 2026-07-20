@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>语法笔记 | xtzqhy's blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lidIwUC42TZcbOGp',
+ clientSecret: '8c80458f10fcbca741ea248bb64b365cbe0ee50c',
+ repo: 'xtzqhy.github.io',
+ owner: 'xtzqhy',
+ admin: ['xtzqhy'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>语法笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-07-03T07:08:42.000Z" id="date"> 2026-07-03</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-07-08T13:54:28.494Z" id="updated"> 2026-07-08</time></div></span><br><span>Word Count: <div class="control">1.6k</div></span><br><span>Read Time: <div class="control">6 min</div></span></div></div><hr><div id="post-content"><h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>1.%p可以用于输入或输出对应的地址，以十六进制输出。</p>
+<p>2.<code>int *p,q</code> 和 <code>int* p,q</code> 是一样的，只有 p 是指针变量，q 是 int 类型变量。</p>
+<p>3.数组变量本身表示地址，所以这样是正确的 <code>int a[10];int *p=a;</code> 无须 <code>&amp;</code> 也可以。但对于数组的单元仍需要取地址符。且 <code>a==&amp;a[0]</code>。</p>
+<p>4.<code>[]</code> 既可以对数组用也能对指针用，如果指针指向的只是一个变量也可以这么写，因为可以看成是一个长度为 1 的数组。故只有 <code>p[0]</code> 有意义。</p>
+<p>5.<code>*</code> 既可以对数组用也能对指针用，且 <script type="math/tex">*a==a[0]</script>。</p>
+<p>6.数组变量是 const 的指针，所以不能被赋值。<code>int a[]&lt;==&gt;int * const a=...</code></p>
+<p>7.如果 const 在 <code>*</code> 前面，如 <script type="math/tex">int const *p=&x</script>，那么对 <code>*p</code> 的修改是不合法的，但仍可以对 <code>x</code> 修改或让 <code>p</code> 指向其他变量。</p>
+<p>8.如果 const 在 <code>*</code> 后面，如 <script type="math/tex">int const *p=&x</script>，那么让 <code>p</code> 再指向其他变量是不合法的，仍可以对 <code>x</code> 修改或对 <code>*p</code> 修改。</p>
+<p>9.<code>void f(const int *x)</code> 这种写法在传入的参数比地址还大，例如传一个结构体，这种做法可以用较少的字节数传递值还能避免对外面变量的修改。</p>
+<p>10.<code>sizeof</code> 得到的是字节数，还要除以该类型占的字节数才能得到数组长度。</p>
+<p>11.遍历数组用 <code>*p++</code> 常数更小，<code>++</code>  的优先级比 <code>*</code> 高，故会先取出 <code>p</code> 所指的数据，然后 <code>p</code> 挪到下一个位置。</p>
+<p>12.0地址不能做任何事，不能读也不能写，为了避免野指针可以先赋 <code>*p=NULL</code>。</p>
+<p>13.free只能还申请来的地址的首空间。</p>
+<p>14.字符数组不等于字符串。字符串末尾自带一个 <code>\0</code>，会占一个位置。</p>
+<p>15.你直接写一个 <code>&quot;hello&quot;</code> 这种字符串都是常量，它是一个地址而不是一个量。如果写 <code>char *s=&quot;hello&quot;</code> 那么这个字符串会存在只读区域，所以 <code>s[0]=&#39;a&#39;</code> 这种修改操作不合法，因为本质其实是 <code>const char *s</code>。如果写 <code>char s[]=&quot;hello&quot;</code>，那么这个字符串会存在可读写区域，是可以修改的，但是不能有 <code>s=&quot;world&quot;</code> 这种操作，因为 <code>&quot;world&quot;</code> 是一个地址，如果是前面那个指针倒是可以这么做。</p>
+<p>16.scanf读到空格，tab或回车为止。scanf是不安全的，因为不知道读入内容长度。<code>%7s</code> 那个数字表示最多·允许读入字符数量，包含那个 <code>\0</code></p>
+<p>17.如果这么写 <code>char *s;scanf(&quot;%s&quot;,s);</code> 是不对的，必须先把那个指针设为 NULL，不然也不能用。</p>
+<p>18.以vscode为例，一个项目就是一个里面有.vscode配置文件的文件夹。与OI不同，项目的文件是很多的，所以要专门建个文件夹管理。</p>
+<p>19.以C为例，一个.C文件是一个编译单元，编译器每次编译只处理一个编译单元。编译前IDE可以将所有.C文件构建为一个然后再编译。</p>
+<p>20.头文件里可以放函数原型，全局变量声明，宏定义，类型定义，但没有定义。用头文件不是引入库，本质还是文本替换。现在的C语言编译器默认引入所有标准库。</p>
+<p>21.头文件的 “ ”和 &lt;&gt; 的区别：前者先找当前文件夹再找编译器指定目录，后者直接找指定目录。</p>
+<p>22.给函数或者变量加上 static 那么它就只能在当前编译单元使用。</p>
+<p>23.extern用于变量声明写头文件里可以相当于给项目里所有编译单元都声明一遍。声明是不产生代码的东西如函数原型，各种声明，inline函数，而定义会产生代码。</p>
+<p>24.为了避免头文件嵌套导致的重复声明，需要有标准头文件结构。</p>
+<p>25.printf的结构有 <code>%[flags][width][.prec][hIL]type</code>，flags有 <code>-</code> 意为左对齐，<code>+</code> 意为在前面放正号或负号，<code>(space)</code> 意为正数留空，<code>0</code> 意为用0填充。这个要结合后面两个使用。width或prec，填一个数意为输出一共占几位（如果有小数点小数点也占一位），<code>*</code> 意为下一个参数是占几位，<code>.</code> 后面加一个数字意为小数点后的位数，<code>.*</code> 意为下一个参数是小数点后的位数。例如 <code>printf(&quot;%*d&quot;,6,123)</code> 那个6就是占几位的参数。hIL意为修饰类型，<code>hh</code> 意为char，<code>h</code> 意为short，<code>l</code> 意为long，<code>ll</code>意为long long，<code>L</code>意为long double。type为类型，<code>i</code> 或 <code>d</code> 为int，u为unsinged int，x为十六进制，X为字母大写的十六进制，f或F为六位小数的float，e或E为指数，g或G为float，a或A为十六进制浮点数，c为char，s为字符串，p为指针，n为读入或写出的个数</p>
+<p>26.scanf的结构有<code>%[flag]type</code>，flag有<code>hh</code> 意为char，<code>h</code> 意为short，<code>l</code> 意为long或double，<code>ll</code>意为long long，<code>L</code>意为long double，数字为最大字符数，<code>*</code> 为跳过。type有 d为int，i为整数（可以额外接受八进制或十六进制），u为unsigned int，o为八进制，x为十六进制，a，e，f，g为float，c为char，s为字符串，[…]为所允许的字符，p为指针。例如输入为 <code>//$GPRMC,004319.00,A,3016.98468,N,12006.39211,E,0.047,,130909,,,D*79</code>，可以写 <code>scanf(&quot;%*[^],%[^],%[^],%[^],%[^],%[^],sTime,sAV,sLati,&amp;sNW,sLong,&amp;sEW,sSpeed,sAngle,sDate);</code>。</p>
+<p>27.scanf返回值为读入项目数，printf返回值为输出字符数</p>
+<p>28.C的文件输入输出和C++的不一样，C用的是fopen，用的时候再查吧。</p>
+<p>29.二进制文件和二进制读写，这是不是能卡常用？</p>
+<p>30.与可以用来1.让某一位或某些位为0 2.取一个数中的一段 因为在按位与下，我这一位是1，那么结果就是你的那一位，我这一位是0，那么结果就是0；或可以用来：1.让某一位或某些位为1 2.把两个数拼起来 因为在按位或下，我这一位是1，那么结果就是1，我这一位是0，那么结果就是你的那一位</p>
+<p>31.位段</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/posts/9594eca8/">反三角函数学习笔记 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">xtzqhy</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/xtzqhy"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="xtzqhy@126.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/399232243"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-C"><span class="toc-number">1.</span> <span class="toc-text">C&#x2F;C++</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
